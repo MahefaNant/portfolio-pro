@@ -1,10 +1,10 @@
 import { getRequestConfig } from "next-intl/server";
 import fs from "fs";
 import path from "path";
+import { getUserLocale } from "@/lib/locale";
 
 export default getRequestConfig(async () => {
-  // Static for now, we'll change this later
-  const locale = "en";
+  const locale = await getUserLocale();
 
   const messagesDir = path.join(process.cwd(), "messages", locale);
   const files = fs
