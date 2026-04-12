@@ -1,0 +1,45 @@
+{
+  "hero": {
+    "greeting": {
+      "fr": "Bonjour, je suis",
+      "en": "Hi, I'm"
+    },
+    "name": "Mahefa",
+    "title": {
+      "fr": "Développeur Fullstack",
+      "en": "Fullstack Developer"
+    },
+    "description": {
+      "fr": "Je crée des applications web modernes, performantes et élégantes. Spécialisé dans l'écosystème Next.js et l'expérience utilisateur.",
+      "en": "I build modern, performant and elegant web applications. Specialized in Next.js ecosystem and user experience."
+    },
+    "cta": {
+      "primary": {
+        "fr": "Voir mes projets",
+        "en": "View my work"
+      },
+      "secondary": {
+        "fr": "Me contacter",
+        "en": "Contact me"
+      }
+    },
+    "stats": [
+      {
+        "value": "4+",
+        "labelFr": "Années d'expérience",
+        "labelEn": "Years experience"
+      },
+      {
+        "value": "20+",
+        "labelFr": "Projets réalisés",
+        "labelEn": "Projects completed"
+      },
+      {
+        "value": "100%",
+        "labelFr": "Satisfaction client",
+        "labelEn": "Client satisfaction"
+      }
+    ],
+    "techStack": ["Next.js", "TypeScript", "Tailwind", "PostgreSQL", "Supabase"]
+  }
+}

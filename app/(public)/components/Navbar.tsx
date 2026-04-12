@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import { Globe, Menu, X } from "lucide-react";
@@ -40,7 +41,7 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Fermer le menu mobile lors du changement de route
+  // Close mobile menu when route changes
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
@@ -166,7 +167,7 @@ export function Navbar() {
         </div>
       </header>
 
-      {/* Spacer pour compenser le header fixe */}
+      {/* Spacer to compensate for fixed header */}
       <div className="h-16 lg:h-20" />
     </>
   );
