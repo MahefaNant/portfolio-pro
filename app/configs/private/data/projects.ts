@@ -1,0 +1,96 @@
+// data/projects.ts
+export const projectsData = {
+  projects: [
+    {
+      id: "1",
+      title: "Plateforme E-commerce",
+      description:
+        "Plateforme e-commerce complète avec panier, paiement Stripe, dashboard admin et système de notation.",
+      imageUrl: "/images/projects/ecommerce.jpg",
+      category: "fullstack",
+      technologies: [
+        "Next.js",
+        "TypeScript",
+        "Tailwind",
+        "Stripe",
+        "PostgreSQL",
+      ],
+      githubUrl: "https://github.com/mahefa/ecommerce",
+      liveUrl: "https://ecommerce-demo.vercel.app",
+      featured: true,
+      date: "2024",
+    },
+    {
+      id: "2",
+      title: "Dashboard Analytics",
+      description:
+        "Dashboard analytics temps réel avec graphiques interactifs, export PDF et webhooks.",
+      imageUrl: "/images/projects/dashboard.jpg",
+      category: "frontend",
+      technologies: ["React", "Recharts", "Node.js", "WebSocket", "Redis"],
+      githubUrl: "https://github.com/mahefa/dashboard",
+      liveUrl: "https://dashboard-demo.vercel.app",
+      featured: true,
+      date: "2024",
+    },
+    {
+      id: "3",
+      title: "API REST Laravel",
+      description:
+        "API REST complète avec authentification JWT, rate limiting, documentation Swagger et tests unitaires.",
+      imageUrl: "/images/projects/api.jpg",
+      category: "backend",
+      technologies: ["Laravel", "PHP", "MySQL", "Swagger", "JWT"],
+      githubUrl: "https://github.com/mahefa/laravel-api",
+      liveUrl: "https://api-demo.vercel.app/docs",
+      featured: true,
+      date: "2023",
+    },
+    {
+      id: "4",
+      title: "Application Mobile React Native",
+      description:
+        "Application mobile de livraison avec géolocalisation, notifications push et paiement mobile.",
+      imageUrl: "/images/projects/mobile.jpg",
+      category: "mobile",
+      technologies: ["React Native", "Expo", "Node.js", "MongoDB", "Socket.io"],
+      githubUrl: "https://github.com/mahefa/mobile-app",
+      liveUrl: "https://expo.dev/mahefa/mobile-app",
+      featured: false,
+      date: "2024",
+    },
+    {
+      id: "5",
+      title: "Portfolio 3D",
+      description:
+        "Portfolio interactif avec animations 3D, Three.js et expérience immersive.",
+      imageUrl: "/images/projects/portfolio3d.jpg",
+      category: "frontend",
+      technologies: ["Three.js", "React", "GSAP", "Tailwind"],
+      githubUrl: "https://github.com/mahefa/portfolio-3d",
+      liveUrl: "https://portfolio-3d.vercel.app",
+      featured: false,
+      date: "2024",
+    },
+    {
+      id: "6",
+      title: "Outil de Gestion de Projet",
+      description:
+        "Application de gestion de projet type Trello avec drag & drop, commentaires et notifications.",
+      imageUrl: "/images/projects/pmtool.jpg",
+      category: "fullstack",
+      technologies: ["Next.js", "Prisma", "PostgreSQL", "Tailwind", "NextAuth"],
+      githubUrl: "https://github.com/mahefa/pm-tool",
+      liveUrl: "https://pm-tool.vercel.app",
+      featured: false,
+      date: "2023",
+    },
+  ],
+  categories: [
+    { id: "all", name: "Tous", nameEn: "All" },
+    { id: "frontend", name: "Frontend", nameEn: "Frontend" },
+    { id: "backend", name: "Backend", nameEn: "Backend" },
+    { id: "fullstack", name: "Fullstack", nameEn: "Fullstack" },
+    { id: "mobile", name: "Mobile", nameEn: "Mobile" },
+  ],
+};
