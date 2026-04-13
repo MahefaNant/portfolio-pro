@@ -1,18 +1,12 @@
 "use client";
 
 import { useInView } from "framer-motion";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Cloud,
-  Code2,
-  Server,
-  Sparkles,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { IconRenderer } from "@/components/ui/icon-renderer";
 
 // Données temporaires (à remplacer par API)
 const skillsData = {
@@ -26,7 +20,7 @@ const skillsData = {
       id: "backend",
       name: "Backend",
       nameEn: "Backend",
-      icon: Server,
+      icon: "Server",
       skills: [
         { name: "Node.js", level: 80, color: "#339933", years: 3 },
         { name: "Laravel", level: 75, color: "#FF2D20", years: 2 },
@@ -38,7 +32,7 @@ const skillsData = {
       id: "frontend",
       name: "Frontend",
       nameEn: "Frontend",
-      icon: Code2,
+      icon: "Code2",
       skills: [
         { name: "Next.js", level: 90, color: "#000000", years: 3 },
         { name: "React", level: 85, color: "#61DAFB", years: 4 },
@@ -52,7 +46,7 @@ const skillsData = {
       id: "devops",
       name: "DevOps",
       nameEn: "DevOps",
-      icon: Cloud,
+      icon: "Cloud",
       skills: [
         { name: "Docker", level: 75, color: "#2496ED", years: 2 },
         { name: "Git/GitHub", level: 90, color: "#F05032", years: 4 },
@@ -128,8 +122,6 @@ function TabButton({
   isActive: boolean;
   onClick: () => void;
 }) {
-  const Icon = category.icon;
-
   return (
     <button
       onClick={onClick}
@@ -145,7 +137,8 @@ function TabButton({
       aria-pressed={isActive}
       aria-label={`Onglet ${category.name}`}
     >
-      <Icon
+      <IconRenderer
+        name={category.icon}
         className={`h-4 w-4 sm:h-5 sm:w-5 ${isActive ? "text-white" : ""}`}
       />
       <span className="text-sm sm:text-base font-medium">{category.name}</span>
@@ -246,10 +239,10 @@ export function Skills() {
               <div className="bg-gray-100 dark:bg-[#121826] rounded-xl p-1">
                 <div className="flex justify-between items-center px-4 py-2">
                   <div className="flex items-center gap-2">
-                    {(() => {
-                      const Icon = activeCategory.icon;
-                      return <Icon className="h-5 w-5 text-[#2563EB]" />;
-                    })()}
+                    <IconRenderer
+                      name={activeCategory.icon}
+                      className="h-5 w-5 text-[#2563EB]"
+                    />
                     <span className="font-semibold text-base text-gray-800 dark:text-white">
                       {activeCategory.name}
                     </span>

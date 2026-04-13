@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, ChevronRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import Image from "next/image";
@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { IconRenderer } from "@/components/ui/icon-renderer";
 
 // Données temporaires (à remplacer par API plus tard)
 const heroData = {
@@ -63,13 +64,13 @@ export function Hero() {
   };
 
   const socialLinks = [
-    { icon: Github, href: "https://github.com/mahefanant", label: "GitHub" },
+    { icon: "Github", href: "https://github.com/mahefanant", label: "GitHub" },
     {
-      icon: Linkedin,
+      icon: "Linkedin",
       href: "https://www.linkedin.com/in/mahefa-nantenaina-419a98271",
       label: "LinkedIn",
     },
-    { icon: Mail, href: "mailto:[EMAIL_ADDRESS]", label: "Email" },
+    { icon: "Mail", href: "mailto:[EMAIL_ADDRESS]", label: "Email" },
   ];
 
   return (
@@ -161,7 +162,7 @@ export function Hero() {
                   className="p-2 rounded-full bg-gray-100 dark:bg-[#121826] text-gray-600 dark:text-gray-400 hover:bg-[#2563EB] hover:text-white dark:hover:bg-[#2563EB] transition-all duration-300"
                   aria-label={social.label}
                 >
-                  <social.icon className="h-5 w-5" />
+                  <IconRenderer name={social.icon} className="h-5 w-5" />
                 </a>
               ))}
             </div>
