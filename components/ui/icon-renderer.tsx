@@ -8,6 +8,7 @@ interface IconRendererProps {
   className?: string;
   size?: number;
   strokeWidth?: number;
+  style?: React.CSSProperties;
 }
 
 export function IconRenderer({
@@ -15,6 +16,7 @@ export function IconRenderer({
   className = "h-5 w-5",
   size,
   strokeWidth = 2,
+  style,
 }: IconRendererProps) {
   // Cherche l'icône dans Lucide
   const IconComponent = (LucideIcons as any)[name];
@@ -24,7 +26,11 @@ export function IconRenderer({
     return (
       <div
         className={`${className} flex items-center justify-center bg-gradient-to-br from-[#2563EB] to-[#1E3A8A] rounded-full text-white font-bold text-xs`}
-        style={{ width: size, height: size }}
+        style={{
+          ...style,
+          width: size,
+          height: size,
+        }}
       >
         {name.charAt(0).toUpperCase()}
       </div>
@@ -36,6 +42,7 @@ export function IconRenderer({
       className={className}
       size={size}
       strokeWidth={strokeWidth}
+      style={style}
     />
   );
 }
