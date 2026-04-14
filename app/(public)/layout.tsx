@@ -1,4 +1,5 @@
 "use client";
+import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
 
 export default function PublicLayout({
@@ -10,6 +11,7 @@ export default function PublicLayout({
     <>
       <Navbar />
       <main>{children}</main>
+      <Footer />
     </>
   );
 }
