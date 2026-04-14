@@ -7,18 +7,14 @@ import { useEffect, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { IconRenderer } from "@/components/ui/icon-renderer";
+import { useLocale, useTranslations } from "next-intl";
 
 // Données temporaires (à remplacer par API)
 const skillsData = {
-  title: { fr: "Ma Stack Technique", en: "My Tech Stack" },
-  subtitle: {
-    fr: "Outils et technologies que j'utilise au quotidien",
-    en: "Tools and technologies I use daily",
-  },
   categories: [
     {
       id: "backend",
-      name: "Backend",
+      nameFr: "Backend",
       nameEn: "Backend",
       icon: "Server",
       skills: [
@@ -30,7 +26,7 @@ const skillsData = {
     },
     {
       id: "frontend",
-      name: "Frontend",
+      nameFr: "Frontend",
       nameEn: "Frontend",
       icon: "Code2",
       skills: [
@@ -44,7 +40,7 @@ const skillsData = {
 
     {
       id: "devops",
-      name: "DevOps",
+      nameFr: "DevOps",
       nameEn: "DevOps",
       icon: "Cloud",
       skills: [
@@ -122,6 +118,7 @@ function TabButton({
   isActive: boolean;
   onClick: () => void;
 }) {
+  const locale = useLocale();
   return (
     <button
       onClick={onClick}
@@ -135,18 +132,22 @@ function TabButton({
         }
       `}
       aria-pressed={isActive}
-      aria-label={`Onglet ${category.name}`}
+      aria-label={`Onglet ${locale === "fr" ? category.nameFr : category.nameEn}`}
     >
       <IconRenderer
         name={category.icon}
         className={`h-4 w-4 sm:h-5 sm:w-5 ${isActive ? "text-white" : ""}`}
       />
-      <span className="text-sm sm:text-base font-medium">{category.name}</span>
+      <span className="text-sm sm:text-base font-medium">
+        {locale === "fr" ? category.nameFr : category.nameEn}
+      </span>
     </button>
   );
 }
 
 export function Skills() {
+  const locale = useLocale();
+  const t = useTranslations("Home.Skills");
   const [activeTab, setActiveTab] = useState("backend");
   const [currentIndex, setCurrentIndex] = useState(0);
   const ref = useRef(null);
@@ -202,11 +203,11 @@ export function Skills() {
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4">
             <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              {skillsData.title.fr}
+              {t("title")}
             </span>
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-400 px-4">
-            {skillsData.subtitle.fr}
+            {t("subtitle")}
           </p>
         </div>
 
@@ -244,7 +245,9 @@ export function Skills() {
                       className="h-5 w-5 text-[#2563EB]"
                     />
                     <span className="font-semibold text-base text-gray-800 dark:text-white">
-                      {activeCategory.name}
+                      {locale === "fr"
+                        ? activeCategory.nameFr
+                        : activeCategory.nameEn}
                     </span>
                   </div>
                   <Badge variant="secondary" className="text-xs">
@@ -257,7 +260,7 @@ export function Skills() {
             <button
               onClick={nextTab}
               className="p-2 rounded-full bg-gray-100 dark:bg-[#121826] active:bg-gray-200 dark:active:bg-[#1a2230] transition-colors cursor-pointer touch-manipulation"
-              aria-label="Onglet suivant"
+              aria-label="Next tab"
             >
               <ChevronRight className="h-5 w-5 text-gray-600 dark:text-gray-400" />
             </button>
@@ -277,7 +280,7 @@ export function Skills() {
                     ? "w-6 bg-[#2563EB]"
                     : "w-1.5 bg-gray-300 dark:bg-gray-600"
                 }`}
-                aria-label={`Aller à l'onglet ${idx + 1}`}
+                aria-label={`Go to tab ${idx + 1}`}
               />
             ))}
           </div>
@@ -345,7 +348,7 @@ export function Skills() {
         {/* Footer */}
         <div className="text-center mt-8 sm:mt-10 lg:mt-12">
           <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
-            Toujours en apprentissage • Nouvelles technologies chaque jour
+            {t("footer")}
           </p>
         </div>
       </div>

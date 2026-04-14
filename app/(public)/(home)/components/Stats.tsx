@@ -6,47 +6,42 @@ import { useEffect, useRef, useState } from "react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { IconRenderer } from "@/components/ui/icon-renderer";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 // Données temporaires
 const statsData = {
-  title: { fr: "Chiffres clés", en: "Key Numbers" },
-  subtitle: {
-    fr: "Quelques chiffres qui parlent de mon parcours",
-    en: "Numbers that tell my story",
-  },
   items: [
     {
       value: 20,
-      suffix: "+",
-      labelFr: "Projets réalisés",
-      labelEn: "Projects completed",
-      icon: "FolderCode",
-      color: "#2563EB",
+      suffix: "+", //static
+      labelFr: "Projets réalisés", //static
+      labelEn: "Projects completed", //static
+      icon: "FolderCode", //static
+      color: "#2563EB", //static
     },
     {
       value: 4,
-      suffix: "+",
-      labelFr: "Années d'expérience",
-      labelEn: "Years experience",
-      icon: "Briefcase",
-      color: "#22C55E",
+      suffix: "+", //static
+      labelFr: "Années d'expérience", //static
+      labelEn: "Years experience", //static
+      icon: "Briefcase", //static
+      color: "#22C55E", //static
     },
     {
       value: 15,
-      suffix: "+",
-      labelFr: "Clients satisfaits",
-      labelEn: "Happy clients",
-      icon: "Users",
-      color: "#A855F7",
+      suffix: "+", //static
+      labelFr: "Clients satisfaits", //static
+      labelEn: "Happy clients", //static
+      icon: "Users", //static
+      color: "#A855F7", //static
     },
     {
       value: 100,
-      suffix: "%",
-      labelFr: "Engagement",
-      labelEn: "Commitment",
-      icon: "Heart",
-      color: "#F59E0B",
+      suffix: "%", //static
+      labelFr: "Engagement", //static
+      labelEn: "Commitment", //static
+      icon: "Heart", //static
+      color: "#F59E0B", //static
     },
   ],
 };
@@ -173,7 +168,7 @@ function StatCard({
 }
 
 export function Stats() {
-  const locale = useLocale();
+  const t = useTranslations("Home.Stats");
   const ref = useRef(null);
 
   return (
@@ -196,16 +191,16 @@ export function Stats() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2563EB]/10 dark:bg-[#2563EB]/15 border border-[#2563EB]/20 mb-4">
             <TrendingUp className="h-3 w-3 sm:h-4 sm:w-4 text-[#2563EB]" />
             <span className="text-[10px] sm:text-xs font-medium text-[#2563EB] dark:text-[#3B82F6] uppercase tracking-wider">
-              {locale === "fr" ? statsData.title.fr : statsData.title.en}
+              {t("title")}
             </span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">
             <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              {locale === "fr" ? statsData.title.fr : statsData.title.en}
+              {t("title")}
             </span>
           </h2>
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
-            {locale === "fr" ? statsData.subtitle.fr : statsData.subtitle.en}
+            {t("subtitle")}
           </p>
         </div>
 

@@ -37,6 +37,9 @@ CREATE TABLE my_info (
   -- Pro
   job_title       TEXT,         -- ex: "Backend Developer"
   years_experience INT,
+  project_count   INT,
+  happy_clients   INT,
+  commitment      INT,
   cv_url          TEXT,         -- lien vers CV PDF
 
   -- Disponibilité

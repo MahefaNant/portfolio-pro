@@ -1,0 +1,22 @@
+{
+  "Home": {
+    "Hero": {
+      "welcome": "Welcome to my portfolio",
+      "greeting": "Hello, I'm",
+      "common": {
+        "available": "Available",
+        "seeProjects": "See my projects",
+        "contactMe": "Contact me"
+      }
+    },
+    "Stats": {
+      "title": "Key Numbers",
+      "subtitle": "Numbers that tell my story"
+    },
+    "Skills": {
+      "title": "Ma Stack Technique",
+      "subtitle": "Outils et technologies que j'utilise au quotidien",
+      "footer": "Always learning • New technologies every day"
+    }
+  }
+}

@@ -12,7 +12,6 @@ import { useLocale, useTranslations } from "next-intl";
 
 // Données temporaires (à remplacer par API plus tard)
 const heroData = {
-  greeting: { fr: "Bonjour, je suis", en: "Hi, I'm" },
   name: "Mahefa",
   title: { fr: "Développeur Fullstack", en: "Fullstack Developer" },
   description: {
@@ -22,25 +21,25 @@ const heroData = {
   stats: [
     {
       value: "4+",
-      labelFr: "Années d'expérience",
-      labelEn: "Years experience",
+      labelFr: "Années d'expérience", //static
+      labelEn: "Years experience", //static
     },
     {
       value: "20+",
-      labelFr: "Projets réalisés",
-      labelEn: "Projects completed",
+      labelFr: "Projets réalisés", //static
+      labelEn: "Projects completed", //static
     },
     {
-      value: "100%",
-      labelFr: "Satisfaction client",
-      labelEn: "Client satisfaction",
+      value: "100%", //static
+      labelFr: "Satisfaction client", //static
+      labelEn: "Client satisfaction", //static
     },
   ],
   techStack: ["Next.js", "Nest.js", "Laravel", ".NET", "Shopify"],
 };
 
 export function Hero() {
-  const t = useTranslations("Hero");
+  const t = useTranslations("Home.Hero");
   const locale = useLocale();
   const [imageLoading, setImageLoading] = useState(true);
 
@@ -103,7 +102,7 @@ export function Hero() {
             {/* Greeting + Name */}
             <div className="space-y-2">
               <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-400 font-medium">
-                {locale === "fr" ? heroData.greeting.fr : heroData.greeting.en}
+                {t("greeting")}
               </p>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold">
                 <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 dark:from-white dark:via-gray-200 dark:to-gray-400 bg-clip-text text-transparent">
