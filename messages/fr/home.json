@@ -22,6 +22,11 @@
       "title": "Projets Récents",
       "subtitle": "Quelques réalisations dont je suis fier",
       "seeProjects": "Voir tous les projets"
+    },
+    "Testimonials": {
+      "title": "Recommandations",
+      "subtitle": "Ce que mes collaborateurs pensent de moi",
+      "recommendations": "professionnels me recommandent"
     }
   }
 }

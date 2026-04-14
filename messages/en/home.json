@@ -22,6 +22,11 @@
       "title": "Featured Projects",
       "subtitle": "Some of my proudest work",
       "seeProjects": "See all projects"
+    },
+    "Testimonials": {
+      "title": "Testimonials",
+      "subtitle": "What my collaborators say about me",
+      "recommendations": "professionals recommend me"
     }
   }
 }

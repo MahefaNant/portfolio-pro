@@ -1,4 +1,3 @@
-// components/sections/testimonials.tsx
 "use client";
 
 import { useInView } from "framer-motion";
@@ -15,22 +14,20 @@ import { useEffect, useRef, useState } from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent } from "@/components/ui/card";
+import { useLocale, useTranslations } from "next-intl";
 
 // Données temporaires
 const testimonialsData = {
-  title: { fr: "Recommandations", en: "Testimonials" },
-  subtitle: {
-    fr: "Ce que mes collaborateurs pensent de moi",
-    en: "What my collaborators say about me",
-  },
   testimonials: [
     {
       id: "1",
       name: "Rakoto Jean",
       role: "CTO, TechCorp Madagascar",
       avatar: "",
-      content:
+      contentFr:
         "Travailler avec Mahefa a été une excellente expérience. Son expertise technique et sa capacité à résoudre des problèmes complexes m'ont impressionné. Il a livré le projet dans les délais avec une qualité exceptionnelle.",
+      contentEn:
+        "Working with Mahefa was an excellent experience. His technical expertise and ability to solve complex problems impressed me. He delivered the project on time with exceptional quality.",
       rating: 5,
       date: "2024-02-15",
     },
@@ -39,8 +36,10 @@ const testimonialsData = {
       name: "Raso Sarah",
       role: "Lead Designer, Creative Studio",
       avatar: "",
-      content:
+      contentFr:
         "Mahefa est non seulement un développeur talentueux, mais aussi quelqu'un de très agréable avec qui collaborer. Il comprend parfaitement les besoins du design et les traduit en code propre et performant.",
+      contentEn:
+        "Mahefa is not only a talented developer, but also someone very pleasant to collaborate with. He perfectly understands design needs and translates them into clean and efficient code.",
       rating: 5,
       date: "2024-01-20",
     },
@@ -49,8 +48,10 @@ const testimonialsData = {
       name: "Andriamaro Tiana",
       role: "Product Owner, Digital Solutions",
       avatar: "",
-      content:
+      contentFr:
         "Je recommande vivement Mahefa pour tout projet web. Il maîtrise parfaitement Next.js et l'écosystème moderne. Son professionnalisme et sa communication sont exemplaires.",
+      contentEn:
+        "I highly recommend Mahefa for any web project. He perfectly masters Next.js and the modern ecosystem. His professionalism and communication are exemplary.",
       rating: 5,
       date: "2023-12-10",
     },
@@ -59,8 +60,10 @@ const testimonialsData = {
       name: "Ravelo Michael",
       role: "CEO, Startup Innov",
       avatar: "",
-      content:
+      contentFr:
         "Mahefa a développé notre plateforme e-commerce de A à Z. Le résultat est bluffant : rapide, sécurisé et très intuitif. Un vrai partenaire technique de confiance.",
+      contentEn:
+        "Mahefa developed our e-commerce platform from A to Z. The result is stunning: fast, secure, and very intuitive. A true trusted technical partner.",
       rating: 5,
       date: "2023-11-05",
     },
@@ -93,6 +96,7 @@ function TestimonialCard({
   testimonial: (typeof testimonialsData.testimonials)[0];
   index: number;
 }) {
+  const locale = useLocale();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -107,7 +111,7 @@ function TestimonialCard({
   // Formater la date
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
-    return new Intl.DateTimeFormat("fr-FR", {
+    return new Intl.DateTimeFormat(locale, {
       month: "long",
       year: "numeric",
     }).format(date);
@@ -132,7 +136,7 @@ function TestimonialCard({
 
           {/* Contenu */}
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-5 leading-relaxed flex-1">
-            "{testimonial.content}"
+            "{locale === "fr" ? testimonial.contentFr : testimonial.contentEn}"
           </p>
 
           {/* Auteur */}
@@ -171,6 +175,8 @@ function TestimonialCard({
 }
 
 export function Testimonials() {
+  const t = useTranslations("Home.Testimonials");
+  const locale = useLocale();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
@@ -238,16 +244,16 @@ export function Testimonials() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2563EB]/10 dark:bg-[#2563EB]/15 border border-[#2563EB]/20 mb-4">
             <MessageSquare className="h-3 w-3 sm:h-4 sm:w-4 text-[#2563EB]" />
             <span className="text-[10px] sm:text-xs font-medium text-[#2563EB] dark:text-[#3B82F6] uppercase tracking-wider">
-              {testimonialsData.title.fr}
+              {t("title")}
             </span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4">
             <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              {testimonialsData.title.fr}
+              {t("title")}
             </span>
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-400">
-            {testimonialsData.subtitle.fr}
+            {t("subtitle")}
           </p>
         </div>
 
@@ -306,7 +312,7 @@ export function Testimonials() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 dark:bg-[#121826]">
             <Sparkles className="h-4 w-4 text-[#2563EB]" />
             <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
-              +{testimonials.length} professionnels me recommandent
+              +{testimonials.length} {t("recommendations")}
             </span>
           </div>
         </div>
