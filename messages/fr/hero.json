@@ -1,5 +1,10 @@
 {
   "Hero": {
-    "welcome": "Bienvenue sur mon portfolio"
+    "welcome": "Bienvenue sur mon portfolio",
+    "common": {
+      "available": "Disponible",
+      "seeProjects": "Voir mes projets",
+      "contactMe": "Me contacter"
+    }
   }
 }

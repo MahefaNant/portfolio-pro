@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { IconRenderer } from "@/components/ui/icon-renderer";
+import { useLocale, useTranslations } from "next-intl";
 
 // Données temporaires (à remplacer par API plus tard)
 const heroData = {
@@ -39,6 +40,8 @@ const heroData = {
 };
 
 export function Hero() {
+  const t = useTranslations("Hero");
+  const locale = useLocale();
   const [imageLoading, setImageLoading] = useState(true);
 
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -93,14 +96,14 @@ export function Hero() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
               <span className="text-xs font-medium text-emerald-600 dark:text-emerald-400">
-                Disponible
+                {t("common.available")}
               </span>
             </div>
 
             {/* Greeting + Name */}
             <div className="space-y-2">
               <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-400 font-medium">
-                {heroData.greeting.fr}
+                {locale === "fr" ? heroData.greeting.fr : heroData.greeting.en}
               </p>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold">
                 <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 dark:from-white dark:via-gray-200 dark:to-gray-400 bg-clip-text text-transparent">
@@ -108,26 +111,28 @@ export function Hero() {
                 </span>
               </h1>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#2563EB] dark:text-[#3B82F6]">
-                {heroData.title.fr}
+                {locale === "fr" ? heroData.title.fr : heroData.title.en}
               </h2>
             </div>
 
             {/* Description */}
             <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed max-w-lg">
-              {heroData.description.fr}
+              {locale === "fr"
+                ? heroData.description.fr
+                : heroData.description.en}
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-wrap gap-4">
               <Button asChild size="lg" className="group">
                 <Link href="/projects">
-                  Voir mes projets
+                  {t("common.seeProjects")}
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
                 <Link href="/contact">
-                  Me contacter
+                  {t("common.contactMe")}
                   <ChevronRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
@@ -141,7 +146,7 @@ export function Hero() {
                     {stat.value}
                   </div>
                   <div className="text-sm text-gray-500 dark:text-gray-400">
-                    {stat.labelFr}
+                    {locale === "fr" ? stat.labelFr : stat.labelEn}
                   </div>
                 </div>
               ))}
@@ -208,6 +213,7 @@ export function Hero() {
                   src="https://res.cloudinary.com/dsggicjk3/image/upload/f_auto,q_auto,w_800/IMG_20260414_100931_wscp4z.png"
                   alt="Mahefa"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   priority
                   onLoadingComplete={() => setImageLoading(false)}
                   className={`object-cover transition-all duration-700 ${
