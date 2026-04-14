@@ -16,20 +16,19 @@ import { useEffect, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CardContent } from "@/components/ui/card";
+import { useLocale, useTranslations } from "next-intl";
 
 // Données temporaires
 const featuredProjectsData = {
-  title: { fr: "Projets Récents", en: "Featured Projects" },
-  subtitle: {
-    fr: "Quelques réalisations dont je suis fier",
-    en: "Some of my proudest work",
-  },
   projects: [
     {
       id: "1",
-      title: "Plateforme E-commerce Next.js",
-      description:
+      titleFr: "Plateforme E-commerce Next.js",
+      titleEn: "E-commerce Platform Next.js",
+      descriptionFr:
         "Plateforme e-commerce complète avec panier, paiement Stripe, dashboard admin et système de notation.",
+      descriptionEn:
+        "Complete e-commerce platform with cart, Stripe payment, admin dashboard and rating system.",
       imageUrl: "https://placehold.co/600x400/1E3A8A/FFFFFF?text=E-commerce",
       technologies: [
         "Next.js",
@@ -44,9 +43,12 @@ const featuredProjectsData = {
     },
     {
       id: "2",
-      title: "Dashboard Analytics SaaS",
-      description:
+      titleFr: "Dashboard Analytics SaaS",
+      titleEn: "Dashboard Analytics SaaS",
+      descriptionFr:
         "Dashboard analytics temps réel avec graphiques interactifs, export PDF et webhooks.",
+      descriptionEn:
+        "Real-time analytics dashboard with interactive charts, PDF export and webhooks.",
       imageUrl: "https://placehold.co/600x400/2563EB/FFFFFF?text=Dashboard",
       technologies: ["React", "Recharts", "Node.js", "WebSocket", "Redis"],
       githubUrl: "https://github.com/mahefa/dashboard",
@@ -55,9 +57,12 @@ const featuredProjectsData = {
     },
     {
       id: "3",
-      title: "API REST Laravel + Documentation",
-      description:
+      titleFr: "API REST Laravel + Documentation",
+      titleEn: "Laravel API + Documentation",
+      descriptionFr:
         "API REST complète avec authentification JWT, rate limiting, documentation Swagger et tests unitaires.",
+      descriptionEn:
+        "Complete REST API with JWT authentication, rate limiting, Swagger documentation and unit tests.",
       imageUrl: "https://placehold.co/600x400/FF2D20/FFFFFF?text=Laravel+API",
       technologies: ["Laravel", "PHP", "MySQL", "Swagger", "JWT"],
       githubUrl: "https://github.com/mahefa/laravel-api",
@@ -75,6 +80,8 @@ function ProjectCard({
   project: (typeof featuredProjectsData.projects)[0];
   index: number;
 }) {
+  const locale = useLocale();
+  const t = useTranslations("Home.FeaturedProjects");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -133,12 +140,12 @@ function ProjectCard({
 
         {/* Titre */}
         <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-[#2563EB] dark:group-hover:text-[#3B82F6] transition-colors">
-          {project.title}
+          {locale === "fr" ? project.titleFr : project.titleEn}
         </h3>
 
         {/* Description */}
         <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
-          {project.description}
+          {locale === "fr" ? project.descriptionFr : project.descriptionEn}
         </p>
 
         {/* Technologies */}
@@ -164,7 +171,7 @@ function ProjectCard({
           href={`/projects/${project.id}`}
           className="inline-flex items-center gap-1 text-sm font-medium text-[#2563EB] dark:text-[#3B82F6] hover:gap-2 transition-all"
         >
-          Voir le projet
+          {t("seeProjects")}
           <ArrowRight className="h-4 w-4" />
         </Link>
       </CardContent>
@@ -173,6 +180,7 @@ function ProjectCard({
 }
 
 export function FeaturedProjects() {
+  const t = useTranslations("Home.FeaturedProjects");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const projects = featuredProjectsData.projects;
@@ -214,11 +222,11 @@ export function FeaturedProjects() {
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">
               <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-                {featuredProjectsData.title.fr}
+                {t("title")}
               </span>
             </h2>
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
-              {featuredProjectsData.subtitle.fr}
+              {t("subtitle")}
             </p>
           </div>
 
@@ -263,7 +271,7 @@ export function FeaturedProjects() {
           <div className="text-center mt-10">
             <Button asChild variant="outline" className="group">
               <Link href="/projects">
-                Voir tous les projets
+                {t("seeProjects")}
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
@@ -292,11 +300,11 @@ export function FeaturedProjects() {
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4">
             <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              {featuredProjectsData.title.fr}
+              {t("title")}
             </span>
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-400">
-            {featuredProjectsData.subtitle.fr}
+            {t("subtitle")}
           </p>
         </div>
 
@@ -315,7 +323,7 @@ export function FeaturedProjects() {
             className="group bg-gradient-to-r from-[#2563EB] to-[#1E3A8A] hover:from-[#3B82F6] hover:to-[#2563EB]"
           >
             <Link href="/projects">
-              Voir tous les projets
+              {t("seeProjects")}
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </Button>

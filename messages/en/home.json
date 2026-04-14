@@ -17,6 +17,11 @@
       "title": "Ma Stack Technique",
       "subtitle": "Outils et technologies que j'utilise au quotidien",
       "footer": "Always learning • New technologies every day"
+    },
+    "FeaturedProjects": {
+      "title": "Featured Projects",
+      "subtitle": "Some of my proudest work",
+      "seeProjects": "See all projects"
     }
   }
 }
