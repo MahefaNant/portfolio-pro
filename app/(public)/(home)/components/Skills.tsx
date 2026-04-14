@@ -67,6 +67,7 @@ function SkillBar({
   years: number;
   isInView: boolean;
 }) {
+  const locale = useLocale();
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
@@ -87,7 +88,14 @@ function SkillBar({
             variant="outline"
             className="text-[10px] sm:text-xs px-1.5 sm:px-2"
           >
-            {years} {years > 1 ? "ans" : "an"}
+            {years}{" "}
+            {years > 1
+              ? locale === "fr"
+                ? "ans"
+                : "years"
+              : locale === "fr"
+                ? "an"
+                : "year"}
           </Badge>
         </div>
         <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-mono">
@@ -132,7 +140,7 @@ function TabButton({
         }
       `}
       aria-pressed={isActive}
-      aria-label={`Onglet ${locale === "fr" ? category.nameFr : category.nameEn}`}
+      aria-label={`Tab ${locale === "fr" ? category.nameFr : category.nameEn}`}
     >
       <IconRenderer
         name={category.icon}
