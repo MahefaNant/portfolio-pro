@@ -27,6 +27,12 @@
       "title": "Testimonials",
       "subtitle": "What my collaborators say about me",
       "recommendations": "professionals recommend me"
+    },
+    "CTA": {
+      "title": "Ready to collaborate?",
+      "subtitle": "Download my CV and discover my background in detail",
+      "buttonDownload": "Download CV (PDF)",
+      "buttonView": "View online"
     }
   }
 }

@@ -1,32 +1,35 @@
-// components/sections/cta-cv.tsx
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { IconRenderer } from "@/components/ui/icon-renderer";
+import { useLocale, useTranslations } from "next-intl";
 
 const ctaData = {
-  title: {
-    fr: "Prêt à collaborer ?",
-    en: "Ready to collaborate?",
-  },
-  subtitle: {
-    fr: "Téléchargez mon CV et découvrez mon parcours en détail",
-    en: "Download my CV and discover my journey in detail",
-  },
   cvUrl:
     "https://drive.google.com/file/d/1on59wEHX5xP5WZ3zDOMJ0dptDYhKXI__/view?usp=sharing",
   cvDirectUrl:
     "https://drive.google.com/uc?export=download&id=1on59wEHX5xP5WZ3zDOMJ0dptDYhKXI__",
   benefits: [
-    { iconName: "CheckCircle", textFr: "5+ années d'expérience" },
-    { iconName: "CheckCircle", textFr: "20+ projets réalisés" },
-    { iconName: "CheckCircle", textFr: "Disponible immédiatement" },
+    {
+      iconName: "CheckCircle",
+      textFr: "5+ années d'expérience",
+      textEn: "5+ years of experience",
+    },
+    {
+      iconName: "CheckCircle",
+      textFr: "20+ projets réalisés",
+      textEn: "20+ projects completed",
+    },
+    { iconName: "CheckCircle", textFr: "Disponible", textEn: "Available" },
   ],
 };
 
 export function CtaCV() {
+  const t = useTranslations("Home.CTA");
+  const locale = useLocale();
   const [mounted, setMounted] = useState(false);
   const ref = useRef(null);
 
@@ -59,13 +62,13 @@ export function CtaCV() {
           {/* Titre */}
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">
             <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              {ctaData.title.fr}
+              {t("title")}
             </span>
           </h2>
 
           {/* Sous-titre */}
           <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-            {ctaData.subtitle.fr}
+            {t("subtitle")}
           </p>
 
           {/* Bénéfices */}
@@ -79,7 +82,9 @@ export function CtaCV() {
                   name={benefit.iconName}
                   className="h-4 w-4 text-emerald-500"
                 />
-                <span className="text-sm">{benefit.textFr}</span>
+                <span className="text-sm">
+                  {locale === "fr" ? benefit.textFr : benefit.textEn}
+                </span>
               </div>
             ))}
           </div>
@@ -95,7 +100,7 @@ export function CtaCV() {
                 name="Download"
                 className="h-4 w-4 mr-2 transition-transform group-hover:translate-y-1"
               />
-              Télécharger le CV (PDF)
+              {t("buttonDownload")}
             </Button>
 
             <Button
@@ -105,7 +110,7 @@ export function CtaCV() {
               className="border-gray-300 dark:border-gray-600 hover:border-[#2563EB] dark:hover:border-[#3B82F6] hover:bg-[#2563EB]/5 transition-all duration-300 group cursor-pointer"
             >
               <IconRenderer name="Eye" className="h-4 w-4 mr-2" />
-              Aperçu en ligne
+              {t("buttonView")}
               <IconRenderer
                 name="ArrowRight"
                 className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1"
@@ -114,13 +119,13 @@ export function CtaCV() {
           </div>
 
           {/* Note */}
-          <div className="mt-8 flex items-center justify-center gap-2 text-xs text-gray-400 dark:text-gray-500">
+          {/* <div className="mt-8 flex items-center justify-center gap-2 text-xs text-gray-400 dark:text-gray-500">
             <IconRenderer name="Calendar" className="h-3 w-3" />
             <span>Mis à jour Mars 2025</span>
             <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-600" />
             <IconRenderer name="FileText" className="h-3 w-3" />
             <span>PDF • 2.5 MB</span>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

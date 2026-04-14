@@ -227,6 +227,11 @@ export function Testimonials() {
     setCurrentIndex(slideIndex * visibleCount);
   };
 
+  if (
+    !testimonialsData.testimonials ||
+    testimonialsData.testimonials.length === 0
+  )
+    return null;
   return (
     <section className="py-16 sm:py-20 lg:py-32 relative overflow-hidden">
       {/* Background décoratif */}

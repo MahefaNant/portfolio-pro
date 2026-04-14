@@ -27,6 +27,12 @@
       "title": "Recommandations",
       "subtitle": "Ce que mes collaborateurs pensent de moi",
       "recommendations": "professionnels me recommandent"
+    },
+    "CTA": {
+      "title": "Prêt à collaborer ?",
+      "subtitle": "Téléchargez mon CV et découvrez mon parcours en détail",
+      "buttonDownload": "Télécharger le CV (PDF)",
+      "buttonView": "Aperçu en ligne"
     }
   }
 }
