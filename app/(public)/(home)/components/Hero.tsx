@@ -1,8 +1,6 @@
 "use client";
 
 import { ArrowRight, ChevronRight } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { useTheme } from "next-themes";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -41,13 +39,11 @@ const heroData = {
 };
 
 export function Hero() {
-  const t = useTranslations("home");
-  const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const [imageLoading, setImageLoading] = useState(true);
+
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    setMounted(true);
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -80,7 +76,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 dark:from-blue-500/10 dark:to-purple-500/5" />
         <div
           className="absolute inset-0 transition-opacity duration-300"
-          style={mounted ? gradientStyle : {}}
+          style={gradientStyle}
         />
         {/* Grille de points */}
         <div className="absolute inset-0 bg-[radial-gradient(#2563EB_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.03] dark:opacity-[0.05]" />
@@ -176,11 +172,49 @@ export function Hero() {
 
               {/* Avatar container */}
               <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white dark:border-[#121826] shadow-2xl">
+                {/* Skeleton avec effet glassmorphisme */}
+                {imageLoading && (
+                  <>
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#2563EB]/20 to-[#1E3A8A]/20 animate-pulse" />
+
+                    {/* Anneau lumineux externe */}
+                    <div className="absolute inset-0 rounded-full border-2 border-[#2563EB]/30 animate-ping" />
+
+                    {/* Anneau rotatif */}
+                    <div
+                      className="absolute inset-0 rounded-full border-2 border-t-[#2563EB] border-r-transparent border-b-transparent border-l-transparent animate-spin"
+                      style={{ animationDuration: "1.5s" }}
+                    />
+
+                    {/* Deuxième anneau (contre-rotation) */}
+                    <div
+                      className="absolute inset-2 rounded-full border-2 border-t-transparent border-r-[#3B82F6] border-b-transparent border-l-transparent animate-spin"
+                      style={{
+                        animationDuration: "2s",
+                        animationDirection: "reverse",
+                      }}
+                    />
+
+                    {/* Icône centrale */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-12 h-12 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center">
+                        <div className="w-6 h-6 border-2 border-[#2563EB] border-t-transparent rounded-full animate-spin" />
+                      </div>
+                    </div>
+                  </>
+                )}
+
                 <Image
-                  src="/static/images/mahefa-logo.png"
+                  src="https://res.cloudinary.com/dsggicjk3/image/upload/f_auto,q_auto,w_800/IMG_20260414_100931_wscp4z.png"
                   alt="Mahefa"
                   fill
-                  className="object-cover"
+                  priority
+                  onLoadingComplete={() => setImageLoading(false)}
+                  className={`object-cover transition-all duration-700 ${
+                    imageLoading
+                      ? "opacity-0 scale-105"
+                      : "opacity-100 scale-100"
+                  }`}
                 />
               </div>
 

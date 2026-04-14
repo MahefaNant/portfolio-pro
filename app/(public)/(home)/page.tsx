@@ -9,7 +9,6 @@ import { Stats } from "./components/Stats";
 import { Testimonials } from "./components/Testimonials";
 
 export default function Home() {
-  // const t = useTranslations("Hero");
   return (
     <main>
       <Hero />

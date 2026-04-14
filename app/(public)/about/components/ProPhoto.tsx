@@ -1,10 +1,11 @@
 "use client";
 
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { IconRenderer } from "@/components/ui/icon-renderer";
+import Image from "next/image";
 
 // Données de la photo pro
 const proPhotoData = {
@@ -46,6 +47,7 @@ const proPhotoData = {
 };
 
 export function ProPhoto() {
+  const [imageLoading, setImageLoading] = useState(true);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -80,24 +82,40 @@ export function ProPhoto() {
 
                     {/* Cadre photo */}
                     <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden ring-4 ring-[#2563EB]/20 group-hover:ring-[#2563EB]/40 transition-all duration-300">
-                      {/* Image placeholder - à remplacer par ta vraie photo */}
-                      <div className="w-full h-full bg-gradient-to-br from-[#2563EB] to-[#1E3A8A] flex flex-col items-center justify-center text-white">
-                        <IconRenderer
-                          name="User"
-                          className="h-20 w-20 opacity-50"
-                        />
-                        <p className="text-sm mt-2 opacity-70">Photo pro</p>
-                      </div>
+                      {/* Skeleton simple */}
+                      {imageLoading && (
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#2563EB]/10 to-[#1E3A8A]/10 animate-pulse" />
+                      )}
 
-                      {/* Alternative avec Image Next.js */}
-                      {/* 
+                      {/* Anneau de chargement élégant */}
+                      {imageLoading && (
+                        <svg className="absolute inset-0 w-full h-full -rotate-90">
+                          <circle
+                            cx="50%"
+                            cy="50%"
+                            r="45%"
+                            fill="none"
+                            stroke="#2563EB"
+                            strokeWidth="2"
+                            strokeDasharray="283"
+                            strokeDashoffset="283"
+                            className="animate-draw"
+                          />
+                        </svg>
+                      )}
+
                       <Image
-                        src="/images/pro-photo.jpg"
+                        src="https://res.cloudinary.com/dsggicjk3/image/upload/v1776150947/IMG_20260414_100931_wscp4z.png"
                         alt="Mahefa"
                         fill
-                        className="object-cover"
+                        priority
+                        onLoadingComplete={() => setImageLoading(false)}
+                        className={`object-cover transition-all duration-700 ${
+                          imageLoading
+                            ? "opacity-0 scale-95"
+                            : "opacity-100 scale-100"
+                        }`}
                       />
-                      */}
                     </div>
 
                     {/* Badge de statut */}

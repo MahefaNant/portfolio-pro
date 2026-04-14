@@ -68,7 +68,9 @@ export function Navbar() {
             <Link href="/" className="flex items-center gap-2 group">
               <div className="relative w-8 h-8 lg:w-10 lg:h-10">
                 <Image
-                  src="/static/images/mahefa-logo.png"
+                  src={
+                    "https://res.cloudinary.com/dsggicjk3/image/upload/v1776146660/mahefa-logo_hkp6ex.png"
+                  }
                   alt="Mahefa Logo"
                   fill
                   className="object-contain transition-transform group-hover:scale-105"
