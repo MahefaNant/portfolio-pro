@@ -38,6 +38,34 @@
       "contactMe": "Me contacter",
       "seeProjects": "Voir mes projets",
       "directContact": "Ou contact direct :"
+    },
+    "Contact": {
+      "title": "Parlons de votre projet",
+      "description": "Une idée ? Un projet ? Je suis à votre écoute. Réponse sous",
+      "available": "Disponible pour missions",
+      "directContact": "Ou contact direct :",
+      "responseTime": "Réponse moyenne",
+      "socialLinks": "Retrouvez-moi sur",
+      "secure": "Sécurisé",
+      "quickResponse": "Réponse rapide",
+      "sendMeMessage": "Envoyez-moi un message",
+      "fillForm": "Remplissez le formulaire ci-dessous, je vous répondrai rapidement",
+      "messageSent": "Message envoyé !",
+      "messageSentDescription": "Merci pour votre message. Je vous répondrai dans les plus brefs délais.",
+      "protectedByRecaptcha": "Protégé par reCAPTCHA • Vos données sont confidentielles",
+      "form": {
+        "name": "Nom complet",
+        "email": "Email",
+        "message": "Message",
+        "send": "Envoyer",
+        "sending": "Envoi en cours...",
+        "sendTheMessage": "Envoyez le message",
+        "placeholder": {
+          "name": "Votre nom",
+          "email": "Votre email",
+          "message": "Votre message"
+        }
+      }
     }
   }
 }

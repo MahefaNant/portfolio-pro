@@ -38,6 +38,34 @@
       "contactMe": "Contact me",
       "seeProjects": "See my projects",
       "directContact": "Or direct contact :"
+    },
+    "Contact": {
+      "title": "Let's talk about your project",
+      "description": "An idea ? A project ? I'm listening. Response within",
+      "available": "Available for missions",
+      "directContact": "Or direct contact :",
+      "responseTime": "Average response time",
+      "socialLinks": "Find me on",
+      "secure": "Secure",
+      "quickResponse": "Quick response",
+      "sendMeMessage": "Send me a message",
+      "fillForm": "Fill in the form below, I will reply quickly",
+      "messageSent": "Message sent!",
+      "messageSentDescription": "Thank you for your message. I will reply as soon as possible.",
+      "protectedByRecaptcha": "Protected by reCAPTCHA • Your data is confidential",
+      "form": {
+        "name": "Full name",
+        "email": "Email",
+        "message": "Message",
+        "send": "Send",
+        "sending": "Sending...",
+        "sendTheMessage": "Send the message",
+        "placeholder": {
+          "name": "Your name",
+          "email": "Your email",
+          "message": "Your message"
+        }
+      }
     }
   }
 }

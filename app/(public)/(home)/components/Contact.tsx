@@ -5,8 +5,6 @@ import {
   AlertCircle,
   CheckCircle,
   Clock,
-  Github,
-  Linkedin,
   Mail,
   MessageSquare,
   Send,
@@ -36,8 +34,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { IconRenderer } from "@/components/ui/icon-renderer";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useTranslations } from "next-intl";
 
 // Schéma de validation
 const contactSchema = z.object({
@@ -54,16 +54,21 @@ const contactInfo = {
   email: "mahefanant@gmail.com",
   responseTime: "24h",
   socialLinks: [
-    { platform: "GitHub", icon: Github, url: "https://github.com/mahefanant" },
+    {
+      platform: "GitHub",
+      icon: "Github",
+      url: "https://github.com/mahefanant",
+    },
     {
       platform: "LinkedIn",
-      icon: Linkedin,
+      icon: "Linkedin",
       url: "https://www.linkedin.com/in/mahefa-nantenaina-419a98271",
     },
   ],
 };
 
 export function Contact() {
+  const t = useTranslations("Home.Contact");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -146,12 +151,11 @@ export function Contact() {
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4">
             <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              Parlons de votre projet
+              {t("title")}
             </span>
           </h2>
           <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-400">
-            Une idée ? Un projet ? Je suis à votre écoute. Réponse sous{" "}
-            {contactInfo.responseTime}
+            {t("description")} {contactInfo.responseTime}
           </p>
         </div>
 
@@ -167,12 +171,12 @@ export function Contact() {
                     <div className="relative w-3 h-3 bg-emerald-500 rounded-full" />
                   </div>
                   <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                    Disponible pour missions
+                    {t("available")}
                   </span>
                 </div>
 
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                  Contact direct
+                  {t("directContact")}
                 </h3>
 
                 <a
@@ -185,7 +189,9 @@ export function Contact() {
 
                 <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                   <Clock className="h-4 w-4" />
-                  <span>Réponse moyenne : {contactInfo.responseTime}</span>
+                  <span>
+                    {t("responseTime")} : {contactInfo.responseTime}
+                  </span>
                 </div>
               </CardContent>
             </Card>
@@ -194,7 +200,7 @@ export function Contact() {
             <Card className="bg-white/50 dark:bg-[#121826]/50 backdrop-blur-sm border border-gray-200 dark:border-[#1F2937] shadow-xl">
               <CardContent className="p-6">
                 <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">
-                  Retrouvez-moi sur
+                  {t("socialLinks")}
                 </h3>
                 <div className="flex gap-3">
                   {contactInfo.socialLinks.map((social) => (
@@ -206,7 +212,7 @@ export function Contact() {
                       className="p-2 rounded-lg bg-gray-100 dark:bg-[#0B0F1A] text-gray-600 dark:text-gray-400 hover:bg-[#2563EB] hover:text-white dark:hover:bg-[#2563EB] transition-all duration-300 hover:scale-110"
                       aria-label={social.platform}
                     >
-                      <social.icon className="h-5 w-5" />
+                      <IconRenderer name={social.icon} className="h-5 w-5" />
                     </a>
                   ))}
                 </div>
@@ -221,14 +227,14 @@ export function Contact() {
                   className="bg-white/50 dark:bg-[#121826]/50"
                 >
                   <Shield className="h-3 w-3 mr-1" />
-                  Sécurisé
+                  {t("secure")}
                 </Badge>
                 <Badge
                   variant="outline"
                   className="bg-white/50 dark:bg-[#121826]/50"
                 >
                   <Sparkles className="h-3 w-3 mr-1" />
-                  Réponse rapide
+                  {t("responseTime")}
                 </Badge>
               </div>
             </div>
@@ -239,11 +245,10 @@ export function Contact() {
             <Card className="bg-white/50 dark:bg-[#121826]/50 backdrop-blur-sm border border-gray-200 dark:border-[#1F2937] shadow-xl overflow-hidden">
               <CardHeader className="pb-4">
                 <CardTitle className="text-xl sm:text-2xl text-gray-900 dark:text-white">
-                  Envoyez-moi un message
+                  {t("sendMeMessage")}
                 </CardTitle>
                 <CardDescription className="text-gray-500 dark:text-gray-400">
-                  Remplissez le formulaire ci-dessous, je vous répondrai
-                  rapidement
+                  {t("fillForm")}
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -253,11 +258,10 @@ export function Contact() {
                       <CheckCircle className="h-8 w-8 text-emerald-500" />
                     </div>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                      Message envoyé !
+                      {t("messageSent")}
                     </h3>
                     <p className="text-gray-500 dark:text-gray-400">
-                      Merci pour votre message. Je vous répondrai dans les plus
-                      brefs délais.
+                      {t("messageSentDescription")}
                     </p>
                   </div>
                 ) : (
@@ -272,13 +276,13 @@ export function Contact() {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="text-gray-700 dark:text-gray-300">
-                              Nom complet
+                              {t("form.name")}
                             </FormLabel>
                             <FormControl>
                               <div className="relative">
                                 <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
                                 <Input
-                                  placeholder="Jean Dupont"
+                                  placeholder={t("form.placeholder.name")}
                                   className="pl-9 bg-white dark:bg-[#0B0F1A] border-gray-200 dark:border-[#1F2937] focus:border-[#2563EB] dark:focus:border-[#3B82F6]"
                                   {...field}
                                 />
@@ -295,13 +299,13 @@ export function Contact() {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="text-gray-700 dark:text-gray-300">
-                              Email
+                              {t("form.email")}
                             </FormLabel>
                             <FormControl>
                               <div className="relative">
                                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
                                 <Input
-                                  placeholder="jean@exemple.com"
+                                  placeholder="name@exemple.com"
                                   type="email"
                                   className="pl-9 bg-white dark:bg-[#0B0F1A] border-gray-200 dark:border-[#1F2937] focus:border-[#2563EB] dark:focus:border-[#3B82F6]"
                                   {...field}
@@ -319,13 +323,13 @@ export function Contact() {
                         render={({ field }) => (
                           <FormItem>
                             <FormLabel className="text-gray-700 dark:text-gray-300">
-                              Message
+                              {t("form.message")}
                             </FormLabel>
                             <FormControl>
                               <div className="relative">
                                 <MessageSquare className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                                 <Textarea
-                                  placeholder="Décrivez votre projet ou votre demande..."
+                                  placeholder={t("form.placeholder.message")}
                                   rows={5}
                                   className="pl-9 bg-white dark:bg-[#0B0F1A] border-gray-200 dark:border-[#1F2937] focus:border-[#2563EB] dark:focus:border-[#3B82F6] resize-none"
                                   {...field}
@@ -361,18 +365,18 @@ export function Contact() {
                         {isSubmitting ? (
                           <>
                             <div className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-                            Envoi en cours...
+                            {t("form.sending")}
                           </>
                         ) : (
                           <>
                             <Send className="h-4 w-4 mr-2 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
-                            Envoyer le message
+                            {t("form.sendTheMessage")}
                           </>
                         )}
                       </Button>
 
                       <p className="text-xs text-center text-gray-400 dark:text-gray-500 mt-4">
-                        Protégé par reCAPTCHA • Vos données sont confidentielles
+                        {t("protectedByRecaptcha")}
                       </p>
                     </form>
                   </Form>
