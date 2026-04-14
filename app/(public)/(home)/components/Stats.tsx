@@ -1,33 +1,12 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useInView } from "framer-motion";
-import {
-  Award,
-  Briefcase,
-  Code2,
-  FolderCode,
-  Heart,
-  Rocket,
-  TrendingUp,
-  Users,
-} from "lucide-react";
+import { TrendingUp } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { IconRenderer } from "@/components/ui/icon-renderer";
-
-// Mapping des icônes
-const iconMap: Record<string, any> = {
-  FolderCode: FolderCode,
-  Briefcase: Briefcase,
-  Users: Users,
-  Heart: Heart,
-  TrendingUp: TrendingUp,
-  Award: Award,
-  Code2: Code2,
-  Rocket: Rocket,
-};
+import { useLocale } from "next-intl";
 
 // Données temporaires
 const statsData = {
@@ -132,6 +111,7 @@ function StatCard({
   stat: (typeof statsData.items)[0];
   index: number;
 }) {
+  const locale = useLocale();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -178,7 +158,7 @@ function StatCard({
 
           {/* Label */}
           <p className="text-sm sm:text-base font-medium text-gray-600 dark:text-gray-400">
-            {stat.labelFr}
+            {locale === "fr" ? stat.labelFr : stat.labelEn}
           </p>
 
           {/* Ligne décorative au hover */}
@@ -193,8 +173,8 @@ function StatCard({
 }
 
 export function Stats() {
+  const locale = useLocale();
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
     <section
@@ -216,16 +196,16 @@ export function Stats() {
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2563EB]/10 dark:bg-[#2563EB]/15 border border-[#2563EB]/20 mb-4">
             <TrendingUp className="h-3 w-3 sm:h-4 sm:w-4 text-[#2563EB]" />
             <span className="text-[10px] sm:text-xs font-medium text-[#2563EB] dark:text-[#3B82F6] uppercase tracking-wider">
-              {statsData.title.fr}
+              {locale === "fr" ? statsData.title.fr : statsData.title.en}
             </span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">
             <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              {statsData.title.fr}
+              {locale === "fr" ? statsData.title.fr : statsData.title.en}
             </span>
           </h2>
           <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
-            {statsData.subtitle.fr}
+            {locale === "fr" ? statsData.subtitle.fr : statsData.subtitle.en}
           </p>
         </div>
 
