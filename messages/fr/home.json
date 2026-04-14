@@ -33,6 +33,11 @@
       "subtitle": "Téléchargez mon CV et découvrez mon parcours en détail",
       "buttonDownload": "Télécharger le CV (PDF)",
       "buttonView": "Aperçu en ligne"
+    },
+    "OpenToWork": {
+      "contactMe": "Me contacter",
+      "seeProjects": "Voir mes projets",
+      "directContact": "Ou contact direct :"
     }
   }
 }

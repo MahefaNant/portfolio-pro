@@ -33,6 +33,11 @@
       "subtitle": "Download my CV and discover my background in detail",
       "buttonDownload": "Download CV (PDF)",
       "buttonView": "View online"
+    },
+    "OpenToWork": {
+      "contactMe": "Contact me",
+      "seeProjects": "See my projects",
+      "directContact": "Or direct contact :"
     }
   }
 }

@@ -8,6 +8,7 @@ import { useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { IconRenderer } from "@/components/ui/icon-renderer";
+import { useLocale, useTranslations } from "next-intl";
 
 const openToWorkData = {
   status: "available",
@@ -44,6 +45,8 @@ const openToWorkData = {
 };
 
 export function OpenToWork() {
+  const t = useTranslations("Home.OpenToWork");
+  const locale = useLocale();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -74,7 +77,9 @@ export function OpenToWork() {
               <div className="relative flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 dark:bg-emerald-500/20 border border-emerald-500/30">
                 <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
                 <span className="text-sm font-medium text-emerald-600 dark:text-emerald-400">
-                  {openToWorkData.availability.fr}
+                  {locale === "fr"
+                    ? openToWorkData.availability.fr
+                    : openToWorkData.availability.en}
                 </span>
               </div>
             </div>
@@ -83,13 +88,17 @@ export function OpenToWork() {
           {/* Titre */}
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4">
             <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              {openToWorkData.title.fr}
+              {locale === "fr"
+                ? openToWorkData.title.fr
+                : openToWorkData.title.en}
             </span>
           </h2>
 
           {/* Sous-titre */}
           <p className="text-center text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-            {openToWorkData.subtitle.fr}
+            {locale === "fr"
+              ? openToWorkData.subtitle.fr
+              : openToWorkData.subtitle.en}
           </p>
 
           {/* Types de mission */}
@@ -104,7 +113,7 @@ export function OpenToWork() {
                   name={type.iconName}
                   className="h-3.5 w-3.5 mr-1.5 text-[#2563EB]"
                 />
-                {type.textFr}
+                {locale === "fr" ? type.textFr : type.textEn}
               </Badge>
             ))}
           </div>
@@ -120,7 +129,9 @@ export function OpenToWork() {
                   name={location.iconName}
                   className="h-3.5 w-3.5"
                 />
-                <span>{location.textFr}</span>
+                <span>
+                  {locale === "fr" ? location.textFr : location.textEn}
+                </span>
               </div>
             ))}
           </div>
@@ -134,7 +145,7 @@ export function OpenToWork() {
             >
               <Link href="/contact">
                 <IconRenderer name="Mail" className="h-4 w-4 mr-2" />
-                Me contacter
+                {t("contactMe")}
                 <IconRenderer
                   name="ArrowRight"
                   className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1"
@@ -150,7 +161,7 @@ export function OpenToWork() {
             >
               <Link href="/projects">
                 <IconRenderer name="FolderCode" className="h-4 w-4 mr-2" />
-                Voir mes projets
+                {t("seeProjects")}
               </Link>
             </Button>
           </div>
@@ -158,7 +169,7 @@ export function OpenToWork() {
           {/* Email direct */}
           <div className="text-center mt-8">
             <p className="text-xs text-gray-400 dark:text-gray-500 mb-2">
-              Ou contact direct :
+              {t("directContact")}
             </p>
             <a
               href={`mailto:${openToWorkData.contactEmail}`}
