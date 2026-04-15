@@ -60,6 +60,10 @@ CREATE TABLE my_language (
   language_en     TEXT NOT NULL
   level_fr        TEXT NOT NULL,
   level_en        TEXT NOT NULL,
+  flag            TEXT NOT NULL,
+  description_fr  TEXT NOT NULL,
+  description_en  TEXT NOT NULL,
+  certifications  JSONB DEFAULT '[]'::jsonb,
   created_at      TIMESTAMP DEFAULT NOW(),
   updated_at      TIMESTAMP DEFAULT NOW()
 )

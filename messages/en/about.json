@@ -32,6 +32,21 @@
       "title": "Professional experiences",
       "subtitle": "My journey through the years",
       "note": "More than 4 years of experience in web development"
+    },
+    "Education": {
+      "title": "Education",
+      "subtitle": "My academic background",
+      "note": "Continuous learning • Daily technological watch",
+      "degree": "Degrees",
+      "study": "Studies"
+    },
+    "Languages": {
+      "title": "Languages spoken",
+      "subtitle": "My language skills",
+      "language": "Language",
+      "level": "Level",
+      "description": "Description",
+      "certifications": "Certifications"
     }
   }
 }

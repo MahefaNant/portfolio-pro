@@ -7,43 +7,40 @@ import { useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { IconRenderer } from "@/components/ui/icon-renderer";
+import { useLocale } from "next-intl";
+import { useTranslations } from "use-intl";
 
 // Données des langues
 const languagesData = {
-  title: {
-    fr: "Langues parlées",
-    en: "Languages spoken",
-  },
-  subtitle: {
-    fr: "Mes compétences linguistiques",
-    en: "My language skills",
-  },
   languages: [
     {
-      name: "Français",
-      nativeName: "Français",
-      level: "Courant",
+      nameFr: "Français",
+      nameEn: "French",
+      levelFr: "Courant",
       levelEn: "Fluent",
       flag: "🇫🇷",
-      description: "Langue de travail quotidienne",
+      descriptionFr: "Langue de travail quotidienne",
+      descriptionEn: "Daily working language",
       certifications: ["DALF C1"],
     },
     {
-      name: "Anglais",
-      nativeName: "English",
-      level: "Professionnel",
+      nameFr: "Anglais",
+      nameEn: "English",
+      levelFr: "Professionnel",
       levelEn: "Professional",
       flag: "🇬🇧",
-      description: "Communication technique et réunions",
+      descriptionFr: "Communication technique et réunions",
+      descriptionEn: "Technical communication and meetings",
       certifications: ["TOEIC 850"],
     },
     {
-      name: "Malgache",
-      nativeName: "Malagasy",
-      level: "Natal",
+      nameFr: "Malgache",
+      nameEn: "Malagasy",
+      levelFr: "Natal",
       levelEn: "Native",
       flag: "🇲🇬",
-      description: "Langue maternelle",
+      descriptionFr: "Langue maternelle",
+      descriptionEn: "Native language",
       certifications: [],
     },
   ],
@@ -111,6 +108,7 @@ function LanguageCard({
   language: (typeof languagesData.languages)[0];
   index: number;
 }) {
+  const locale = useLocale();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -131,20 +129,22 @@ function LanguageCard({
               <span className="text-3xl">{language.flag}</span>
               <div>
                 <h3 className="font-semibold text-gray-900 dark:text-white">
-                  {language.name}
+                  {locale === "fr" ? language.nameFr : language.nameEn}
                 </h3>
                 <p className="text-xs text-gray-500 dark:text-gray-400">
-                  {language.description}
+                  {locale === "fr"
+                    ? language.descriptionFr
+                    : language.descriptionEn}
                 </p>
               </div>
             </div>
 
             {/* Niveau et barre */}
             <div className="flex items-center gap-3">
-              <Badge className={getLevelColor(language.level)}>
-                {language.level}
+              <Badge className={getLevelColor(language.levelFr)}>
+                {locale === "fr" ? language.levelFr : language.levelEn}
               </Badge>
-              <LevelBar level={language.level} />
+              <LevelBar level={language.levelFr} />
             </div>
           </div>
 
@@ -172,6 +172,7 @@ function LanguageCard({
 }
 
 export function Languages() {
+  const t = useTranslations("About.Languages");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -201,17 +202,15 @@ export function Languages() {
               className="h-3 w-3 sm:h-4 sm:w-4 text-[#2563EB]"
             />
             <span className="text-[10px] sm:text-xs font-medium text-[#2563EB] dark:text-[#3B82F6] uppercase tracking-wider">
-              Langues
+              {t("language")}
             </span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">
             <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              {languagesData.title.fr}
+              {t("title")}
             </span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400">
-            {languagesData.subtitle.fr}
-          </p>
+          <p className="text-gray-600 dark:text-gray-400">{t("subtitle")}</p>
         </div>
 
         {/* Liste des langues */}

@@ -39,6 +39,10 @@
       "note": "Formation continue • Veille technologique quotidienne",
       "degree": "Diplômes",
       "study": "Études"
+    },
+    "Languages": {
+      "title": "Langues parlées",
+      "subtitle": "Mes compétences linguistiques"
     }
   }
 }
