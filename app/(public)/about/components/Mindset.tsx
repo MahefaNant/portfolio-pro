@@ -5,58 +5,68 @@ import { useRef } from "react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { IconRenderer } from "@/components/ui/icon-renderer";
+import { useLocale, useTranslations } from "next-intl";
 
 // Données des valeurs
 const mindsetData = {
-  title: {
-    fr: "Ma philosophie de travail",
-    en: "My work philosophy",
-  },
-  subtitle: {
-    fr: "Ce qui me guide au quotidien dans mon métier de développeur",
-    en: "What guides me daily as a developer",
-  },
   values: [
     {
       iconName: "Code2",
-      title: "Code propre & maintenable",
-      description:
+      titleFr: "Code propre & maintenable",
+      titleEn: "Clean & maintainable code",
+      descriptionFr:
         "J'écris un code lisible, documenté et facile à maintenir. La qualité est une priorité.",
+      descriptionEn:
+        "I write clean, documented, and easy-to-maintain code. Quality is a priority.",
       color: "#2563EB",
     },
     {
       iconName: "Users",
-      title: "Collaboration & partage",
-      description:
+      titleFr: "Collaboration & partage",
+      titleEn: "Collaboration & sharing",
+      descriptionFr:
         "Le développement est un travail d'équipe. J'aime partager mes connaissances et apprendre des autres.",
+      descriptionEn:
+        "Development is a team sport. I enjoy sharing my knowledge and learning from others.",
       color: "#22C55E",
     },
     {
       iconName: "Rocket",
-      title: "Veille technologique",
-      description:
+      titleFr: "Veille technologique",
+      titleEn: "Technological watch",
+      descriptionFr:
         "Je me forme continuellement aux nouvelles technologies pour rester à la pointe.",
+      descriptionEn:
+        "I continuously train in new technologies to stay up to date.",
       color: "#A855F7",
     },
     {
       iconName: "Target",
-      title: "Orientation solution",
-      description:
+      titleFr: "Orientation solution",
+      titleEn: "Solution orientation",
+      descriptionFr:
         "Je ne m'arrête pas sur les problèmes, je cherche des solutions pragmatiques et efficaces.",
+      descriptionEn:
+        "I don't get stuck on problems, I look for pragmatic and effective solutions.",
       color: "#F59E0B",
     },
     {
       iconName: "Heart",
-      title: "Passion & exigence",
-      description:
+      titleFr: "Passion & exigence",
+      titleEn: "Passion & exigence",
+      descriptionFr:
         "Je prends à cœur chaque projet et vise l'excellence dans mes livrables.",
+      descriptionEn:
+        "I take every project to heart and strive for excellence in my deliverables.",
       color: "#EF4444",
     },
     {
       iconName: "RefreshCw",
-      title: "Agilité & adaptabilité",
-      description:
+      titleFr: "Agilité & adaptabilité",
+      titleEn: "Agility & adaptability",
+      descriptionFr:
         "Je m'adapte rapidement aux changements et aux nouvelles exigences.",
+      descriptionEn: "I adapt quickly to changes and new requirements.",
       color: "#06B6D4",
     },
   ],
@@ -70,6 +80,7 @@ function ValueCard({
   value: (typeof mindsetData.values)[0];
   index: number;
 }) {
+  const locale = useLocale();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -98,12 +109,12 @@ function ValueCard({
 
           {/* Titre */}
           <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-            {value.title}
+            {locale === "fr" ? value.titleFr : value.titleEn}
           </h3>
 
           {/* Description */}
           <p className="text-sm text-gray-600 dark:text-gray-400">
-            {value.description}
+            {locale === "fr" ? value.descriptionFr : value.descriptionEn}
           </p>
         </CardContent>
       </Card>
@@ -112,6 +123,7 @@ function ValueCard({
 }
 
 export function Mindset() {
+  const t = useTranslations("About.Mindset");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -146,12 +158,10 @@ export function Mindset() {
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">
             <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              {mindsetData.title.fr}
+              {t("title")}
             </span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400">
-            {mindsetData.subtitle.fr}
-          </p>
+          <p className="text-gray-600 dark:text-gray-400">{t("subtitle")}</p>
         </div>
 
         {/* Grille des valeurs */}

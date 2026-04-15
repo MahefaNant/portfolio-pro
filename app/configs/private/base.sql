@@ -64,6 +64,16 @@ CREATE TABLE my_language (
   updated_at      TIMESTAMP DEFAULT NOW()
 )
 
+CREATE TABLE mindset (
+  id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title_fr        TEXT NOT NULL,
+  title_en        TEXT NOT NULL,
+  description_fr     TEXT NOT NULL,
+  description_en     TEXT NOT NULL,
+  created_at      TIMESTAMP DEFAULT NOW(),
+  updated_at      TIMESTAMP DEFAULT NOW()
+)
+
 
 
 -- ============================================================

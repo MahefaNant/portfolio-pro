@@ -17,6 +17,10 @@
       "journey": {
         "title": "Parcours professionnel"
       }
+    },
+    "Mindset": {
+      "title": "Ma philosophie de travail",
+      "subtitle": "Ce qui me guide au quotidien dans mon métier de développeur"
     }
   }
 }
