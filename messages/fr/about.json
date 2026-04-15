@@ -41,8 +41,12 @@
       "study": "Études"
     },
     "Languages": {
-      "title": "Langues parlées",
-      "subtitle": "Mes compétences linguistiques"
+      "title": "Languages spoken",
+      "subtitle": "My language skills",
+      "language": "Language",
+      "level": "Level",
+      "description": "Description",
+      "certifications": "Certifications"
     }
   }
 }
