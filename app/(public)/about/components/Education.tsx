@@ -7,53 +7,57 @@ import { useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { IconRenderer } from "@/components/ui/icon-renderer";
+import { useLocale, useTranslations } from "next-intl";
 
 // Données des formations
 const educationData = {
-  title: {
-    fr: "Formations & Diplômes",
-    en: "Education & Degrees",
-  },
-  subtitle: {
-    fr: "Mon parcours académique et certifications",
-    en: "My academic journey and certifications",
-  },
   degrees: [
     {
-      title: "Master en Développement Web",
+      title_fr: "Master en Développement Web",
+      title_en: "Master in Web Development",
       school: "Université d'Antananarivo",
       location: "Antananarivo, Madagascar",
-      period: "2018 - 2020",
+      period_fr: "2018 - 2020",
+      period_en: "2018 - 2020",
       type: "Master",
-      description:
+      description_fr:
         "Spécialisation en développement web avancé, architecture des applications et bases de données.",
+      description_en:
+        "Specialization in advanced web development, application architecture and databases.",
       technologies: ["Node.js", "React", "MongoDB", "Architecture MVC"],
     },
     {
-      title: "Licence en Informatique",
+      title_fr: "Licence en Informatique",
+      title_en: "Bachelor in Computer Science",
       school: "Université d'Antananarivo",
       location: "Antananarivo, Madagascar",
-      period: "2015 - 2018",
+      period_fr: "2015 - 2018",
+      period_en: "2015 - 2018",
       type: "Licence",
-      description:
+      description_fr:
         "Fondamentaux de l'informatique, algorithmique, programmation orientée objet et bases de données.",
+      description_en:
+        "Fundamentals of computer science, algorithms, object-oriented programming and databases.",
       technologies: ["Java", "PHP", "MySQL", "Algorithmique"],
     },
     {
-      title: "Baccalauréat Série Scientifique",
+      title_fr: "Baccalauréat Série Scientifique",
+      title_en: "Scientific Baccalaureate",
       school: "Lycée Andohalo",
       location: "Antananarivo, Madagascar",
-      period: "2014 - 2015",
+      period_fr: "2014 - 2015",
+      period_en: "2014 - 2015",
       type: "Baccalauréat",
-      description:
+      description_fr:
         "Mention Bien, spécialité Mathématiques et Sciences physiques.",
+      description_en:
+        "With honors, specialization in Mathematics and Physical Sciences.",
       technologies: [],
     },
   ],
   certifications: [
     {
       name: "Next.js & React - The Complete Guide",
-      issuer: "Udemy",
       year: "2023",
       credentialUrl: "#",
       iconName: "Globe",
@@ -90,6 +94,7 @@ function DegreeCard({
   degree: (typeof educationData.degrees)[0];
   index: number;
 }) {
+  const locale = useLocale();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -123,7 +128,7 @@ function DegreeCard({
             <div className="flex-1">
               <div className="flex flex-wrap items-center gap-2 mb-1">
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
-                  {degree.title}
+                  {locale === "fr" ? degree.title_fr : degree.title_en}
                 </h3>
                 <Badge className={`${getTypeColor(degree.type)} border`}>
                   {degree.type}
@@ -140,7 +145,9 @@ function DegreeCard({
                 </div>
                 <div className="flex items-center gap-1">
                   <IconRenderer name="Calendar" className="h-3.5 w-3.5" />
-                  <span>{degree.period}</span>
+                  <span>
+                    {locale === "fr" ? degree.period_fr : degree.period_en}
+                  </span>
                 </div>
               </div>
             </div>
@@ -148,7 +155,7 @@ function DegreeCard({
 
           {/* Description */}
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 mt-2">
-            {degree.description}
+            {locale === "fr" ? degree.description_fr : degree.description_en}
           </p>
 
           {/* Technologies apprises */}
@@ -218,7 +225,7 @@ function CertificationCard({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-[#0B0F1A] transition-colors"
-                aria-label="Voir le certificat"
+                aria-label="See certificate"
               >
                 <IconRenderer
                   name="ExternalLink"
@@ -234,6 +241,7 @@ function CertificationCard({
 }
 
 export function Education() {
+  const t = useTranslations("About.Education");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -263,24 +271,22 @@ export function Education() {
               className="h-3 w-3 sm:h-4 sm:w-4 text-[#2563EB]"
             />
             <span className="text-[10px] sm:text-xs font-medium text-[#2563EB] dark:text-[#3B82F6] uppercase tracking-wider">
-              Études
+              {t("study")}
             </span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">
             <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              {educationData.title.fr}
+              {t("title")}
             </span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400">
-            {educationData.subtitle.fr}
-          </p>
+          <p className="text-gray-600 dark:text-gray-400">{t("subtitle")}</p>
         </div>
 
         {/* Diplômes - Timeline */}
         <div className="max-w-3xl mx-auto mb-12">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-5 flex items-center gap-2">
             <IconRenderer name="Award" className="h-5 w-5 text-[#2563EB]" />
-            Diplômes
+            {t("degree")}
           </h3>
           <div className="space-y-5">
             {educationData.degrees.map((degree, index) => (
@@ -308,7 +314,7 @@ export function Education() {
         {/* Note de bas */}
         <div className="text-center mt-10">
           <p className="text-xs text-gray-400 dark:text-gray-500">
-            Formation continue • Veille technologique quotidienne
+            {t("note")}
           </p>
         </div>
       </div>

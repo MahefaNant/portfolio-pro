@@ -1,3 +1,4 @@
+import { MouseGradient } from "@/app/components/MouseGradient";
 import { IconRenderer } from "@/components/ui/icon-renderer";
 import { ContactCalendly } from "./components/ContactCalendly";
 import { ContactForm } from "./components/ContactForm";
@@ -6,6 +7,7 @@ import { ContactInfo } from "./components/ContactInfo";
 export default function ContactPage() {
   return (
     <main className="min-h-screen py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+      <MouseGradient />
       {/* Background décoratif */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#2563EB]/5 rounded-full blur-3xl" />

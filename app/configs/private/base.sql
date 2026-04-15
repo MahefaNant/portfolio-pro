@@ -74,6 +74,29 @@ CREATE TABLE mindset (
   updated_at      TIMESTAMP DEFAULT NOW()
 )
 
+CREATE TABLE education (
+  id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  title_fr        TEXT NOT NULL,
+  title_en        TEXT NOT NULL,
+  description_fr     TEXT NOT NULL,
+  description_en     TEXT NOT NULL,
+  school       TEXT NOT NULL,
+  location     TEXT NOT NULL,
+  period_fr       TEXT NOT NULL,
+  period_en       TEXT NOT NULL,
+  type            TEXT NOT NULL,
+  created_at      TIMESTAMP DEFAULT NOW(),
+  updated_at      TIMESTAMP DEFAULT NOW()
+)
+
+CREATE TABLE certification (
+  id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  name        TEXT NOT NULL,
+  year            TEXT NOT NULL,
+  credentialUrl   TEXT NOT NULL,
+  created_at      TIMESTAMP DEFAULT NOW(),
+  updated_at      TIMESTAMP DEFAULT NOW()
+)
 
 
 -- ============================================================
