@@ -21,7 +21,10 @@ CREATE TABLE my_info (
   -- Présentation
   bio_fr          TEXT,
   bio_en          TEXT,
-  short_intro     TEXT,         -- ex: "Fullstack Developer spécialisé Laravel"
+  short_intro_fr     TEXT,         -- ex: "Fullstack Developer spécialisé Laravel
+  short_intro_en     TEXT,
+  role_fr         TEXT,         -- ex: "Développeur Fullstack spécialisé Laravel"
+  role_en         TEXT,
 
   -- Skills (tableau dynamique)
   skills          JSONB DEFAULT '[]'::jsonb,

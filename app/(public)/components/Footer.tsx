@@ -1,44 +1,36 @@
 "use client";
 
-import {
-  ArrowUp,
-  Clock,
-  Github,
-  Heart,
-  Linkedin,
-  Mail,
-  MapPin,
-  Sparkles,
-  Twitter,
-} from "lucide-react";
-import { useTranslations } from "next-intl";
+import { ArrowUp, Clock, Heart, Mail, MapPin, Sparkles } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
+import { IconRenderer } from "@/components/ui/icon-renderer";
 
 const footerData = {
   name: "Mahefa",
-  role: "Développeur Fullstack",
+  role_fr: "Développeur Fullstack",
+  role_en: "Fullstack Developer",
   email: "mahefanant@gmail.com",
   location: "Antananarivo, Madagascar",
-  responseTime: "Réponse sous 24h",
+  responseTime: "24h",
   socialLinks: [
     {
       platform: "GitHub",
-      icon: Github,
+      icon: "Github",
       url: "https://github.com/mahefa",
       username: "@mahefa",
     },
     {
       platform: "LinkedIn",
-      icon: Linkedin,
+      icon: "Linkedin",
       url: "https://linkedin.com/in/mahefa",
       username: "mahefa",
     },
     {
       platform: "Twitter",
-      icon: Twitter,
+      icon: "Twitter",
       url: "https://twitter.com/mahefa",
       username: "@mahefa_dev",
     },
@@ -55,7 +47,8 @@ const footerData = {
 
 export function Footer() {
   const pathname = usePathname();
-  const t = useTranslations("footer");
+  const t = useTranslations("navigation.Footer");
+  const locale = useLocale();
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -83,7 +76,7 @@ export function Footer() {
                 </span>
               </div>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                {footerData.role}
+                {locale === "fr" ? footerData.role_fr : footerData.role_en}
               </p>
               <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                 <MapPin className="h-4 w-4" />
@@ -91,7 +84,9 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
                 <Clock className="h-4 w-4" />
-                <span>{footerData.responseTime}</span>
+                <span>
+                  {t("responseTime")} {footerData.responseTime}
+                </span>
               </div>
               <a
                 href={`mailto:${footerData.email}`}
@@ -118,7 +113,7 @@ export function Footer() {
                           : ""
                       }`}
                     >
-                      {link.labelFr}
+                      {locale === "fr" ? link.labelFr : link.labelEn}
                     </Link>
                   </li>
                 ))}
@@ -145,7 +140,7 @@ export function Footer() {
             {/* Column 4 - Social & CTA */}
             <div>
               <h3 className="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">
-                Restons connectés
+                {t("stayConnected")}
               </h3>
               <div className="flex gap-3 mb-6">
                 {footerData.socialLinks.map((social) => (
@@ -157,7 +152,7 @@ export function Footer() {
                     className="w-10 h-10 rounded-lg bg-gray-100 dark:bg-[#121826] flex items-center justify-center text-gray-600 dark:text-gray-400 hover:bg-[#2563EB] hover:text-white dark:hover:bg-[#2563EB] transition-all duration-300 hover:scale-110"
                     aria-label={social.platform}
                   >
-                    <social.icon className="h-5 w-5" />
+                    <IconRenderer name={social.icon} className="h-5 w-5" />
                   </a>
                 ))}
               </div>
@@ -168,7 +163,7 @@ export function Footer() {
                 className="group cursor-pointer"
               >
                 <ArrowUp className="h-4 w-4 mr-2 transition-transform group-hover:-translate-y-1" />
-                Haut de page
+                {t("toTop")}
               </Button>
             </div>
           </div>
@@ -178,13 +173,12 @@ export function Footer() {
         <div className="py-6 border-t border-gray-200 dark:border-[#1F2937]">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
             <p className="text-xs text-gray-500 dark:text-gray-400">
-              © {footerData.currentYear} {footerData.name}. Tous droits
-              réservés.
+              © {footerData.currentYear} {footerData.name}. {t("copyright")}
             </p>
             <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
-              Fait avec
-              <Heart className="h-3 w-3 text-red-500 animate-pulse" />à
-              Madagascar
+              {t("madeWith")}
+              <Heart className="h-3 w-3 text-red-500 animate-pulse" />
+              {t("to")}
             </p>
           </div>
         </div>

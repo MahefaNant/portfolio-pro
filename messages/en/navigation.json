@@ -3,6 +3,9 @@
     "home": "Home",
     "about": "About",
     "projects": "Projects",
-    "contact": "Contact"
+    "contact": "Contact",
+    "Footer": {
+      "responseTime": "Response time: "
+    }
   }
 }
