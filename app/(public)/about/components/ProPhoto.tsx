@@ -5,14 +5,11 @@ import { useRef, useState } from "react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { IconRenderer } from "@/components/ui/icon-renderer";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 
 // Données de la photo pro
 const proPhotoData = {
-  title: {
-    fr: "À propos de moi",
-    en: "About me",
-  },
   name: "Mahefa",
   role: {
     fr: "Développeur Fullstack",
@@ -23,9 +20,24 @@ const proPhotoData = {
     en: "Passionate about web development for over 4 years, I create modern, performant and elegant applications. My goal is to transform your ideas into innovative digital solutions.",
   },
   stats: [
-    { value: "4+", labelFr: "Années d'expérience", iconName: "Briefcase" },
-    { value: "20+", labelFr: "Projets réalisés", iconName: "FolderCode" },
-    { value: "100%", labelFr: "Satisfaction client", iconName: "Heart" },
+    {
+      value: "4+",
+      labelFr: "Années d'expérience",
+      labelEn: "Years of experience",
+      iconName: "Briefcase",
+    },
+    {
+      value: "20+",
+      labelFr: "Projets réalisés",
+      labelEn: "Projects completed",
+      iconName: "FolderCode",
+    },
+    {
+      value: "100%",
+      labelFr: "Satisfaction client",
+      labelEn: "Client satisfaction",
+      iconName: "Heart",
+    },
   ],
   socialLinks: [
     {
@@ -47,6 +59,8 @@ const proPhotoData = {
 };
 
 export function ProPhoto() {
+  const t = useTranslations("About.ProPhoto");
+  const locale = useLocale();
   const [imageLoading, setImageLoading] = useState(true);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
@@ -120,7 +134,7 @@ export function ProPhoto() {
 
                     {/* Badge de statut */}
                     <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-emerald-500 text-white text-xs font-medium px-3 py-1 rounded-full whitespace-nowrap">
-                      Disponible
+                      {t("available")}
                     </div>
                   </div>
                 </div>
@@ -134,7 +148,7 @@ export function ProPhoto() {
                       className="h-3 w-3 text-[#2563EB]"
                     />
                     <span className="text-[10px] sm:text-xs font-medium text-[#2563EB] dark:text-[#3B82F6] uppercase tracking-wider">
-                      {proPhotoData.title.fr}
+                      {t("title")}
                     </span>
                   </div>
 
@@ -145,12 +159,16 @@ export function ProPhoto() {
 
                   {/* Rôle */}
                   <p className="text-[#2563EB] dark:text-[#3B82F6] font-medium mb-4">
-                    {proPhotoData.role.fr}
+                    {locale === "fr"
+                      ? proPhotoData.role.fr
+                      : proPhotoData.role.en}
                   </p>
 
                   {/* Bio */}
                   <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6">
-                    {proPhotoData.bio.fr}
+                    {locale === "fr"
+                      ? proPhotoData.bio.fr
+                      : proPhotoData.bio.en}
                   </p>
 
                   {/* Statistiques */}
@@ -165,7 +183,7 @@ export function ProPhoto() {
                             name={stat.iconName}
                             className="h-3 w-3"
                           />
-                          {stat.labelFr}
+                          {locale === "fr" ? stat.labelFr : stat.labelEn}
                         </div>
                       </div>
                     ))}

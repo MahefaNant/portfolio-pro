@@ -5,7 +5,12 @@
     "projects": "Projects",
     "contact": "Contact",
     "Footer": {
-      "responseTime": "Response time: "
+      "responseTime": "Response time: ",
+      "stayConnected": "Stay connected",
+      "toTop": "Top of page",
+      "copyright": "All rights reserved",
+      "madeWith": "Made with",
+      "to": "to Madagascar"
     }
   }
 }
