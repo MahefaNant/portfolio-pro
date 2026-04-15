@@ -1,4 +1,5 @@
 "use client";
+import { MouseGradient } from "@/app/components/MouseGradient";
 import { Contact } from "./components/Contact";
 import { CtaCV } from "./components/CtaCV";
 import { FeaturedProjects } from "./components/FeaturedProjects";
@@ -10,7 +11,9 @@ import { Testimonials } from "./components/Testimonials";
 
 export default function Home() {
   return (
-    <main>
+    <main className="relative">
+      <MouseGradient />
+
       <Hero />
       <Stats />
       <Skills />

@@ -3,7 +3,7 @@
 import { ArrowRight, ChevronRight, Sparkles, Terminal } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -42,22 +42,6 @@ export function Hero() {
   const t = useTranslations("Home.Hero");
   const locale = useLocale();
   const [imageLoading, setImageLoading] = useState(true);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
-  const gradientStyle = {
-    background: `radial-gradient(circle at ${mousePosition.x}px ${mousePosition.y}px, 
-      rgba(37, 99, 235, 0.15) 20%, 
-      rgba(37, 99, 235, 0.05) 20%,
-      transparent 10%)`,
-  };
 
   const socialLinks = [
     { icon: "Github", href: "https://github.com/mahefanant", label: "GitHub" },
@@ -75,10 +59,6 @@ export function Hero() {
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#2563EB]/5 to-transparent" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#2563EB]/5 rounded-full blur-3xl" />
-        <div
-          className="absolute inset-0 transition-opacity duration-300"
-          style={gradientStyle}
-        />
         <div className="absolute inset-0 bg-[radial-gradient(#2563EB_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.03] dark:opacity-[0.05]" />
       </div>
 
@@ -187,7 +167,7 @@ export function Hero() {
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     priority
-                    onLoadingComplete={() => setImageLoading(false)}
+                    onLoad={() => setImageLoading(false)}
                     className={`object-cover transition-all duration-700 ${
                       imageLoading
                         ? "opacity-0 scale-105"
