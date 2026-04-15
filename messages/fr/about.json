@@ -27,6 +27,11 @@
       "subtitle": "Les technologies et outils que je maîtrise",
       "years": "ans",
       "note": "Toujours en apprentissage • Nouvelles technologies chaque jour"
+    },
+    "Timeline": {
+      "title": "Expériences professionnelles",
+      "subtitle": "Mon parcours à travers les années",
+      "note": "Plus de 4 ans d'expérience dans le développement web"
     }
   }
 }

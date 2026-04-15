@@ -6,29 +6,30 @@ import { useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { IconRenderer } from "@/components/ui/icon-renderer";
+import { useLocale } from "next-intl";
+import { useTranslations } from "use-intl";
 
 // Données des expériences
 const experiencesData = {
-  title: {
-    fr: "Expériences professionnelles",
-    en: "Work Experience",
-  },
-  subtitle: {
-    fr: "Mon parcours à travers les années",
-    en: "My journey through the years",
-  },
   experiences: [
     {
-      title: "Développeur Fullstack Freelance",
+      titleFr: "Développeur Fullstack Freelance",
+      titleEn: "Fullstack Developer",
       company: "Indépendant",
       location: "Remote",
       period: "2022 - Présent",
       type: "Freelance",
-      description: [
+      descriptionFr: [
         "Développement d'applications web complètes pour divers clients",
         "Stack technique : Next.js, React, Node.js, Laravel, PostgreSQL",
         "Gestion de projet et relation client directe",
         "Déploiement et maintenance des applications",
+      ],
+      descriptionEn: [
+        "Development of complete web applications for various clients",
+        "Technical stack: Next.js, React, Node.js, Laravel, PostgreSQL",
+        "Project management and direct customer relations",
+        "Deployment and maintenance of applications",
       ],
       technologies: [
         "Next.js",
@@ -40,30 +41,44 @@ const experiencesData = {
       ],
     },
     {
-      title: "Développeur Frontend",
+      titleFr: "Développeur Frontend",
+      titleEn: "Frontend Developer",
       company: "TechCorp Madagascar",
       location: "Antananarivo",
       period: "2021 - 2022",
       type: "CDI",
-      description: [
+      descriptionFr: [
         "Création d'interfaces utilisateur modernes et responsives",
         "Collaboration avec l'équipe design et backend",
         "Optimisation des performances et SEO",
         "Mise en place de tests unitaires",
       ],
+      descriptionEn: [
+        "Creation of modern and responsive user interfaces",
+        "Collaboration with the design and backend team",
+        "Performance and SEO optimization",
+        "Implementation of unit tests",
+      ],
       technologies: ["React", "TypeScript", "Tailwind", "Redux", "Jest"],
     },
     {
-      title: "Stagiaire Développeur Web",
+      titleFr: "Stagiaire Développeur Web",
+      titleEn: "Web Developer Intern",
       company: "Digital Solutions",
       location: "Antananarivo",
       period: "2020 - 2021",
       type: "Stage",
-      description: [
+      descriptionFr: [
         "Développement de sites vitrines et e-commerce",
         "Maintenance et évolution d'applications existantes",
         "Intégration de maquettes Photoshop/Figma",
         "Formation aux bonnes pratiques de développement",
+      ],
+      descriptionEn: [
+        "Development of showcase sites and e-commerce",
+        "Maintenance and evolution of existing applications",
+        "Integration of Photoshop/Figma mockups",
+        "Training in development best practices",
       ],
       technologies: ["PHP", "JavaScript", "MySQL", "Bootstrap", "jQuery"],
     },
@@ -78,6 +93,7 @@ function ExperienceItem({
   experience: (typeof experiencesData.experiences)[0];
   index: number;
 }) {
+  const locale = useLocale();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -118,7 +134,7 @@ function ExperienceItem({
             <div className="flex-1">
               <div className="flex flex-wrap items-center gap-2 mb-1">
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
-                  {experience.title}
+                  {locale === "fr" ? experience.titleFr : experience.titleEn}
                 </h3>
                 <Badge className={`${getTypeColor(experience.type)} border`}>
                   {experience.type}
@@ -144,7 +160,10 @@ function ExperienceItem({
           {/* Description */}
           <div className="mb-4 mt-3">
             <ul className="space-y-1.5">
-              {experience.description.map((item, idx) => (
+              {(locale === "fr"
+                ? experience.descriptionFr
+                : experience.descriptionEn
+              ).map((item, idx) => (
                 <li
                   key={idx}
                   className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400"
@@ -178,6 +197,7 @@ function ExperienceItem({
 }
 
 export function Timeline() {
+  const t = useTranslations("About.Timeline");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -213,12 +233,10 @@ export function Timeline() {
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">
             <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              {experiencesData.title.fr}
+              {t("title")}
             </span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400">
-            {experiencesData.subtitle.fr}
-          </p>
+          <p className="text-gray-600 dark:text-gray-400">{t("subtitle")}</p>
         </div>
 
         {/* Timeline */}
@@ -232,7 +250,7 @@ export function Timeline() {
         <div className="text-center mt-10">
           <div className="inline-flex items-center gap-2 text-xs text-gray-400 dark:text-gray-500">
             <IconRenderer name="Calendar" className="h-3 w-3" />
-            <span>Plus de 4 ans d'expérience dans le développement web</span>
+            <span>{t("note")}</span>
           </div>
         </div>
       </div>

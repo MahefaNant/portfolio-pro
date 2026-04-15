@@ -190,7 +190,7 @@ export function Bio() {
               {t("title")}
             </span>
           </h1>
-          <p className="text-gray-600 dark:text-gray-400">{t("subtitle")}</p>
+          <p className="text-gray-600 dark:text-gray-400">{t("subtilte")}</p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">

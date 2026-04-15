@@ -1,0 +1,37 @@
+{
+  "About": {
+    "ProPhoto": {
+      "title": "About me",
+      "available": "Available"
+    },
+    "Bio": {
+      "title": "My Journey",
+      "subtilte": "Discover my story and my professional evolution",
+      "about": "About",
+      "info": {
+        "name": "Name",
+        "age": "Age",
+        "years": "years",
+        "language": "Languages"
+      },
+      "journey": {
+        "title": "Professional Journey"
+      }
+    },
+    "Mindset": {
+      "title": "My work philosophy",
+      "subtitle": "What guides me in my daily work as a developer"
+    },
+    "AboutSkills": {
+      "title": "Technical skills",
+      "subtitle": "The technologies and tools I master",
+      "years": "years",
+      "note": "Always learning • New technologies every day"
+    },
+    "Timeline": {
+      "title": "Professional experiences",
+      "subtitle": "My journey through the years",
+      "note": "More than 4 years of experience in web development"
+    }
+  }
+}
