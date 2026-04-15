@@ -3,6 +3,20 @@
     "ProPhoto": {
       "title": "À propos de moi",
       "available": "Disponible"
+    },
+    "Bio": {
+      "title": "Mon Parcours",
+      "subtilte": "Découvrez mon histoire et mon évolution professionnelle",
+      "about": "À propos",
+      "info": {
+        "name": "Nom",
+        "age": "Âge",
+        "years": "ans",
+        "language": "Langues"
+      },
+      "journey": {
+        "title": "Parcours professionnel"
+      }
     }
   }
 }

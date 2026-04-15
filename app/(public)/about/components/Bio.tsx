@@ -6,14 +6,11 @@ import { useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { IconRenderer } from "@/components/ui/icon-renderer";
+import { useLocale } from "next-intl";
+import { useTranslations } from "use-intl";
 
 // Données temporaires
 const bioData = {
-  title: { fr: "Mon Parcours", en: "My Journey" },
-  subtitle: {
-    fr: "Découvrez mon histoire et mon évolution professionnelle",
-    en: "Discover my story and professional evolution",
-  },
   description: {
     fr: "Développeur Fullstack passionné depuis plus de 4 ans, je crée des applications web modernes et performantes. Mon parcours m'a permis de travailler sur des projets variés, allant du e-commerce aux dashboards analytics, en passant par des APIs RESTful.",
     en: "Passionate Fullstack developer for over 4 years, I create modern and performant web applications. My journey has allowed me to work on various projects, from e-commerce to analytics dashboards, including RESTful APIs.",
@@ -24,41 +21,64 @@ const bioData = {
     location: "Antananarivo, Madagascar",
     email: "mahefanant@gmail.com",
     languages: [
-      { name: "Français", level: "Courant" },
-      { name: "Anglais", level: "Professionnel" },
-      { name: "Malgache", level: "Natal" },
+      {
+        name_fr: "Français",
+        name_en: "French",
+        level_fr: "Courant",
+        level_en: "Fluent",
+      },
+      {
+        name_fr: "Anglais",
+        name_en: "English",
+        level_fr: "Professionnel",
+        level_en: "Professional",
+      },
+      {
+        name_fr: "Malgache",
+        name_en: "Malagasy",
+        level_fr: "Langue maternelle",
+        level_en: "Mother tongue",
+      },
     ],
   },
 };
 
 const journeyData = {
-  title: { fr: "Parcours professionnel", en: "Professional journey" },
   experiences: [
     {
-      title: "Développeur Fullstack Freelance",
+      titleFr: "Développeur Fullstack Freelance",
+      titleEn: "Fullstack Developer Freelance",
       company: "Indépendant",
       location: "Remote",
       period: "2022 - Présent",
-      description:
+      descriptionFr:
         "Développement d'applications web pour divers clients. Stack : Next.js, React, Node.js, Laravel, PostgreSQL.",
+      descriptionEn:
+        "Development of web applications for various clients. Stack : Next.js, React, Node.js, Laravel, PostgreSQL.",
       technologies: ["Next.js", "React", "Node.js", "Laravel", "Tailwind"],
     },
     {
-      title: "Développeur Frontend",
+      titleFr: "Développeur Frontend",
+      titleEn: "Frontend Developer",
       company: "TechCorp Madagascar",
       location: "Antananarivo",
       period: "2021 - 2022",
-      description:
+      descriptionFr:
         "Création d'interfaces utilisateur modernes et responsives. Collaboration avec l'équipe design et backend.",
+      descriptionEn:
+        "Creation of modern and responsive user interfaces. Collaboration with the design and backend team.",
       technologies: ["React", "TypeScript", "Tailwind", "Redux"],
     },
     {
-      title: "Stagiaire Développeur Web",
+      titleFr: "Stagiaire Développeur Web",
+      titleEn: "Web Developer Intern",
       company: "Digital Solutions",
       location: "Antananarivo",
       period: "2020 - 2021",
-      description:
+      descriptionFr:
         "Développement de sites vitrines et maintenance d'applications existantes.",
+      descriptionEn:
+        "Development of showcase sites and maintenance of existing applications.",
       technologies: ["PHP", "JavaScript", "MySQL", "Bootstrap"],
     },
   ],
@@ -72,6 +92,7 @@ function ExperienceCard({
   experience: (typeof journeyData.experiences)[0];
   index: number;
 }) {
+  const locale = useLocale();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -96,7 +117,7 @@ function ExperienceCard({
           <div className="flex flex-wrap justify-between items-start gap-2 mb-3">
             <div>
               <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">
-                {experience.title}
+                {locale === "fr" ? experience.titleFr : experience.titleEn}
               </h3>
               <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 mt-1">
                 <IconRenderer name="Building" className="h-3.5 w-3.5" />
@@ -116,7 +137,9 @@ function ExperienceCard({
           </div>
 
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-            {experience.description}
+            {locale === "fr"
+              ? experience.descriptionFr
+              : experience.descriptionEn}
           </p>
 
           <div className="flex flex-wrap gap-2">
@@ -139,6 +162,8 @@ function ExperienceCard({
 export function Bio() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const locale = useLocale();
+  const t = useTranslations("About.Bio");
 
   return (
     <section className="py-16 sm:py-20 lg:py-24 relative overflow-hidden">
@@ -157,17 +182,15 @@ export function Bio() {
               className="h-3 w-3 sm:h-4 sm:w-4 text-[#2563EB]"
             />
             <span className="text-[10px] sm:text-xs font-medium text-[#2563EB] dark:text-[#3B82F6] uppercase tracking-wider">
-              {bioData.title.fr}
+              {t("title")}
             </span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              {bioData.title.fr}
+              {t("title")}
             </span>
           </h1>
-          <p className="text-gray-600 dark:text-gray-400">
-            {bioData.subtitle.fr}
-          </p>
+          <p className="text-gray-600 dark:text-gray-400">{t("subtitle")}</p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
@@ -181,11 +204,13 @@ export function Bio() {
                     <IconRenderer name="User" className="h-5 w-5 text-white" />
                   </div>
                   <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
-                    À propos
+                    {t("about")}
                   </h2>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                  {bioData.description.fr}
+                  {locale === "fr"
+                    ? bioData.description.fr
+                    : bioData.description.en}
                 </p>
               </CardContent>
             </Card>
@@ -205,7 +230,7 @@ export function Bio() {
                 <div className="space-y-3">
                   <div>
                     <p className="text-xs text-gray-400 dark:text-gray-500">
-                      Nom
+                      {t("info.name")}
                     </p>
                     <p className="text-sm font-medium text-gray-900 dark:text-white">
                       {bioData.personalInfo.name}
@@ -213,12 +238,12 @@ export function Bio() {
                   </div>
                   <div>
                     <p className="text-xs text-gray-400 dark:text-gray-500">
-                      Âge
+                      {t("info.age")}
                     </p>
                     <p className="text-sm font-medium text-gray-900 dark:text-white">
                       {new Date().getFullYear() -
                         parseInt(bioData.personalInfo.birthDate)}{" "}
-                      ans
+                      {t("info.years")}
                     </p>
                   </div>
                   <div>
@@ -243,19 +268,19 @@ export function Bio() {
                   </div>
                   <div>
                     <p className="text-xs text-gray-400 dark:text-gray-500 mb-2">
-                      Langues
+                      {t("info.language")}
                     </p>
                     <div className="space-y-1.5">
                       {bioData.personalInfo.languages.map((lang) => (
                         <div
-                          key={lang.name}
+                          key={lang.name_fr}
                           className="flex justify-between items-center"
                         >
                           <span className="text-sm text-gray-700 dark:text-gray-300">
-                            {lang.name}
+                            {locale === "fr" ? lang.name_fr : lang.name_en}
                           </span>
                           <span className="text-xs text-gray-500 dark:text-gray-400">
-                            {lang.level}
+                            {locale === "fr" ? lang.level_fr : lang.name_en}
                           </span>
                         </div>
                       ))}
@@ -274,7 +299,7 @@ export function Bio() {
                   name="Briefcase"
                   className="h-5 w-5 text-[#2563EB]"
                 />
-                {journeyData.title.fr}
+                {t("journey.title")}
               </h2>
             </div>
 

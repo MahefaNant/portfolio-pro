@@ -38,7 +38,8 @@ CREATE TABLE my_info (
   country         TEXT,
 
   -- Pro
-  job_title       TEXT,         -- ex: "Backend Developer"
+  job_title_fr       TEXT,         -- ex: "Backend Developer"
+  job_title_en       TEXT,         -- ex: "Backend Developer"
   years_experience INT,
   project_count   INT,
   happy_clients   INT,
@@ -51,6 +52,17 @@ CREATE TABLE my_info (
   created_at      TIMESTAMP DEFAULT NOW(),
   updated_at      TIMESTAMP DEFAULT NOW()
 );
+
+-- create table language
+CREATE TABLE my_language (
+  id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  language_fr     TEXT NOT NULL,
+  language_en     TEXT NOT NULL
+  level_fr        TEXT NOT NULL,
+  level_en        TEXT NOT NULL,
+  created_at      TIMESTAMP DEFAULT NOW(),
+  updated_at      TIMESTAMP DEFAULT NOW()
+)
 
 
 
@@ -83,7 +95,8 @@ CREATE TABLE projects (
 
   -- Métadonnées projet
   duration      TEXT,                        -- ex : "3 mois", "En cours"
-  role          TEXT,                        -- ex : "Fullstack dev", "Lead front"
+  role_fr          TEXT,                        -- ex : "Fullstack dev", "Lead front"
+  role_en          TEXT,                        -- ex : "Fullstack dev", "Lead front"
   category      TEXT,                        -- 'web' | 'mobile' | 'api' | 'fullstack'
 
   -- Gestion affichage
