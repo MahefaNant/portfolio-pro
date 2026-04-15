@@ -21,6 +21,12 @@
     "Mindset": {
       "title": "Ma philosophie de travail",
       "subtitle": "Ce qui me guide au quotidien dans mon métier de développeur"
+    },
+    "AboutSkills": {
+      "title": "Compétences techniques",
+      "subtitle": "Les technologies et outils que je maîtrise",
+      "years": "ans",
+      "note": "Toujours en apprentissage • Nouvelles technologies chaque jour"
     }
   }
 }

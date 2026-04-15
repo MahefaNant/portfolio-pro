@@ -6,17 +6,10 @@ import { useEffect, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { IconRenderer } from "@/components/ui/icon-renderer";
+import { useTranslations } from "next-intl";
 
 // Données des compétences
 const skillsData = {
-  title: {
-    fr: "Compétences techniques",
-    en: "Technical skills",
-  },
-  subtitle: {
-    fr: "Les technologies et outils que je maîtrise",
-    en: "Technologies and tools I master",
-  },
   categories: [
     {
       name: "Frontend",
@@ -82,6 +75,7 @@ function SkillBar({
   index: number;
   isInView: boolean;
 }) {
+  const t = useTranslations("About.AboutSkills");
   const [width, setWidth] = useState(0);
 
   useEffect(() => {
@@ -99,7 +93,7 @@ function SkillBar({
             {name}
           </span>
           <Badge variant="outline" className="text-[10px] px-1.5">
-            {years} ans
+            {years} {t("years")}
           </Badge>
         </div>
         <span className="text-sm text-gray-500 dark:text-gray-400 font-mono">
@@ -187,6 +181,7 @@ function SkillCategory({
 }
 
 export function AboutSkills() {
+  const t = useTranslations("About.AboutSkills");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -221,12 +216,10 @@ export function AboutSkills() {
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">
             <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              {skillsData.title.fr}
+              {t("title")}
             </span>
           </h2>
-          <p className="text-gray-600 dark:text-gray-400">
-            {skillsData.subtitle.fr}
-          </p>
+          <p className="text-gray-600 dark:text-gray-400">{t("subtitle")}</p>
         </div>
 
         {/* Grille des compétences */}
@@ -244,7 +237,7 @@ export function AboutSkills() {
         {/* Note de bas */}
         <div className="text-center mt-10">
           <p className="text-xs text-gray-400 dark:text-gray-500">
-            Toujours en apprentissage • Nouvelles technologies chaque jour
+            {t("note")}
           </p>
         </div>
       </div>
