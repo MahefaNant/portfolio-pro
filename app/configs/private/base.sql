@@ -140,6 +140,8 @@ CREATE TABLE projects (
   category      TEXT,                        -- 'web' | 'mobile' | 'api' | 'fullstack'
 
   -- Gestion affichage
+  availability_fr TEXT,                  -- ex : "Lun - Ven, 9h - 18h"
+  availability_en TEXT,                  -- ex : "Mon - Fri, 9h - 18h"
   status        TEXT        NOT NULL DEFAULT 'draft'
                             CHECK (status IN ('draft', 'published', 'archived')),
   is_featured   BOOLEAN     NOT NULL DEFAULT FALSE,

@@ -19,22 +19,23 @@ import {
 import { IconRenderer } from "@/components/ui/icon-renderer";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-
-const contactSchema = z.object({
-  name: z.string().min(2, "Le nom doit contenir au moins 2 caractères"),
-  email: z.string().email("Email invalide"),
-  message: z
-    .string()
-    .min(10, "Le message doit contenir au moins 10 caractères"),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
+import { useLocale, useTranslations } from "next-intl";
 
 export function ContactForm() {
+  const t = useTranslations("Contact.Form");
+  const locale = useLocale();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const recaptchaRef = useRef<ReCAPTCHA>(null);
+
+  const contactSchema = z.object({
+    name: z.string().min(2, t("zod.name")),
+    email: z.string().email(t("zod.email")),
+    message: z.string().min(10, t("zod.message")),
+  });
+
+  type ContactFormData = z.infer<typeof contactSchema>;
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
@@ -55,7 +56,7 @@ export function ContactForm() {
       const token = await recaptchaRef.current?.executeAsync();
 
       if (!token) {
-        throw new Error("ReCAPTCHA non vérifié");
+        throw new Error(t("recaptcha-not-verified"));
       }
 
       const response = await fetch("/api/send", {
@@ -74,7 +75,7 @@ export function ContactForm() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || "Erreur lors de l'envoi");
+        throw new Error(result.error || "Error sending message");
       }
 
       setEmailSent(true);
@@ -82,7 +83,7 @@ export function ContactForm() {
 
       setTimeout(() => setEmailSent(false), 5000);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Une erreur est survenue");
+      setError(err instanceof Error ? err.message : "Error sending message");
     } finally {
       setIsSubmitting(false);
       recaptchaRef.current?.reset();
@@ -93,10 +94,10 @@ export function ContactForm() {
     <Card className="bg-white/50 dark:bg-[#121826]/50 backdrop-blur-sm border border-gray-200 dark:border-[#1F2937] shadow-xl">
       <CardContent className="p-6 sm:p-8">
         <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-          Envoyez-moi un message
+          {t("title")}
         </h2>
         <p className="text-gray-500 dark:text-gray-400 mb-6">
-          Remplissez le formulaire ci-dessous, je vous répondrai rapidement
+          {t("description")}
         </p>
 
         {emailSent ? (
@@ -108,11 +109,10 @@ export function ContactForm() {
               />
             </div>
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-              Message envoyé !
+              {t("success")}
             </h3>
             <p className="text-gray-500 dark:text-gray-400">
-              Merci pour votre message. Je vous répondrai dans les plus brefs
-              délais.
+              {t("success-description")}
             </p>
           </div>
         ) : (
@@ -124,7 +124,7 @@ export function ContactForm() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-gray-700 dark:text-gray-300">
-                      Nom complet
+                      {t("name")}
                     </FormLabel>
                     <FormControl>
                       <div className="relative">
@@ -220,7 +220,7 @@ export function ContactForm() {
                 {isSubmitting ? (
                   <>
                     <div className="h-4 w-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-                    Envoi en cours...
+                    {t("sending")}
                   </>
                 ) : (
                   <>
@@ -228,13 +228,13 @@ export function ContactForm() {
                       name="Send"
                       className="h-4 w-4 mr-2 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
                     />
-                    Envoyer le message
+                    {t("button")}
                   </>
                 )}
               </Button>
 
               <p className="text-xs text-center text-gray-400 dark:text-gray-500 mt-4">
-                Protégé par reCAPTCHA • Vos données sont confidentielles
+                {t("note")}
               </p>
             </form>
           </Form>

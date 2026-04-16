@@ -1,0 +1,38 @@
+{
+  "Contact": {
+    "title": "Entrons en contact",
+    "description": "Une question ? Un projet ? N'hésitez pas à me contacter",
+    "Calendly": {
+      "title": "Planifions un rendez-vous",
+      "description": "Disponible pour un appel de 30 minutes",
+      "button": "Réserver un créneau"
+    },
+    "Form": {
+      "title": "Envoyez-moi un message",
+      "description": "Remplissez le formulaire ci-dessous et je vous répondrai dans les plus brefs délais",
+      "name": "Nom",
+      "email": "Email",
+      "subject": "Sujet",
+      "message": "Message",
+      "button": "Envoyer le message",
+      "recaptcha-not-verified": "Veuillez vérifier que vous n'êtes pas un robot",
+      "success": "Message envoyé !",
+      "success-description": "Merci pour votre message. Je vous répondrai dans les plus brefs délais.",
+      "sending": "Envoi en cours...",
+      "error": "Erreur lors de l'envoi",
+      "error-description": "Une erreur est survenue lors de l'envoi de votre message. Veuillez réessayer.",
+      "note": "Protégé par reCAPTCHA • Vos données sont confidentielles",
+      "zod": {
+        "name": "Le nom doit contenir au moins 2 caractères",
+        "email": "Email invalide",
+        "message": "Le message doit contenir au moins 10 caractères"
+      }
+    },
+    "Info": {
+      "available": "Disponible",
+      "directContact": "Contact direct",
+      "findMeOn": "Retrouvez-moi sur",
+      "responseTime": "Temps de réponse"
+    }
+  }
+}

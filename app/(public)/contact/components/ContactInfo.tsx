@@ -2,13 +2,15 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { IconRenderer } from "@/components/ui/icon-renderer";
+import { useLocale, useTranslations } from "next-intl";
 
 const contactData = {
   email: "mahefanant@gmail.com",
-  phone: "+261 34 00 000 00",
+  phone: "+261 34 57 276 90",
   location: "Antananarivo, Madagascar",
   responseTime: "24h",
-  availability: "Lun - Ven, 9h - 18h",
+  availabilityFr: "Lun - Ven, 9h - 18h",
+  availabilityEn: "Mon - Fri, 9h - 18h",
   socialLinks: [
     {
       platform: "GitHub",
@@ -33,6 +35,8 @@ const contactData = {
 };
 
 export function ContactInfo() {
+  const t = useTranslations("Contact.Info");
+  const locale = useLocale();
   return (
     <div className="space-y-5">
       {/* Carte disponibilité */}
@@ -44,11 +48,11 @@ export function ContactInfo() {
               <div className="relative w-3 h-3 bg-emerald-500 rounded-full" />
             </div>
             <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
-              Disponible
+              {t("available")}
             </span>
           </div>
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-            Contact direct
+            {t("directContact")}
           </h3>
           <a
             href={`mailto:${contactData.email}`}
@@ -72,7 +76,7 @@ export function ContactInfo() {
       <Card className="bg-white/50 dark:bg-[#121826]/50 backdrop-blur-sm border border-gray-200 dark:border-[#1F2937] shadow-xl">
         <CardContent className="p-5">
           <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-4 uppercase tracking-wider">
-            Retrouvez-moi sur
+            {t("findMeOn")}
           </h3>
           <div className="space-y-3">
             {contactData.socialLinks.map((social) => (
@@ -110,7 +114,7 @@ export function ContactInfo() {
             </div>
             <div>
               <p className="text-sm font-medium text-gray-900 dark:text-white">
-                Temps de réponse
+                {t("responseTime")}
               </p>
               <p className="text-2xl font-bold text-[#22C55E]">
                 {contactData.responseTime}
@@ -119,7 +123,11 @@ export function ContactInfo() {
           </div>
           <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
             <IconRenderer name="Calendar" className="h-4 w-4" />
-            <span>{contactData.availability}</span>
+            <span>
+              {locale === "fr"
+                ? contactData.availabilityFr
+                : contactData.availabilityEn}
+            </span>
           </div>
         </CardContent>
       </Card>
