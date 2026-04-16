@@ -1,0 +1,12 @@
+{
+  "Project": {
+    "title": "My Projects",
+    "description": "Discover a selection of my achievements",
+    "no_project_found": "No project found",
+    "try_again": "Try modifying your filters",
+    "see_all": "See all projects",
+    "Card": {
+      "see_project": "See project"
+    }
+  }
+}

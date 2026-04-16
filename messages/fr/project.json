@@ -1,0 +1,12 @@
+{
+  "Project": {
+    "title": "Mes Projets",
+    "description": "Découvrez une sélection de mes réalisations",
+    "no_project_found": "Aucun projet trouvé",
+    "try_again": "Essayez de modifier vos filtres",
+    "see_all": "Voir tous les projets",
+    "Card": {
+      "see_project": "Voir le projet"
+    }
+  }
+}

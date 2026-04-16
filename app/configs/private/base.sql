@@ -119,6 +119,8 @@ CREATE TABLE projects (
   content_fr    TEXT,
   content_en    TEXT,
 
+  technologies  JSONB DEFAULT '[]'::jsonb,
+
   -- Défis techniques (page détail)
   challenges_fr TEXT,
   challenges_en TEXT,

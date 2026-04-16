@@ -1,4 +1,3 @@
-// app/[locale]/projects/page.tsx
 "use client";
 
 import { useMemo, useState } from "react";
@@ -6,10 +5,13 @@ import { useMemo, useState } from "react";
 import { MouseGradient } from "@/app/components/MouseGradient";
 import { projectsData } from "@/app/configs/private/data/projects";
 import { IconRenderer } from "@/components/ui/icon-renderer";
+import { useLocale, useTranslations } from "next-intl";
 import { ProjectCard } from "./components/ProjectCard";
 import { ProjectFilters } from "./components/ProjectFilters";
 
 export default function ProjectsPage() {
+  const t = useTranslations("Project");
+  const locale = useLocale();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [selectedTech, setSelectedTech] = useState("all");
 
@@ -71,12 +73,10 @@ export default function ProjectsPage() {
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             <span className="bg-linear-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
-              Mes Projets
+              {t("title")}
             </span>
           </h1>
-          <p className="text-gray-600 dark:text-gray-400">
-            Découvrez une sélection de mes réalisations
-          </p>
+          <p className="text-gray-600 dark:text-gray-400">{t("description")}</p>
         </div>
 
         {/* Filtres + Grille */}
@@ -101,8 +101,10 @@ export default function ProjectsPage() {
             {/* Résultat des filtres */}
             <div className="mb-6 flex justify-between items-center">
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                {filteredProjects.length} projet
-                {filteredProjects.length > 1 ? "s" : ""} trouvé
+                {filteredProjects.length}{" "}
+                {locale === "fr" ? "projet" : "project"}
+                {filteredProjects.length > 1 ? "s" : ""}{" "}
+                {locale === "fr" ? "trouvé" : "found"}
                 {filteredProjects.length > 1 ? "s" : ""}
               </p>
               {hasFilters && (
@@ -111,7 +113,7 @@ export default function ProjectsPage() {
                   className="text-sm text-[#2563EB] dark:text-[#3B82F6] hover:underline flex items-center gap-1 lg:hidden cursor-pointer"
                 >
                   <IconRenderer name="X" className="h-3.5 w-3.5" />
-                  Réinitialiser
+                  {locale === "fr" ? "Réinitialiser" : "Reset"}
                 </button>
               )}
             </div>
@@ -134,16 +136,16 @@ export default function ProjectsPage() {
                   className="h-16 w-16 mx-auto text-gray-400 mb-4"
                 />
                 <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
-                  Aucun projet trouvé
+                  {t("no_project_found")}
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400">
-                  Essayez de modifier vos filtres
+                  {t("try_again")}
                 </p>
                 <button
                   onClick={handleReset}
                   className="mt-4 text-[#2563EB] dark:text-[#3B82F6] hover:underline cursor-pointer"
                 >
-                  Voir tous les projets
+                  {t("see_all")}
                 </button>
               </div>
             )}

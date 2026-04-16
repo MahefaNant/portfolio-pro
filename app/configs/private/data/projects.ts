@@ -3,9 +3,12 @@ export const projectsData = {
   projects: [
     {
       id: "1",
-      title: "Plateforme E-commerce",
-      description:
+      titleFr: "Plateforme E-commerce",
+      titleEn: "E-commerce Platform",
+      descriptionFr:
         "Plateforme e-commerce complète avec panier, paiement Stripe, dashboard admin et système de notation.",
+      descriptionEn:
+        "Complete e-commerce platform with cart, Stripe payment, admin dashboard and rating system.",
       imageUrl: "/images/projects/ecommerce.jpg",
       category: "fullstack",
       technologies: [
@@ -22,9 +25,12 @@ export const projectsData = {
     },
     {
       id: "2",
-      title: "Dashboard Analytics",
-      description:
+      titleFr: "Dashboard Analytics",
+      titleEn: "Analytics Dashboard",
+      descriptionFr:
         "Dashboard analytics temps réel avec graphiques interactifs, export PDF et webhooks.",
+      descriptionEn:
+        "Real-time analytics dashboard with interactive charts, PDF export and webhooks.",
       imageUrl: "/images/projects/dashboard.jpg",
       category: "frontend",
       technologies: ["React", "Recharts", "Node.js", "WebSocket", "Redis"],
@@ -35,9 +41,12 @@ export const projectsData = {
     },
     {
       id: "3",
-      title: "API REST Laravel",
-      description:
+      titleFr: "API REST Laravel",
+      titleEn: "Laravel REST API",
+      descriptionFr:
         "API REST complète avec authentification JWT, rate limiting, documentation Swagger et tests unitaires.",
+      descriptionEn:
+        "Complete REST API with JWT authentication, rate limiting, Swagger documentation and unit tests.",
       imageUrl: "/images/projects/api.jpg",
       category: "backend",
       technologies: ["Laravel", "PHP", "MySQL", "Swagger", "JWT"],
@@ -48,9 +57,12 @@ export const projectsData = {
     },
     {
       id: "4",
-      title: "Application Mobile React Native",
-      description:
+      titleFr: "Application Mobile React Native",
+      titleEn: "React Native Mobile Application",
+      descriptionFr:
         "Application mobile de livraison avec géolocalisation, notifications push et paiement mobile.",
+      descriptionEn:
+        "Mobile delivery application with geolocation, push notifications and mobile payment.",
       imageUrl: "/images/projects/mobile.jpg",
       category: "mobile",
       technologies: ["React Native", "Expo", "Node.js", "MongoDB", "Socket.io"],
@@ -61,9 +73,12 @@ export const projectsData = {
     },
     {
       id: "5",
-      title: "Portfolio 3D",
-      description:
+      titleFr: "Portfolio 3D",
+      titleEn: "3D Portfolio",
+      descriptionFr:
         "Portfolio interactif avec animations 3D, Three.js et expérience immersive.",
+      descriptionEn:
+        "Interactive portfolio with 3D animations, Three.js and immersive experience.",
       imageUrl: "/images/projects/portfolio3d.jpg",
       category: "frontend",
       technologies: ["Three.js", "React", "GSAP", "Tailwind"],
@@ -74,9 +89,12 @@ export const projectsData = {
     },
     {
       id: "6",
-      title: "Outil de Gestion de Projet",
-      description:
+      titleFr: "Outil de Gestion de Projet",
+      titleEn: "Project Management Tool",
+      descriptionFr:
         "Application de gestion de projet type Trello avec drag & drop, commentaires et notifications.",
+      descriptionEn:
+        "Project management application type Trello with drag & drop, comments and notifications.",
       imageUrl: "/images/projects/pmtool.jpg",
       category: "fullstack",
       technologies: ["Next.js", "Prisma", "PostgreSQL", "Tailwind", "NextAuth"],
@@ -87,10 +105,10 @@ export const projectsData = {
     },
   ],
   categories: [
-    { id: "all", name: "Tous", nameEn: "All" },
-    { id: "frontend", name: "Frontend", nameEn: "Frontend" },
-    { id: "backend", name: "Backend", nameEn: "Backend" },
-    { id: "fullstack", name: "Fullstack", nameEn: "Fullstack" },
-    { id: "mobile", name: "Mobile", nameEn: "Mobile" },
+    { id: "all", nameFr: "Tous", nameEn: "All" },
+    { id: "frontend", nameFr: "Frontend", nameEn: "Frontend" },
+    { id: "backend", nameFr: "Backend", nameEn: "Backend" },
+    { id: "fullstack", nameFr: "Fullstack", nameEn: "Fullstack" },
+    { id: "mobile", nameFr: "Mobile", nameEn: "Mobile" },
   ],
 };

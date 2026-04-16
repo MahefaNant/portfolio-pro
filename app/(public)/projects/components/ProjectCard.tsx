@@ -7,12 +7,15 @@ import { useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { IconRenderer } from "@/components/ui/icon-renderer";
+import { useLocale, useTranslations } from "next-intl";
 
 interface ProjectCardProps {
   project: {
     id: string;
-    title: string;
-    description: string;
+    titleFr: string;
+    titleEn: string;
+    descriptionFr: string;
+    descriptionEn: string;
     imageUrl: string;
     category: string;
     technologies: string[];
@@ -24,6 +27,8 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, index }: ProjectCardProps) {
+  const t = useTranslations("Project.Card");
+  const locale = useLocale();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
@@ -94,12 +99,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
           {/* Titre */}
           <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-[#2563EB] dark:group-hover:text-[#3B82F6] transition-colors">
-            {project.title}
+            {locale === "fr" ? project.titleFr : project.titleEn}
           </h3>
 
           {/* Description */}
           <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2 flex-1">
-            {project.description}
+            {locale === "fr" ? project.descriptionFr : project.descriptionEn}
           </p>
 
           {/* Technologies */}
@@ -125,7 +130,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             href={`/projects/${project.id}`}
             className="inline-flex items-center gap-1 text-sm font-medium text-[#2563EB] dark:text-[#3B82F6] hover:gap-2 transition-all mt-auto"
           >
-            Voir le projet
+            {t("see_project")}
             <IconRenderer name="ArrowRight" className="h-4 w-4" />
           </Link>
         </CardContent>

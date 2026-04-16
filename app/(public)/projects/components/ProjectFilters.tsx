@@ -1,9 +1,10 @@
 "use client";
 
 import { IconRenderer } from "@/components/ui/icon-renderer";
+import { useLocale } from "next-intl";
 
 interface ProjectFiltersProps {
-  categories: { id: string; name: string; nameEn: string }[];
+  categories: { id: string; nameFr: string; nameEn: string }[];
   technologies: string[];
   selectedCategory: string;
   selectedTech: string;
@@ -21,6 +22,7 @@ export function ProjectFilters({
   onTechChange,
   onReset,
 }: ProjectFiltersProps) {
+  const locale = useLocale();
   const hasFilters = selectedCategory !== "all" || selectedTech !== "all";
 
   return (
@@ -29,7 +31,7 @@ export function ProjectFilters({
       <div>
         <h3 className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-3 flex items-center gap-2">
           <IconRenderer name="FolderCode" className="h-4 w-4" />
-          Catégories
+          {locale === "fr" ? "Catégories" : "Categories"}
         </h3>
         <div className="flex flex-wrap gap-2">
           {categories.map((cat) => (
@@ -42,7 +44,7 @@ export function ProjectFilters({
                   : "bg-gray-100 dark:bg-[#121826] text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-[#1a2230]"
               }`}
             >
-              {cat.name}
+              {locale === "fr" ? cat.nameFr : cat.nameEn}
             </button>
           ))}
         </div>
@@ -63,7 +65,7 @@ export function ProjectFilters({
                 : "bg-gray-100 dark:bg-[#121826] text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-[#1a2230]"
             }`}
           >
-            Toutes
+            {locale === "fr" ? "Toutes" : "All"}
           </button>
           {technologies.map((tech) => (
             <button
@@ -88,7 +90,7 @@ export function ProjectFilters({
           className="text-sm text-[#2563EB] dark:text-[#3B82F6] hover:underline flex items-center gap-1 cursor-pointer"
         >
           <IconRenderer name="X" className="h-3.5 w-3.5" />
-          Réinitialiser les filtres
+          {locale === "fr" ? "Réinitialiser les filtres" : "Reset filters"}
         </button>
       )}
     </div>
