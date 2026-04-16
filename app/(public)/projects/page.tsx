@@ -3,6 +3,7 @@
 
 import { useMemo, useState } from "react";
 
+import { MouseGradient } from "@/app/components/MouseGradient";
 import { projectsData } from "@/app/configs/private/data/projects";
 import { IconRenderer } from "@/components/ui/icon-renderer";
 import { ProjectCard } from "./components/ProjectCard";
@@ -48,6 +49,7 @@ export default function ProjectsPage() {
 
   return (
     <main className="min-h-screen py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+      <MouseGradient />
       {/* Background décoratif */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#2563EB]/5 rounded-full blur-3xl" />
