@@ -6,7 +6,8 @@
       "common": {
         "available": "Disponible",
         "seeProjects": "Voir mes projets",
-        "contactMe": "Me contacter"
+        "contactMe": "Me contacter",
+        "viewCV": "Mon CV"
       }
     },
     "Stats": {

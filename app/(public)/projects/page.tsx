@@ -54,7 +54,7 @@ export default function ProjectsPage() {
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#2563EB]/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#22C55E]/5 rounded-full blur-3xl" />
-        <div className="absolute inset-0 bg-[radial-gradient(#2563EB_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.02] dark:opacity-[0.03]" />
+        <div className="absolute inset-0 bg-[radial-gradient(#2563EB_1px,transparent_1px)] bg-size-[32px_32px] opacity-[0.02] dark:opacity-[0.03]" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,7 +70,7 @@ export default function ProjectsPage() {
             </span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
               Mes Projets
             </span>
           </h1>

@@ -15,12 +15,12 @@ const heroData = {
   name: "Mahefa",
   title: { fr: "Développeur Fullstack", en: "Fullstack Developer" },
   description: {
-    fr: "Je crée des applications web modernes, performantes et élégantes. Spécialisé dans l'écosystème Next.js et l'expérience utilisateur.",
-    en: "I build modern, performant and elegant web applications. Specialized in Next.js ecosystem and user experience.",
+    fr: "Développeur Full-Stack spécialisé dans la création d’applications web et mobiles performantes et scalables. Expérience dans le développement de solutions e-commerce, systèmes de gestion et plateformes métier, avec une approche axée sur la qualité du code, la performance et l’expérience utilisateur.",
+    en: "Full-Stack Developer specialized in building high-performance and scalable web and mobile applications. Experience in developing e-commerce solutions, management systems, and business platforms, with an approach focused on code quality, performance, and user experience.",
   },
   stats: [
     {
-      value: "4+",
+      value: "2+",
       labelFr: "Années d'expérience",
       labelEn: "Years experience",
     },
@@ -30,9 +30,9 @@ const heroData = {
       labelEn: "Projects completed",
     },
     {
-      value: "100%",
-      labelFr: "Satisfaction client",
-      labelEn: "Client satisfaction",
+      value: "6",
+      labelFr: "Année dans le dev",
+      labelEn: "Year in the dev",
     },
   ],
   techStack: ["Next.js", "Nest.js", "Laravel", ".NET", "Shopify"],
@@ -54,12 +54,15 @@ export function Hero() {
   ];
 
   return (
-    <section id="hero" className="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden">
+    <section
+      id="hero"
+      className="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden"
+    >
       {/* Effet de fond animé (INCHANGÉ) */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#2563EB]/5 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#2563EB]/5 to-transparent" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#2563EB]/5 rounded-full blur-3xl" />
-        <div className="absolute inset-0 bg-[radial-gradient(#2563EB_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.03] dark:opacity-[0.05]" />
+        <div className="absolute inset-0 bg-[radial-gradient(#2563EB_1px,transparent_1px)] bg-size-[32px_32px] opacity-[0.03] dark:opacity-[0.05]" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
@@ -81,7 +84,7 @@ export function Hero() {
                 {t("greeting")}
               </p>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold">
-                <span className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 dark:from-white dark:via-gray-200 dark:to-gray-400 bg-clip-text text-transparent">
+                <span className="bg-linear-to-r from-gray-900 via-gray-800 to-gray-700 dark:from-white dark:via-gray-200 dark:to-gray-400 bg-clip-text text-transparent">
                   {heroData.name}
                 </span>
               </h1>
@@ -101,6 +104,17 @@ export function Hero() {
                 <Link href="/projects">
                   {t("common.seeProjects")}
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="secondary"
+                size="lg"
+                className="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700"
+              >
+                <Link href="#cta-cv">
+                  <IconRenderer name="FileUser" className="mr-2 h-4 w-4" />
+                  {t("common.viewCV")}
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg">
@@ -134,13 +148,13 @@ export function Hero() {
             <div className="relative group w-full flex justify-center lg:justify-end">
               <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80">
                 {/* Gradient de fond (Lueur) */}
-                <div className="absolute -inset-4 bg-gradient-to-r from-[#2563EB] to-[#1E3A8A] rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
+                <div className="absolute -inset-4 bg-linear-to-r from-[#2563EB] to-[#1E3A8A] rounded-full blur-2xl opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
 
                 {/* Conteneur Image */}
                 <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-[#121826] shadow-2xl z-10">
                   {imageLoading && (
                     <>
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#2563EB]/20 to-[#1E3A8A]/20 animate-pulse" />
+                      <div className="absolute inset-0 bg-linear-to-br from-[#2563EB]/20 to-[#1E3A8A]/20 animate-pulse" />
                       <div className="absolute inset-0 rounded-full border-2 border-[#2563EB]/30 animate-ping" />
                       <div
                         className="absolute inset-0 rounded-full border-2 border-t-[#2563EB] border-r-transparent border-b-transparent border-l-transparent animate-spin"
@@ -224,7 +238,7 @@ export function Hero() {
                     <Badge
                       key={index}
                       variant="secondary"
-                      className="text-sm py-1.5 px-4 bg-gray-100/80 dark:bg-[#1F2937]/80 border-0 font-medium"
+                      className="text-sm font-extrabold py-1.5 px-4 text-gray-700 dark:text-gray-300 bg-gray-300  dark:bg-[#1F2937]/80 border-0 font-medium"
                     >
                       {tech}
                     </Badge>

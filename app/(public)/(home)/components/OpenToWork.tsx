@@ -57,7 +57,7 @@ export function OpenToWork() {
     >
       {/* Background décoratif */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#22C55E]/5 via-transparent to-[#2563EB]/5" />
+        <div className="absolute inset-0 bg-linear-to-br from-[#22C55E]/5 via-transparent to-[#2563EB]/5" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#22C55E]/10 rounded-full blur-[100px]" />
         <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#2563EB]/5 rounded-full blur-[80px]" />
       </div>
@@ -87,7 +87,7 @@ export function OpenToWork() {
 
           {/* Titre */}
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-4">
-            <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
               {locale === "fr"
                 ? openToWorkData.title.fr
                 : openToWorkData.title.en}
@@ -141,7 +141,7 @@ export function OpenToWork() {
             <Button
               asChild
               size="lg"
-              className="bg-gradient-to-r from-[#22C55E] to-[#16A34A] hover:from-[#16A34A] hover:to-[#15803D] text-white shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
+              className="bg-linear-to-r from-[#22C55E] to-[#16A34A] hover:from-[#16A34A] hover:to-[#15803D] text-white shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
             >
               <Link href="/contact">
                 <IconRenderer name="Mail" className="h-4 w-4 mr-2" />
@@ -182,7 +182,7 @@ export function OpenToWork() {
 
           {/* Ligne décorative */}
           <div className="flex justify-center mt-10">
-            <div className="w-16 h-1 bg-gradient-to-r from-transparent via-[#22C55E] to-transparent rounded-full" />
+            <div className="w-16 h-1 bg-linear-to-r from-transparent via-[#22C55E] to-transparent rounded-full" />
           </div>
         </div>
       </div>

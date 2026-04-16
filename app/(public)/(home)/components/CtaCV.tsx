@@ -69,7 +69,7 @@ export function CtaCV() {
 
         <div className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-[#2563EB]/5 dark:bg-[#2563EB]/10 rounded-full blur-[120px]" />
         <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-emerald-500/5 dark:bg-emerald-500/10 rounded-full blur-[100px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(#2563EB_0.5px,transparent_0.5px)] bg-size-[24px_24px] opacity-[0.03] dark:opacity-[0.05]" />
+        <div className="absolute inset-0 bg-linear-to-b from-[#2563EB] to-transparent bg-size-[24px_24px] opacity-[0.03] dark:opacity-[0.05]" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -126,7 +126,7 @@ export function CtaCV() {
 
             {/* Title */}
             <h2 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-8 leading-tight tracking-tight">
-              <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
                 {t("title")}
               </span>
             </h2>
@@ -162,7 +162,7 @@ export function CtaCV() {
               <Button
                 onClick={handleDownload}
                 size="lg"
-                className="h-16 px-10 bg-gradient-to-r from-[#2563EB] to-[#1E3A8A] hover:bg-linear-to-l text-white shadow-[0_20px_40px_-15px_rgba(37,99,235,0.4)] hover:shadow-[0_25px_50px_-15px_rgba(37,99,235,0.5)] transition-all duration-300 group rounded-2xl"
+                className="h-16 px-10 bg-linear-to-r from-[#2563EB] to-[#1E3A8A] hover:bg-linear-to-l text-white shadow-[0_20px_40px_-15px_rgba(37,99,235,0.4)] hover:shadow-[0_25px_50px_-15px_rgba(37,99,235,0.5)] transition-all duration-300 group rounded-2xl"
               >
                 <IconRenderer
                   name="Download"

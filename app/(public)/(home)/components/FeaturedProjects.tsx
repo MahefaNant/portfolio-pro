@@ -96,7 +96,7 @@ function ProjectCard({
       }}
     >
       {/* Image du projet */}
-      <div className="relative h-48 sm:h-56 overflow-hidden bg-gradient-to-br from-[#2563EB]/20 to-[#1E3A8A]/20">
+      <div className="relative h-48 sm:h-56 overflow-hidden bg-linear-to-br from-[#2563EB]/20 to-[#1E3A8A]/20">
         <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
         <div className="absolute inset-0 flex items-center justify-center gap-3 z-20 opacity-0 group-hover:opacity-100 transition-all duration-300">
           {project.githubUrl && (
@@ -122,7 +122,7 @@ function ProjectCard({
             </a>
           )}
         </div>
-        <div className="w-full h-full bg-gradient-to-br from-[#2563EB] to-[#1E3A8A] flex items-center justify-center">
+        <div className="w-full h-full bg-linear-to-br from-[#2563EB] to-[#1E3A8A] flex items-center justify-center">
           <Code2 className="h-16 w-16 text-white/20" />
         </div>
       </div>
@@ -224,7 +224,7 @@ export function FeaturedProjects() {
               </span>
             </div>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">
-              <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
                 {t("title")}
               </span>
             </h2>
@@ -305,7 +305,7 @@ export function FeaturedProjects() {
             </span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4">
-            <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
               {t("title")}
             </span>
           </h2>
@@ -326,7 +326,7 @@ export function FeaturedProjects() {
           <Button
             asChild
             size="lg"
-            className="group bg-gradient-to-r from-[#2563EB] to-[#1E3A8A] hover:from-[#3B82F6] hover:to-[#2563EB]"
+            className="group bg-linear-to-r from-[#2563EB] to-[#1E3A8A] hover:from-[#3B82F6] hover:to-[#2563EB]"
           >
             <Link href="/projects">
               {t("seeProjects")}

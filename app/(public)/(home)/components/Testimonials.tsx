@@ -145,7 +145,7 @@ function TestimonialCard({
               {testimonial.avatar ? (
                 <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
               ) : (
-                <AvatarFallback className="bg-gradient-to-br from-[#2563EB] to-[#1E3A8A] text-white text-sm font-medium">
+                <AvatarFallback className="bg-linear-to-br from-[#2563EB] to-[#1E3A8A] text-white text-sm font-medium">
                   {initials}
                 </AvatarFallback>
               )}
@@ -236,11 +236,11 @@ export function Testimonials() {
     <section id="testimonials" className="py-16 sm:py-20 lg:py-32 relative overflow-hidden">
       {/* Background décoratif */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-to-r from-[#2563EB]/5 to-[#22C55E]/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-linear-to-r from-[#2563EB]/5 to-[#22C55E]/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#A855F7]/5 rounded-full blur-3xl" />
 
         {/* Motif de points */}
-        <div className="absolute inset-0 bg-[radial-gradient(#2563EB_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.02] dark:opacity-[0.03]" />
+        <div className="absolute inset-0 bg-[radial-gradient(#2563EB_1px,transparent_1px)] bg-size-[32px_32px] opacity-[0.02] dark:opacity-[0.03]" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -253,7 +253,7 @@ export function Testimonials() {
             </span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4">
-            <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
               {t("title")}
             </span>
           </h2>

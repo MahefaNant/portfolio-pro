@@ -90,7 +90,7 @@ function Counter({
   return (
     <span
       ref={ref}
-      className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent"
+      className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-linear-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent"
     >
       {count}
       {suffix}
@@ -178,11 +178,11 @@ export function Stats() {
     >
       {/* Background décoratif */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#2563EB]/5 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-b from-transparent via-[#2563EB]/5 to-transparent" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#2563EB]/5 rounded-full blur-3xl" />
 
         {/* Motif de points */}
-        <div className="absolute inset-0 bg-[radial-gradient(#2563EB_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.02] dark:opacity-[0.03]" />
+        <div className="absolute inset-0 bg-[radial-gradient(#2563EB_1px,transparent_1px)] bg-size-[24px_24px] opacity-[0.02] dark:opacity-[0.03]" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -195,7 +195,7 @@ export function Stats() {
             </span>
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">
-            <span className="bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+            <span className="bg-linear-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
               {t("title")}
             </span>
           </h2>
@@ -213,7 +213,7 @@ export function Stats() {
 
         {/* Ligne de séparation décorative */}
         <div className="flex justify-center mt-12 sm:mt-16">
-          <div className="w-20 h-1 bg-gradient-to-r from-transparent via-[#2563EB] to-transparent rounded-full" />
+          <div className="w-20 h-1 bg-linear-to-r from-transparent via-[#2563EB] to-transparent rounded-full" />
         </div>
       </div>
     </section>
