@@ -54,7 +54,7 @@ export function Hero() {
   ];
 
   return (
-    <section className="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden">
+    <section id="hero" className="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden">
       {/* Effet de fond animé (INCHANGÉ) */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#2563EB]/5 to-transparent" />

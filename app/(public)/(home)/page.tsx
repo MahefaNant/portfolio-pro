@@ -1,5 +1,6 @@
 "use client";
 import { MouseGradient } from "@/app/components/MouseGradient";
+import { SideNav } from "../../components/SideNav";
 import { Contact } from "./components/Contact";
 import { CtaCV } from "./components/CtaCV";
 import { FeaturedProjects } from "./components/FeaturedProjects";
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <main className="relative">
       <MouseGradient />
+      <SideNav />
 
       <Hero />
       <Stats />

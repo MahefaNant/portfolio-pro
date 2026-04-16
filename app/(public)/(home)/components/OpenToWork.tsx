@@ -51,7 +51,7 @@ export function OpenToWork() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section
+    <section id="available"
       ref={ref}
       className="py-16 sm:py-20 lg:py-24 relative overflow-hidden"
     >

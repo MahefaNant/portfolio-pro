@@ -45,6 +45,7 @@ CREATE TABLE my_info (
   happy_clients   INT,
   commitment      INT,
   cv_url          TEXT,         -- lien vers CV PDF
+  cv_version      TEXT,         -- version du CV
 
   -- Disponibilité
   is_available    BOOLEAN DEFAULT TRUE,

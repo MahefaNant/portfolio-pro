@@ -206,7 +206,10 @@ export function FeaturedProjects() {
   if (isMobile) {
     const currentProject = projects[currentIndex];
     return (
-      <section className="py-16 sm:py-20 lg:py-32 relative overflow-hidden">
+      <section
+        id="projects"
+        className="py-16 sm:py-20 lg:py-32 relative overflow-hidden"
+      >
         <div className="absolute inset-0 -z-10">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[#2563EB]/5 rounded-full blur-3xl" />
         </div>
@@ -283,7 +286,10 @@ export function FeaturedProjects() {
 
   // Version desktop : grille
   return (
-    <section className="py-16 sm:py-20 lg:py-32 relative overflow-hidden">
+    <section
+      id="projects"
+      className="py-16 sm:py-20 lg:py-32 relative overflow-hidden"
+    >
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#2563EB]/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-[#22C55E]/5 rounded-full blur-3xl" />

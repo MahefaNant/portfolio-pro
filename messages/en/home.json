@@ -32,7 +32,8 @@
       "title": "Ready to collaborate?",
       "subtitle": "Download my CV and discover my background in detail",
       "buttonDownload": "Download CV (PDF)",
-      "buttonView": "View online"
+      "buttonView": "View online",
+      "availableFormats": "Available in multiple formats"
     },
     "OpenToWork": {
       "contactMe": "Contact me",

@@ -130,7 +130,7 @@ export function Contact() {
   };
 
   return (
-    <section className="py-16 sm:py-20 lg:py-32 relative overflow-hidden">
+    <section id="contact" className="py-16 sm:py-20 lg:py-32 relative overflow-hidden">
       {/* Background décoratif */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gradient-to-br from-[#2563EB]/10 to-[#22C55E]/10 rounded-full blur-3xl" />

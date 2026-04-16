@@ -172,7 +172,7 @@ export function Stats() {
   const ref = useRef(null);
 
   return (
-    <section
+    <section id="stats"
       ref={ref}
       className="py-16 sm:py-20 lg:py-24 relative overflow-hidden"
     >

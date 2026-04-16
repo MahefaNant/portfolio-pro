@@ -190,7 +190,7 @@ export function Skills() {
   };
 
   return (
-    <section
+    <section id="skills"
       ref={ref}
       className="py-16 sm:py-20 lg:py-32 relative overflow-hidden"
     >

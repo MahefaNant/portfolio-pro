@@ -233,7 +233,7 @@ export function Testimonials() {
   )
     return null;
   return (
-    <section className="py-16 sm:py-20 lg:py-32 relative overflow-hidden">
+    <section id="testimonials" className="py-16 sm:py-20 lg:py-32 relative overflow-hidden">
       {/* Background décoratif */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-gradient-to-r from-[#2563EB]/5 to-[#22C55E]/5 rounded-full blur-3xl" />
