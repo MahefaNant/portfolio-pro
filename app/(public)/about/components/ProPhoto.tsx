@@ -67,6 +67,7 @@ export function ProPhoto() {
 
   return (
     <section
+      id="pro-photo"
       ref={ref}
       className="py-16 sm:py-20 lg:py-24 relative overflow-hidden"
     >

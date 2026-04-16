@@ -166,7 +166,10 @@ export function Bio() {
   const t = useTranslations("About.Bio");
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 relative overflow-hidden">
+    <section
+      id="bio"
+      className="py-16 sm:py-20 lg:py-24 relative overflow-hidden"
+    >
       {/* Background décoratif */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#2563EB]/5 rounded-full blur-3xl" />
