@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUp, Clock, Heart, Mail, MapPin, Sparkles } from "lucide-react";
+import { ArrowUp, Clock, Heart, Mail, MapPin } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -69,7 +69,18 @@ export function Footer() {
             <div className="space-y-4">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2563EB] to-[#1E3A8A] flex items-center justify-center">
-                  <Sparkles className="h-4 w-4 text-white" />
+                  {/* <Image
+                    src={
+                      mounted && resolvedTheme === "dark"
+                        ? "https://res.cloudinary.com/dsggicjk3/image/upload/v1776416249/M-light-circle_f3psdf.png"
+                        : "https://res.cloudinary.com/dsggicjk3/image/upload/v1776424985/M-dark-circle_immpov.png"
+                    }
+                    alt="Mahefa Logo"
+                    fill
+                    className="object-contain transition-transform group-hover:scale-105"
+                    priority
+                    sizes="(max-width: 1024px) 32px, 40px"
+                  /> */}
                 </div>
                 <span className="font-bold text-lg bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
                   {footerData.name}

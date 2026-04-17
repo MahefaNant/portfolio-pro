@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 
 import { LanguageToggle } from "@/app/components/LanguageToggle";
 import { ModeToggle } from "@/app/components/ModeToggle";
+import { useLogoSwitch } from "@/app/hooks/useLogoSwitch";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -29,8 +30,9 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const t = useTranslations("navigation");
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const { logoDark, logoLight } = useLogoSwitch();
 
   useEffect(() => {
     setMounted(true);
@@ -69,13 +71,13 @@ export function Navbar() {
               <div className="relative w-8 h-8 lg:w-10 lg:h-10">
                 <Image
                   src={
-                    "https://res.cloudinary.com/dsggicjk3/image/upload/v1776146660/mahefa-logo_hkp6ex.png"
+                    mounted && resolvedTheme === "dark" ? logoDark : logoLight
                   }
                   alt="Mahefa Logo"
                   fill
                   className="object-contain transition-transform group-hover:scale-105"
                   priority
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  sizes="(max-width: 1024px) 32px, 40px"
                 />
               </div>
               <span className="font-bold text-lg lg:text-xl bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 bg-clip-text text-transparent">

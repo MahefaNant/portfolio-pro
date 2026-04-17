@@ -60,7 +60,7 @@ export function MouseGradient({
 
       {/* Texture de grain optionnelle */}
       {showGrain && (
-        <div className="fixed inset-0 pointer-events-none z-30 opacity-[0.015] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+        <div className="fixed inset-0 pointer-events-none z-30 opacity-[0.015] mix-blend-overlay" />
       )}
     </>
   );
