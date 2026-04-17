@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import { ArrowUp, Clock, Heart, Mail, MapPin } from "lucide-react";
@@ -5,8 +6,12 @@ import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { useLogoSwitch } from "@/app/hooks/useLogoSwitch";
 import { Button } from "@/components/ui/button";
 import { IconRenderer } from "@/components/ui/icon-renderer";
+import { useTheme } from "next-themes";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const footerData = {
   name: "Mahefa",
@@ -50,9 +55,17 @@ export function Footer() {
   const t = useTranslations("navigation.Footer");
   const locale = useLocale();
 
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  const { logoDark, logoLight } = useLogoSwitch();
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <footer className="relative mt-auto bg-gradient-to-b from-gray-50 to-white dark:from-[#0B0F1A] dark:to-[#0B0F1A] border-t border-gray-200 dark:border-[#1F2937]">
@@ -68,19 +81,17 @@ export function Footer() {
             {/* Column 1 - Brand */}
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#2563EB] to-[#1E3A8A] flex items-center justify-center">
-                  {/* <Image
+                <div className="relative w-8 h-8 rounded-lg bg-gradient-to-br transparent">
+                  <Image
                     src={
-                      mounted && resolvedTheme === "dark"
-                        ? "https://res.cloudinary.com/dsggicjk3/image/upload/v1776416249/M-light-circle_f3psdf.png"
-                        : "https://res.cloudinary.com/dsggicjk3/image/upload/v1776424985/M-dark-circle_immpov.png"
+                      mounted && resolvedTheme === "dark" ? logoDark : logoLight
                     }
                     alt="Mahefa Logo"
                     fill
                     className="object-contain transition-transform group-hover:scale-105"
                     priority
                     sizes="(max-width: 1024px) 32px, 40px"
-                  /> */}
+                  />
                 </div>
                 <span className="font-bold text-lg bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
                   {footerData.name}
