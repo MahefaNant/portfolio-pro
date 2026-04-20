@@ -20,7 +20,7 @@ const statsData = {
       color: "#2563EB", //static
     },
     {
-      value: 4,
+      value: 2,
       suffix: "+", //static
       labelFr: "Années d'expérience", //static
       labelEn: "Years experience", //static
@@ -28,11 +28,11 @@ const statsData = {
       color: "#22C55E", //static
     },
     {
-      value: 15,
+      value: 6,
       suffix: "+", //static
-      labelFr: "Clients satisfaits", //static
-      labelEn: "Happy clients", //static
-      icon: "Users", //static
+      labelFr: "Année dans le dev", //static
+      labelEn: "Year in the dev", //static
+      icon: "Calendar", //static
       color: "#A855F7", //static
     },
     {
@@ -172,7 +172,8 @@ export function Stats() {
   const ref = useRef(null);
 
   return (
-    <section id="stats"
+    <section
+      id="stats"
       ref={ref}
       className="py-16 sm:py-20 lg:py-24 relative overflow-hidden"
     >

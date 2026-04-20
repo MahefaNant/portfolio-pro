@@ -5,11 +5,11 @@ import {
   ArrowRight,
   ChevronLeft,
   ChevronRight,
-  Code2,
   ExternalLink,
   Github,
   Sparkles,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
@@ -18,68 +18,81 @@ import { Button } from "@/components/ui/button";
 import { CardContent } from "@/components/ui/card";
 import { useLocale, useTranslations } from "next-intl";
 
+interface IProject {
+  id: string;
+  titleFr: string;
+  titleEn: string;
+  descriptionFr: string;
+  descriptionEn: string;
+  imageUrl?: string | null;
+  technologies: string[];
+  githubUrl?: string | null;
+  liveUrl?: string | null;
+  category: string;
+}
+
 // Données temporaires
-const featuredProjectsData = {
+const featuredProjectsData: { projects: IProject[] } = {
   projects: [
     {
       id: "1",
-      titleFr: "Plateforme E-commerce Next.js",
-      titleEn: "E-commerce Platform Next.js",
+      titleFr: "Plateforme E-commerce E-vidy",
+      titleEn: "E-commerce Platform E-vidy",
       descriptionFr:
-        "Plateforme e-commerce complète avec panier, paiement Stripe, dashboard admin et système de notation.",
+        "Plateforme e-commerce complète avec panier, paiement Stripe, dashboard admin, fournisseurs, livreurs et système de notation.",
       descriptionEn:
-        "Complete e-commerce platform with cart, Stripe payment, admin dashboard and rating system.",
-      imageUrl: "https://placehold.co/600x400/1E3A8A/FFFFFF?text=E-commerce",
+        "Complete e-commerce platform with cart, Stripe payment, admin dashboard, suppliers, delivery drivers and rating system.",
+      imageUrl:
+        "https://res.cloudinary.com/dsggicjk3/image/upload/v1776697999/market_ejskdp.jpg",
       technologies: [
-        "Next.js",
+        "Laravel",
+        "PHP",
+        "React.js",
         "TypeScript",
-        "Tailwind",
-        "Stripe",
+        "PlanetHoster",
+        "Docker",
         "PostgreSQL",
       ],
-      githubUrl: "https://github.com/mahefa/ecommerce",
-      liveUrl: "https://ecommerce-demo.vercel.app",
+      githubUrl: null,
+      liveUrl: null,
       category: "fullstack",
     },
     {
       id: "2",
-      titleFr: "Dashboard Analytics SaaS",
-      titleEn: "Dashboard Analytics SaaS",
+      titleFr: "Econolink",
+      titleEn: "Econolink",
       descriptionFr:
-        "Dashboard analytics temps réel avec graphiques interactifs, export PDF et webhooks.",
+        "EconoLink est une application moderne de finances personnelles qui fonctionne sur le web et sur mobile, permettant aux utilisateurs de gérer leurs comptes, de suivre leurs transactions et de surveiller leurs budgets avec un support hors ligne et une expérience utilisateur fluide.",
       descriptionEn:
-        "Real-time analytics dashboard with interactive charts, PDF export and webhooks.",
-      imageUrl: "https://placehold.co/600x400/2563EB/FFFFFF?text=Dashboard",
-      technologies: ["React", "Recharts", "Node.js", "WebSocket", "Redis"],
-      githubUrl: "https://github.com/mahefa/dashboard",
-      liveUrl: "https://dashboard-demo.vercel.app",
-      category: "frontend",
+        "EconoLink is a modern personal finance app that works on web and mobile, allowing users to manage accounts, track transactions, and monitor budgets with offline support and a smooth user experience.",
+      imageUrl:
+        "https://res.cloudinary.com/dsggicjk3/image/upload/v1776705378/Econolink_czedv7.jpg",
+      technologies: ["NestJs", "TypeScript", "NextJs", "PostgreSQL"],
+      githubUrl: "https://github.com/MahefaNant/EconoLink",
+      liveUrl: "https://econolink-desktop.vercel.app/",
+      category: "fullstack",
     },
     {
       id: "3",
-      titleFr: "API REST Laravel + Documentation",
-      titleEn: "Laravel API + Documentation",
+      titleFr: "Revolve",
+      titleEn: "Revolve",
       descriptionFr:
-        "API REST complète avec authentification JWT, rate limiting, documentation Swagger et tests unitaires.",
+        "Revolve est une plateforme de trading moderne qui propose une interface simple et rapide pour investir sur différents marchés financiers, avec une expérience fluide et accessible en ligne.",
       descriptionEn:
-        "Complete REST API with JWT authentication, rate limiting, Swagger documentation and unit tests.",
-      imageUrl: "https://placehold.co/600x400/FF2D20/FFFFFF?text=Laravel+API",
-      technologies: ["Laravel", "PHP", "MySQL", "Swagger", "JWT"],
-      githubUrl: "https://github.com/mahefa/laravel-api",
-      liveUrl: "https://api-demo.vercel.app/docs",
-      category: "backend",
+        "Revolve is a modern trading platform that offers a simple and fast interface for investing in different financial markets, with a smooth and accessible online experience.",
+      imageUrl:
+        "https://res.cloudinary.com/dsggicjk3/image/upload/v1776708780/Revolve_t1posr.jpg",
+      technologies: ["Asp.Net", "C#", "SQLServer", "React", "Zustand"],
+      githubUrl: null,
+      liveUrl: null,
+      category: "fullstack",
     },
   ],
 };
 
 // Composant carte projet
-function ProjectCard({
-  project,
-  index,
-}: {
-  project: (typeof featuredProjectsData.projects)[0];
-  index: number;
-}) {
+function ProjectCard({ project, index }: { project: IProject; index: number }) {
+  const [isExpanded, setIsExpanded] = useState(false);
   const locale = useLocale();
   const t = useTranslations("Home.FeaturedProjects");
   const ref = useRef(null);
@@ -88,7 +101,7 @@ function ProjectCard({
   return (
     <div
       ref={ref}
-      className="group relative bg-white dark:bg-[#121826] rounded-xl overflow-hidden border border-gray-200 dark:border-[#1F2937] shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+      className="group relative bg-white dark:bg-[#121826] rounded-xl overflow-hidden border border-gray-200 dark:border-[#1F2937] shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full flex flex-col"
       style={{
         opacity: isInView ? 1 : 0,
         transform: isInView ? "translateY(0)" : "translateY(30px)",
@@ -97,37 +110,26 @@ function ProjectCard({
     >
       {/* Image du projet */}
       <div className="relative h-48 sm:h-56 overflow-hidden bg-linear-to-br from-[#2563EB]/20 to-[#1E3A8A]/20">
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-        <div className="absolute inset-0 flex items-center justify-center gap-3 z-20 opacity-0 group-hover:opacity-100 transition-all duration-300">
-          {project.githubUrl && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 bg-white/90 dark:bg-[#0B0F1A]/90 rounded-full hover:bg-white dark:hover:bg-[#0B0F1A] hover:scale-110 transition-all"
-              aria-label="GitHub"
-            >
-              <Github className="h-5 w-5 text-gray-800 dark:text-white" />
-            </a>
-          )}
-          {project.liveUrl && (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 bg-[#2563EB] rounded-full hover:bg-[#3B82F6] hover:scale-110 transition-all"
-              aria-label="Live demo"
-            >
-              <ExternalLink className="h-5 w-5 text-white" />
-            </a>
-          )}
-        </div>
-        <div className="w-full h-full bg-linear-to-br from-[#2563EB] to-[#1E3A8A] flex items-center justify-center">
-          <Code2 className="h-16 w-16 text-white/20" />
-        </div>
+        {project.imageUrl ? (
+          <Image
+            src={project.imageUrl}
+            alt={locale === "fr" ? project.titleFr : project.titleEn}
+            fill
+            unoptimized
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        ) : (
+          <Image
+            src={`https://placehold.co/600x400/2563EB/FFFFFF?text=${project.titleEn}`}
+            alt={locale === "fr" ? project.titleFr : project.titleEn}
+            fill
+            unoptimized
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+        )}
       </div>
 
-      <CardContent className="p-5 sm:p-6">
+      <CardContent className="p-5 sm:p-6 flex-1 flex flex-col">
         {/* Catégorie */}
         <div className="mb-3">
           <Badge
@@ -144,13 +146,26 @@ function ProjectCard({
         </h3>
 
         {/* Description */}
-        <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
-          {locale === "fr" ? project.descriptionFr : project.descriptionEn}
-        </p>
+        <div className="flex-1 flex flex-col">
+          <p
+            className={`text-sm text-gray-600 dark:text-gray-400 ${isExpanded ? "" : "line-clamp-3"}`}
+          >
+            {locale === "fr" ? project.descriptionFr : project.descriptionEn}
+          </p>
+          {(locale === "fr" ? project.descriptionFr : project.descriptionEn)
+            .length > 100 && (
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="text-xs font-semibold text-[#2563EB] dark:text-[#3B82F6] hover:underline mt-1 mb-4 text-left"
+            >
+              {isExpanded ? t("readLess") : t("readMore")}
+            </button>
+          )}
+        </div>
 
         {/* Technologies */}
         <div className="flex flex-wrap gap-2 mb-4">
-          {project.technologies.slice(0, 4).map((tech) => (
+          {project.technologies.slice(0, 8).map((tech) => (
             <Badge
               key={tech}
               variant="outline"
@@ -159,21 +174,61 @@ function ProjectCard({
               {tech}
             </Badge>
           ))}
-          {project.technologies.length > 4 && (
+          {project.technologies.length > 8 && (
             <Badge variant="outline" className="text-xs">
-              +{project.technologies.length - 4}
+              +{project.technologies.length - 8}
             </Badge>
           )}
         </div>
 
-        {/* Lien voir plus */}
-        <Link
-          href={`/projects/${project.id}`}
-          className="inline-flex items-center gap-1 text-sm font-medium text-[#2563EB] dark:text-[#3B82F6] hover:gap-2 transition-all"
-        >
-          {t("seeProjects")}
-          <ArrowRight className="h-4 w-4" />
-        </Link>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-auto pt-4 border-t border-gray-100 dark:border-gray-800/60">
+          <div className="flex flex-wrap items-center gap-2">
+            {project.githubUrl ? (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-100 dark:bg-gray-800/50 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-800 transition-all text-xs font-medium text-gray-700 dark:text-gray-300"
+                aria-label="GitHub"
+              >
+                <Github className="h-3.5 w-3.5" />
+                Github
+              </a>
+            ) : (
+              <span className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 dark:bg-[#0B0F1A]/50 rounded-lg text-xs font-medium text-gray-400 dark:text-gray-500 cursor-not-allowed">
+                <Github className="h-3.5 w-3.5" />
+                Private
+              </span>
+            )}
+
+            {project.liveUrl ? (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-[#2563EB]/10 text-[#2563EB] dark:bg-[#3B82F6]/10 dark:text-[#3B82F6] rounded-lg hover:bg-[#2563EB]/20 dark:hover:bg-[#3B82F6]/20 transition-all text-xs font-medium"
+                aria-label="Live demo"
+              >
+                <ExternalLink className="h-3.5 w-3.5" />
+                See
+              </a>
+            ) : (
+              <span className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 dark:bg-[#0B0F1A]/50 rounded-lg text-xs font-medium text-gray-400 dark:text-gray-500 cursor-not-allowed">
+                <ExternalLink className="h-3.5 w-3.5" />
+                Private
+              </span>
+            )}
+          </div>
+
+          {/* Lien voir plus */}
+          <Link
+            href={`/projects/${project.id}`}
+            className="inline-flex items-center gap-1 text-sm font-medium text-[#2563EB] dark:text-[#3B82F6] hover:gap-2 transition-all shrink-0"
+          >
+            {t("seeProjects")}
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
       </CardContent>
     </div>
   );

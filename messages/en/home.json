@@ -16,13 +16,15 @@
     },
     "Skills": {
       "title": "My Tech Stack",
-      "subtitle": "Tools and technologies I use daily",
-      "footer": "Always learning • New technologies every day"
+      "subtitle": "Tools and technologies",
+      "footer": "Always learning • I adapt easily to new tools and technologies"
     },
     "FeaturedProjects": {
       "title": "Featured Projects",
       "subtitle": "Some of my proudest work",
-      "seeProjects": "See all projects"
+      "seeProjects": "See all projects",
+      "readMore": "Read more",
+      "readLess": "Read less"
     },
     "Testimonials": {
       "title": "Testimonials",

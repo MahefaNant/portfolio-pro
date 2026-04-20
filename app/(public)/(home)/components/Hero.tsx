@@ -35,7 +35,14 @@ const heroData = {
       labelEn: "Year in the dev",
     },
   ],
-  techStack: ["Next.js", "Nest.js", "Laravel", ".NET", "Shopify"],
+  techStack: [
+    "Fullstack",
+    "Nest.js",
+    "Next.js",
+    "React Native",
+    "Laravel",
+    ".NET",
+  ],
 };
 
 export function Hero() {
@@ -229,7 +236,9 @@ export function Hero() {
                 <div className="flex items-center gap-2 mb-4">
                   <Terminal className="h-5 w-5 text-[#2563EB]" />
                   <h3 className="font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wider text-xs">
-                    {locale === "fr" ? "Stack Technique" : "Tech Stack"}
+                    {locale === "fr"
+                      ? "Expertise Technique"
+                      : "Technical Expertise"}
                   </h3>
                 </div>
 

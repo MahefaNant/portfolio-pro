@@ -18,10 +18,12 @@ const skillsData = {
       nameEn: "Backend",
       icon: "Server",
       skills: [
-        { name: "Node.js", level: 80, color: "#339933", years: 3 },
-        { name: "Laravel", level: 75, color: "#FF2D20", years: 2 },
-        { name: "Python", level: 70, color: "#3776AB", years: 2 },
-        { name: "PostgreSQL", level: 80, color: "#4169E1", years: 3 },
+        { name: "Nest.js", icon: "NestJS", level: 80, color: "#339933" },
+        { name: "Express.js", icon: "ExpressJS", level: 80, color: "#339933" },
+        { name: "Laravel", icon: "Laravel", level: 90, color: "#FF2D20" },
+        { name: "Python", icon: "Python", level: 50, color: "#3776AB" },
+        { name: "PostgreSQL", icon: "PostgreSQL", level: 80, color: "#4169E1" },
+        { name: "MySQL", icon: "MySQL", level: 80, color: "#4169E1" },
       ],
     },
     {
@@ -30,24 +32,28 @@ const skillsData = {
       nameEn: "Frontend",
       icon: "Code2",
       skills: [
-        { name: "Next.js", level: 90, color: "#000000", years: 3 },
-        { name: "React", level: 85, color: "#61DAFB", years: 4 },
-        { name: "TypeScript", level: 85, color: "#3178C6", years: 3 },
-        { name: "Tailwind CSS", level: 90, color: "#06B6D4", years: 3 },
-        { name: "Shadcn/ui", level: 85, color: "#FFFFFF", years: 2 },
+        { name: "Next.js", icon: "NextJS", level: 90, color: "#000000" },
+        { name: "React", icon: "React", level: 85, color: "#61DAFB" },
+        { name: "TypeScript", icon: "TypeScript", level: 85, color: "#3178C6" },
+        { name: "Shopify", icon: "Shopify", level: 60, color: "#3178C6" },
+        {
+          name: "Tailwind CSS",
+          icon: "TailwindCSS",
+          level: 90,
+          color: "#06B6D4",
+        },
       ],
     },
 
     {
       id: "devops",
-      nameFr: "DevOps",
-      nameEn: "DevOps",
+      nameFr: "DevOps (CI/CD)",
+      nameEn: "DevOps (CI/CD)",
       icon: "Cloud",
       skills: [
-        { name: "Docker", level: 75, color: "#2496ED", years: 2 },
-        { name: "Git/GitHub", level: 90, color: "#F05032", years: 4 },
-        { name: "Vercel", level: 85, color: "#000000", years: 3 },
-        { name: "Supabase", level: 80, color: "#3ECF8E", years: 2 },
+        { name: "Git/GitHub", icon: "Github", level: 90, color: "#F05032" },
+        { name: "Gitlab", icon: "Gitlab", level: 90, color: "#F05032" },
+        { name: "Docker", icon: "Docker", level: 75, color: "#2496ED" },
       ],
     },
   ],
@@ -58,13 +64,13 @@ function SkillBar({
   name,
   level,
   color,
-  years,
   isInView,
+  icon,
 }: {
   name: string;
   level: number;
   color: string;
-  years: number;
+  icon: string;
   isInView: boolean;
 }) {
   const locale = useLocale();
@@ -81,22 +87,10 @@ function SkillBar({
     <div className="space-y-2">
       <div className="flex justify-between items-center">
         <div className="flex flex-wrap items-center gap-2">
+          <IconRenderer name={icon} className="h-4 w-4 sm:h-5 sm:w-5" />
           <span className="font-medium text-gray-700 dark:text-gray-300 text-sm sm:text-base">
             {name}
           </span>
-          <Badge
-            variant="outline"
-            className="text-[10px] sm:text-xs px-1.5 sm:px-2"
-          >
-            {years}{" "}
-            {years > 1
-              ? locale === "fr"
-                ? "ans"
-                : "years"
-              : locale === "fr"
-                ? "an"
-                : "year"}
-          </Badge>
         </div>
         <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-mono">
           {width}%
@@ -190,7 +184,8 @@ export function Skills() {
   };
 
   return (
-    <section id="skills"
+    <section
+      id="skills"
       ref={ref}
       className="py-16 sm:py-20 lg:py-32 relative overflow-hidden"
     >
@@ -310,8 +305,8 @@ export function Skills() {
                         name={skill.name}
                         level={skill.level}
                         color={skill.color}
-                        years={skill.years}
                         isInView={isInView}
+                        icon={skill.icon}
                       />
                     ))}
                 </div>
@@ -325,8 +320,8 @@ export function Skills() {
                         name={skill.name}
                         level={skill.level}
                         color={skill.color}
-                        years={skill.years}
                         isInView={isInView}
+                        icon={skill.icon}
                       />
                     ))}
                 </div>
@@ -355,9 +350,11 @@ export function Skills() {
 
         {/* Footer */}
         <div className="text-center mt-8 sm:mt-10 lg:mt-12">
-          <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
-            {t("footer")}
-          </p>
+          <div className="animate-pulse ">
+            <p className="text-lg font-bold sm:text-lg text-green-500 dark:text-green-400">
+              {t("footer")}
+            </p>
+          </div>
         </div>
       </div>
     </section>
