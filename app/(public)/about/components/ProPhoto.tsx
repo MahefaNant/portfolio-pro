@@ -123,8 +123,9 @@ export function ProPhoto() {
                         src="https://res.cloudinary.com/dsggicjk3/image/upload/v1776150947/IMG_20260414_100931_wscp4z.png"
                         alt="Mahefa"
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         priority
-                        onLoadingComplete={() => setImageLoading(false)}
+                        onLoad={() => setImageLoading(false)}
                         className={`object-cover transition-all duration-700 ${
                           imageLoading
                             ? "opacity-0 scale-95"

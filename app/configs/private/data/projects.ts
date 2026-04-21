@@ -1,107 +1,75 @@
+import { IProject } from "@/app/(public)/(home)/components/FeaturedProjects";
+
+interface ICategory {
+  id: string;
+  nameFr: string;
+  nameEn: string;
+}
+
 // data/projects.ts
-export const projectsData = {
+export const projectsData: {
+  projects: IProject[];
+  categories: ICategory[];
+} = {
   projects: [
     {
       id: "1",
-      titleFr: "Plateforme E-commerce",
-      titleEn: "E-commerce Platform",
+      titleFr: "Plateforme E-commerce E-vidy",
+      titleEn: "E-commerce Platform E-vidy",
       descriptionFr:
-        "Plateforme e-commerce complète avec panier, paiement Stripe, dashboard admin et système de notation.",
+        "Plateforme e-commerce complète avec panier, paiement Stripe, dashboard admin, fournisseurs, livreurs et système de notation.",
       descriptionEn:
-        "Complete e-commerce platform with cart, Stripe payment, admin dashboard and rating system.",
-      imageUrl: "/images/projects/ecommerce.jpg",
-      category: "fullstack",
+        "Complete e-commerce platform with cart, Stripe payment, admin dashboard, suppliers, delivery drivers and rating system.",
+      imageUrl:
+        "https://res.cloudinary.com/dsggicjk3/image/upload/v1776697999/market_ejskdp.jpg",
       technologies: [
-        "Next.js",
+        "Laravel",
+        "PHP",
+        "React.js",
         "TypeScript",
-        "Tailwind",
-        "Stripe",
+        "PlanetHoster",
+        "Docker",
         "PostgreSQL",
       ],
-      githubUrl: "https://github.com/mahefa/ecommerce",
-      liveUrl: "https://ecommerce-demo.vercel.app",
+      githubUrl: null,
+      liveUrl: null,
+      category: "fullstack",
       featured: true,
-      date: "2024",
+      date: "2026",
     },
     {
       id: "2",
-      titleFr: "Dashboard Analytics",
-      titleEn: "Analytics Dashboard",
+      titleFr: "Econolink",
+      titleEn: "Econolink",
       descriptionFr:
-        "Dashboard analytics temps réel avec graphiques interactifs, export PDF et webhooks.",
+        "EconoLink est une application moderne de finances personnelles qui fonctionne sur le web et sur mobile, permettant aux utilisateurs de gérer leurs comptes, de suivre leurs transactions et de surveiller leurs budgets avec un support hors ligne et une expérience utilisateur fluide.",
       descriptionEn:
-        "Real-time analytics dashboard with interactive charts, PDF export and webhooks.",
-      imageUrl: "/images/projects/dashboard.jpg",
-      category: "frontend",
-      technologies: ["React", "Recharts", "Node.js", "WebSocket", "Redis"],
-      githubUrl: "https://github.com/mahefa/dashboard",
-      liveUrl: "https://dashboard-demo.vercel.app",
+        "EconoLink is a modern personal finance app that works on web and mobile, allowing users to manage accounts, track transactions, and monitor budgets with offline support and a smooth user experience.",
+      imageUrl:
+        "https://res.cloudinary.com/dsggicjk3/image/upload/v1776705378/Econolink_czedv7.jpg",
+      technologies: ["NestJs", "TypeScript", "NextJs", "PostgreSQL"],
+      githubUrl: "https://github.com/MahefaNant/EconoLink",
+      liveUrl: "https://econolink-desktop.vercel.app/",
+      category: "fullstack",
       featured: true,
-      date: "2024",
+      date: "2025",
     },
     {
       id: "3",
-      titleFr: "API REST Laravel",
-      titleEn: "Laravel REST API",
+      titleFr: "Revolve",
+      titleEn: "Revolve",
       descriptionFr:
-        "API REST complète avec authentification JWT, rate limiting, documentation Swagger et tests unitaires.",
+        "Revolve est une plateforme de trading moderne qui propose une interface simple et rapide pour investir sur différents marchés financiers, avec une expérience fluide et accessible en ligne.",
       descriptionEn:
-        "Complete REST API with JWT authentication, rate limiting, Swagger documentation and unit tests.",
-      imageUrl: "/images/projects/api.jpg",
-      category: "backend",
-      technologies: ["Laravel", "PHP", "MySQL", "Swagger", "JWT"],
-      githubUrl: "https://github.com/mahefa/laravel-api",
-      liveUrl: "https://api-demo.vercel.app/docs",
-      featured: true,
-      date: "2023",
-    },
-    {
-      id: "4",
-      titleFr: "Application Mobile React Native",
-      titleEn: "React Native Mobile Application",
-      descriptionFr:
-        "Application mobile de livraison avec géolocalisation, notifications push et paiement mobile.",
-      descriptionEn:
-        "Mobile delivery application with geolocation, push notifications and mobile payment.",
-      imageUrl: "/images/projects/mobile.jpg",
-      category: "mobile",
-      technologies: ["React Native", "Expo", "Node.js", "MongoDB", "Socket.io"],
-      githubUrl: "https://github.com/mahefa/mobile-app",
-      liveUrl: "https://expo.dev/mahefa/mobile-app",
-      featured: false,
-      date: "2024",
-    },
-    {
-      id: "5",
-      titleFr: "Portfolio 3D",
-      titleEn: "3D Portfolio",
-      descriptionFr:
-        "Portfolio interactif avec animations 3D, Three.js et expérience immersive.",
-      descriptionEn:
-        "Interactive portfolio with 3D animations, Three.js and immersive experience.",
-      imageUrl: "/images/projects/portfolio3d.jpg",
-      category: "frontend",
-      technologies: ["Three.js", "React", "GSAP", "Tailwind"],
-      githubUrl: "https://github.com/mahefa/portfolio-3d",
-      liveUrl: "https://portfolio-3d.vercel.app",
-      featured: false,
-      date: "2024",
-    },
-    {
-      id: "6",
-      titleFr: "Outil de Gestion de Projet",
-      titleEn: "Project Management Tool",
-      descriptionFr:
-        "Application de gestion de projet type Trello avec drag & drop, commentaires et notifications.",
-      descriptionEn:
-        "Project management application type Trello with drag & drop, comments and notifications.",
-      imageUrl: "/images/projects/pmtool.jpg",
+        "Revolve is a modern trading platform that offers a simple and fast interface for investing in different financial markets, with a smooth and accessible online experience.",
+      imageUrl:
+        "https://res.cloudinary.com/dsggicjk3/image/upload/v1776708780/Revolve_t1posr.jpg",
+      technologies: ["Asp.Net", "C#", "SQLServer", "React", "Zustand"],
+      githubUrl: null,
+      liveUrl: null,
       category: "fullstack",
-      technologies: ["Next.js", "Prisma", "PostgreSQL", "Tailwind", "NextAuth"],
-      githubUrl: "https://github.com/mahefa/pm-tool",
-      liveUrl: "https://pm-tool.vercel.app",
-      featured: false,
-      date: "2023",
+      featured: true,
+      date: "2026",
     },
   ],
   categories: [

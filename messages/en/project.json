@@ -6,7 +6,9 @@
     "try_again": "Try modifying your filters",
     "see_all": "See all projects",
     "Card": {
-      "see_project": "See project"
+      "see_project": "See project",
+      "readMore": "Read more",
+      "readLess": "Read less"
     }
   }
 }

@@ -7,6 +7,7 @@ import {
   ChevronRight,
   ExternalLink,
   Github,
+  Loader2,
   Sparkles,
 } from "lucide-react";
 import Image from "next/image";
@@ -18,17 +19,19 @@ import { Button } from "@/components/ui/button";
 import { CardContent } from "@/components/ui/card";
 import { useLocale, useTranslations } from "next-intl";
 
-interface IProject {
+export interface IProject {
   id: string;
   titleFr: string;
   titleEn: string;
   descriptionFr: string;
   descriptionEn: string;
   imageUrl?: string | null;
-  technologies: string[];
-  githubUrl?: string | null;
-  liveUrl?: string | null;
   category: string;
+  technologies: string[];
+  githubUrl: string | null;
+  liveUrl: string | null;
+  featured: boolean;
+  date: string;
 }
 
 // Données temporaires
@@ -56,6 +59,8 @@ const featuredProjectsData: { projects: IProject[] } = {
       githubUrl: null,
       liveUrl: null,
       category: "fullstack",
+      featured: true,
+      date: "2026",
     },
     {
       id: "2",
@@ -71,6 +76,8 @@ const featuredProjectsData: { projects: IProject[] } = {
       githubUrl: "https://github.com/MahefaNant/EconoLink",
       liveUrl: "https://econolink-desktop.vercel.app/",
       category: "fullstack",
+      featured: true,
+      date: "2025",
     },
     {
       id: "3",
@@ -86,6 +93,8 @@ const featuredProjectsData: { projects: IProject[] } = {
       githubUrl: null,
       liveUrl: null,
       category: "fullstack",
+      featured: true,
+      date: "2026",
     },
   ],
 };
@@ -93,6 +102,7 @@ const featuredProjectsData: { projects: IProject[] } = {
 // Composant carte projet
 function ProjectCard({ project, index }: { project: IProject; index: number }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [imageLoading, setImageLoading] = useState(true);
   const locale = useLocale();
   const t = useTranslations("Home.FeaturedProjects");
   const ref = useRef(null);
@@ -110,34 +120,50 @@ function ProjectCard({ project, index }: { project: IProject; index: number }) {
     >
       {/* Image du projet */}
       <div className="relative h-48 sm:h-56 overflow-hidden bg-linear-to-br from-[#2563EB]/20 to-[#1E3A8A]/20">
+        {imageLoading && (
+          <div className="absolute inset-0 z-10 bg-gray-100 dark:bg-[#0B0F1A] flex items-center justify-center">
+            <Loader2 className="h-6 w-6 text-[#2563EB] animate-spin" />
+          </div>
+        )}
         {project.imageUrl ? (
           <Image
             src={project.imageUrl}
             alt={locale === "fr" ? project.titleFr : project.titleEn}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             unoptimized
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            onLoad={() => setImageLoading(false)}
+            className={`object-cover group-hover:scale-105 transition-all duration-700 ${
+              imageLoading ? "scale-110 blur-xl" : "scale-100 blur-0"
+            }`}
           />
         ) : (
           <Image
             src={`https://placehold.co/600x400/2563EB/FFFFFF?text=${project.titleEn}`}
             alt={locale === "fr" ? project.titleFr : project.titleEn}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             unoptimized
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            onLoad={() => setImageLoading(false)}
+            className={`object-cover group-hover:scale-105 transition-all duration-700 ${
+              imageLoading ? "scale-110 blur-xl" : "scale-100 blur-0"
+            }`}
           />
         )}
       </div>
 
       <CardContent className="p-5 sm:p-6 flex-1 flex flex-col">
         {/* Catégorie */}
-        <div className="mb-3">
+        <div className="flex justify-between items-center mb-3">
           <Badge
             variant="secondary"
             className="text-xs bg-[#2563EB]/10 dark:bg-[#2563EB]/15 text-[#2563EB] dark:text-[#3B82F6]"
           >
             {project.category}
           </Badge>
+          <span className="text-xs text-gray-400 dark:text-gray-500">
+            {project.date}
+          </span>
         </div>
 
         {/* Titre */}

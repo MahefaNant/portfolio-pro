@@ -6,7 +6,9 @@
     "try_again": "Essayez de modifier vos filtres",
     "see_all": "Voir tous les projets",
     "Card": {
-      "see_project": "Voir le projet"
+      "see_project": "Voir le projet",
+      "readMore": "Lire la suite",
+      "readLess": "Voir moins"
     }
   }
 }
