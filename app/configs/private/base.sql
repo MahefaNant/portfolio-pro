@@ -227,7 +227,8 @@ CREATE INDEX idx_exp_order ON experiences (order_index);
 CREATE TABLE testimonials (
   id          UUID      PRIMARY KEY DEFAULT gen_random_uuid(),
   name        TEXT      NOT NULL,
-  role        TEXT,                           -- ex : "CTO @ Acme Inc."
+  role_fr      TEXT,                           -- ex : "CTO @ Acme Inc."
+  role_en     TEXT,                           -- ex : "CTO @ Acme Inc."
   content_fr  TEXT      NOT NULL,
   content_en  TEXT,
   avatar_url  TEXT,

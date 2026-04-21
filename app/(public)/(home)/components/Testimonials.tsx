@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import { useInView } from "framer-motion";
@@ -21,51 +22,55 @@ const testimonialsData = {
   testimonials: [
     {
       id: "1",
-      name: "Rakoto Jean",
-      role: "CTO, TechCorp Madagascar",
+      name: "Rakotomanga Titosy",
+      roleFr: "Développeur Full-Stack, Projet collaboratif",
+      roleEn: "Full-Stack Developer, Collaborative Project",
       avatar: "",
       contentFr:
-        "Travailler avec Mahefa a été une excellente expérience. Son expertise technique et sa capacité à résoudre des problèmes complexes m'ont impressionné. Il a livré le projet dans les délais avec une qualité exceptionnelle.",
+        "Travailler avec Mahefa a été une excellente expérience. Son expertise technique et sa capacité à résoudre des problèmes complexes m’ont vraiment impressionné. Il propose toujours des solutions pertinentes et contribue activement à la qualité du code et à la réussite du projet.",
       contentEn:
-        "Working with Mahefa was an excellent experience. His technical expertise and ability to solve complex problems impressed me. He delivered the project on time with exceptional quality.",
+        "Working with Mahefa was an excellent experience. His technical expertise and ability to solve complex problems really impressed me. He always proposes relevant solutions and actively contributes to code quality and project success.",
       rating: 5,
-      date: "2024-02-15",
+      date: "2026-01-15",
     },
     {
       id: "2",
-      name: "Raso Sarah",
-      role: "Lead Designer, Creative Studio",
+      name: "Private Client",
+      roleFr: "Entrepreneure / Cliente Freelance",
+      roleEn: "Entrepreneur / Freelance Client",
       avatar: "",
       contentFr:
-        "Mahefa est non seulement un développeur talentueux, mais aussi quelqu'un de très agréable avec qui collaborer. Il comprend parfaitement les besoins du design et les traduit en code propre et performant.",
+        "J’ai fait appel à Mahefa pour mon projet web et je suis très satisfait du résultat. Il a parfaitement compris mes besoins et a livré un travail de grande qualité dans les délais. La communication était fluide tout au long du projet. Je recommande vivement ses services.",
       contentEn:
-        "Mahefa is not only a talented developer, but also someone very pleasant to collaborate with. He perfectly understands design needs and translates them into clean and efficient code.",
+        "I hired Mahefa for my web project and I am very satisfied with the result. He perfectly understood my needs and delivered high-quality work on time. Communication was smooth throughout the project. I highly recommend his services.",
       rating: 5,
-      date: "2024-01-20",
+      date: "2025-06-01",
     },
     {
       id: "3",
-      name: "Andriamaro Tiana",
-      role: "Product Owner, Digital Solutions",
+      name: "Mamy",
+      roleFr: "CEO, Digital Solutions",
+      roleEn: "CEO, Digital Solutions",
       avatar: "",
       contentFr:
-        "Je recommande vivement Mahefa pour tout projet web. Il maîtrise parfaitement Next.js et l'écosystème moderne. Son professionnalisme et sa communication sont exemplaires.",
+        "Mahefa est un développeur talentueux avec une excellente maîtrise des technologies modernes comme Next.js. Son professionnalisme, sa rigueur et sa capacité à comprendre les enjeux business font de lui un atout précieux pour tout projet digital.",
       contentEn:
-        "I highly recommend Mahefa for any web project. He perfectly masters Next.js and the modern ecosystem. His professionalism and communication are exemplary.",
+        "Mahefa is a talented developer with an excellent command of modern technologies like Next.js. His professionalism, rigor, and ability to understand business challenges make him a valuable asset for any digital project.",
       rating: 5,
-      date: "2023-12-10",
+      date: "2026-03-15",
     },
     {
       id: "4",
-      name: "Ravelo Michael",
-      role: "CEO, Startup Innov",
+      name: "Tsito",
+      roleFr: "Développeur Front-End, Projet collaboratif",
+      roleEn: "Front-End Developer, Collaborative Project",
       avatar: "",
       contentFr:
-        "Mahefa a développé notre plateforme e-commerce de A à Z. Le résultat est bluffant : rapide, sécurisé et très intuitif. Un vrai partenaire technique de confiance.",
+        "J’ai collaboré avec Mahefa sur plusieurs projets où il intervenait sur la partie back-end. Son travail est structuré, fiable et bien pensé, ce qui rend l’intégration front-end fluide et efficace. Les APIs qu’il développe sont claires, performantes et faciles à exploiter côté interface. Travailler avec lui facilite vraiment la collaboration entre front-end et back-end.",
       contentEn:
-        "Mahefa developed our e-commerce platform from A to Z. The result is stunning: fast, secure, and very intuitive. A true trusted technical partner.",
+        "I collaborated with Mahefa on several projects where he worked on the back-end. His work is structured, reliable, and well-thought-out, which makes front-end integration smooth and efficient. The APIs he develops are clear, performant, and easy to use on the interface side. Working with him really facilitates collaboration between front-end and back-end.",
       rating: 5,
-      date: "2023-11-05",
+      date: "2024-11-05",
     },
   ],
 };
@@ -155,7 +160,7 @@ function TestimonialCard({
                 {testimonial.name}
               </h4>
               <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
-                {testimonial.role}
+                {locale === "fr" ? testimonial.roleFr : testimonial.roleEn}
               </p>
             </div>
           </div>
@@ -176,7 +181,6 @@ function TestimonialCard({
 
 export function Testimonials() {
   const t = useTranslations("Home.Testimonials");
-  const locale = useLocale();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const [isTablet, setIsTablet] = useState(false);
@@ -233,7 +237,10 @@ export function Testimonials() {
   )
     return null;
   return (
-    <section id="testimonials" className="py-16 sm:py-20 lg:py-32 relative overflow-hidden">
+    <section
+      id="testimonials"
+      className="py-16 sm:py-20 lg:py-32 relative overflow-hidden"
+    >
       {/* Background décoratif */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-linear-to-r from-[#2563EB]/5 to-[#22C55E]/5 rounded-full blur-3xl" />
