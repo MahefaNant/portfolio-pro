@@ -12,12 +12,12 @@ const ctaData = {
     "https://drive.google.com/file/d/1on59wEHX5xP5WZ3zDOMJ0dptDYhKXI__/view?usp=sharing",
   cvDirectUrl:
     "https://drive.google.com/uc?export=download&id=1on59wEHX5xP5WZ3zDOMJ0dptDYhKXI__",
-  cvVersion: "2024.04",
+  cvVersion: "2026.04",
   benefits: [
     {
       iconName: "Briefcase",
-      textFr: "5+ années d'expérience",
-      textEn: "5+ years of experience",
+      textFr: "6+ années en développement",
+      textEn: "6+ years in development",
     },
     {
       iconName: "Projector",
@@ -192,9 +192,9 @@ export function CtaCV() {
                 <div className="w-6 h-6 rounded-full bg-red-500 flex items-center justify-center text-[8px] text-white border-2 border-white dark:border-gray-900">
                   PDF
                 </div>
-                <div className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-[8px] text-white border-2 border-white dark:border-gray-900">
+                {/* <div className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center text-[8px] text-white border-2 border-white dark:border-gray-900">
                   DOC
-                </div>
+                </div> */}
               </div>
               <span>{t("availableFormats")}</span>
               <span className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-700" />

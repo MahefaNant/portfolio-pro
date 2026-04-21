@@ -37,8 +37,8 @@ const openToWorkData = {
     },
     {
       iconName: "Globe",
-      textFr: "Madagascar / France",
-      textEn: "Madagascar / France",
+      textFr: "Madagascar / Worldwide",
+      textEn: "Madagascar / Worldwide",
     },
   ],
   contactEmail: "mahefanant@gmail.com",
@@ -51,7 +51,8 @@ export function OpenToWork() {
   const isInView = useInView(ref, { once: true, amount: 0.2 });
 
   return (
-    <section id="available"
+    <section
+      id="available"
       ref={ref}
       className="py-16 sm:py-20 lg:py-24 relative overflow-hidden"
     >
