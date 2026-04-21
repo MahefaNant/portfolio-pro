@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
-import { ArrowUp, Clock, Heart, Mail, MapPin } from "lucide-react";
+import { ArrowUp, Clock, Code2, Mail, MapPin } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -24,20 +24,20 @@ const footerData = {
     {
       platform: "GitHub",
       icon: "Github",
-      url: "https://github.com/mahefa",
-      username: "@mahefa",
+      url: "https://github.com/mahefanant",
+      username: "@mahefanant",
     },
     {
       platform: "LinkedIn",
       icon: "Linkedin",
-      url: "https://linkedin.com/in/mahefa",
+      url: "https://www.linkedin.com/in/mahefa-nantenaina-419a98271",
       username: "mahefa",
     },
     {
-      platform: "Twitter",
-      icon: "Twitter",
-      url: "https://twitter.com/mahefa",
-      username: "@mahefa_dev",
+      platform: "Whatsapp",
+      icon: "Phone",
+      url: "https://wa.me/261345727690",
+      username: "+261 34 572 76 90",
     },
   ],
   navLinks: [
@@ -46,7 +46,15 @@ const footerData = {
     { href: "/projects", labelFr: "Projets", labelEn: "Projects" },
     { href: "/contact", labelFr: "Contact", labelEn: "Contact" },
   ],
-  techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Shadcn/ui"],
+  techStack: [
+    "Fullstack",
+    "NestJS",
+    "Next.js",
+    "TypeScript",
+    "React Native",
+    "Laravel",
+    ".NET",
+  ],
   currentYear: new Date().getFullYear(),
 };
 
@@ -199,7 +207,7 @@ export function Footer() {
             </p>
             <p className="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
               {t("madeWith")}
-              <Heart className="h-3 w-3 text-red-500 animate-pulse" />
+              <Code2 className="h-3 w-3 text-red-500 font-bold animate-pulse" />
               {t("to")}
             </p>
           </div>
