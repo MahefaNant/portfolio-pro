@@ -2,7 +2,6 @@
 
 import { useInView } from "framer-motion";
 import Image from "next/image";
-import Link from "next/link";
 import { useRef, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
@@ -154,13 +153,13 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               )}
             </div>
 
-            <Link
+            {/* <Link
               href={`/projects/${project.id}`}
               className="inline-flex items-center gap-1 text-sm font-medium text-[#2563EB] dark:text-[#3B82F6] hover:gap-2 transition-all shrink-0"
             >
               {t("see_project")}
               <IconRenderer name="ArrowRight" className="h-4 w-4" />
-            </Link>
+            </Link> */}
           </div>
         </CardContent>
       </Card>

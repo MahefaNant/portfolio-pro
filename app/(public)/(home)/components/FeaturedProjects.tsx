@@ -247,13 +247,13 @@ function ProjectCard({ project, index }: { project: IProject; index: number }) {
           </div>
 
           {/* Lien voir plus */}
-          <Link
+          {/* <Link
             href={`/projects/${project.id}`}
             className="inline-flex items-center gap-1 text-sm font-medium text-[#2563EB] dark:text-[#3B82F6] hover:gap-2 transition-all shrink-0"
           >
             {t("seeProjects")}
             <ArrowRight className="h-4 w-4" />
-          </Link>
+          </Link> */}
         </div>
       </CardContent>
     </div>
