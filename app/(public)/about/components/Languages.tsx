@@ -21,17 +21,17 @@ const languagesData = {
       flag: "🇫🇷",
       descriptionFr: "Langue de travail quotidienne",
       descriptionEn: "Daily working language",
-      certifications: ["DALF C1"],
+      certifications: [],
     },
     {
       nameFr: "Anglais",
       nameEn: "English",
-      levelFr: "Professionnel",
-      levelEn: "Professional",
+      levelFr: "Conversational",
+      levelEn: "Conversational",
       flag: "🇬🇧",
       descriptionFr: "Communication technique et réunions",
       descriptionEn: "Technical communication and meetings",
-      certifications: ["TOEIC 850"],
+      certifications: [],
     },
     {
       nameFr: "Malgache",
@@ -61,7 +61,7 @@ const getLevelColor = (level: string) => {
 };
 
 // Barre de niveau
-function LevelBar({ level }: { level: string }) {
+/* function LevelBar({ level }: { level: string }) {
   const getWidth = () => {
     switch (level) {
       case "Natal":
@@ -98,7 +98,7 @@ function LevelBar({ level }: { level: string }) {
       </div>
     </div>
   );
-}
+} */
 
 // Composant carte langue
 function LanguageCard({
@@ -144,7 +144,7 @@ function LanguageCard({
               <Badge className={getLevelColor(language.levelFr)}>
                 {locale === "fr" ? language.levelFr : language.levelEn}
               </Badge>
-              <LevelBar level={language.levelFr} />
+              {/* <LevelBar level={language.levelFr} /> */}
             </div>
           </div>
 

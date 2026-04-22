@@ -16,12 +16,12 @@ const proPhotoData = {
     en: "Fullstack Developer",
   },
   bio: {
-    fr: "Passionné par le développement web depuis plus de 4 ans, je crée des applications modernes, performantes et élégantes. Mon objectif est de transformer vos idées en solutions digitales innovantes.",
-    en: "Passionate about web development for over 4 years, I create modern, performant and elegant applications. My goal is to transform your ideas into innovative digital solutions.",
+    fr: "Passionné par le développement web depuis plus de 6 ans, je crée des applications modernes, performantes et élégantes. Mon objectif est de transformer vos idées en solutions digitales innovantes.",
+    en: "Passionate about web development for over 6 years, I create modern, performant and elegant applications. My goal is to transform your ideas into innovative digital solutions.",
   },
   stats: [
     {
-      value: "4+",
+      value: "2+",
       labelFr: "Années d'expérience",
       labelEn: "Years of experience",
       iconName: "Briefcase",
@@ -33,27 +33,27 @@ const proPhotoData = {
       iconName: "FolderCode",
     },
     {
-      value: "100%",
-      labelFr: "Satisfaction client",
-      labelEn: "Client satisfaction",
-      iconName: "Heart",
+      value: "6+",
+      labelFr: "Année dans le developpement",
+      labelEn: "Year in development",
+      iconName: "Calendar",
     },
   ],
   socialLinks: [
     {
       platform: "GitHub",
       iconName: "Github",
-      url: "https://github.com/mahefa",
+      url: "https://github.com/mahefanant",
     },
     {
       platform: "LinkedIn",
       iconName: "Linkedin",
-      url: "https://linkedin.com/in/mahefa",
+      url: "https://www.linkedin.com/in/mahefa-nantenaina-419a98271",
     },
     {
-      platform: "Twitter",
-      iconName: "Twitter",
-      url: "https://twitter.com/mahefa",
+      platform: "Whatssapp",
+      iconName: "PhoneCall",
+      url: "https://wa.me/261345727690",
     },
   ],
 };

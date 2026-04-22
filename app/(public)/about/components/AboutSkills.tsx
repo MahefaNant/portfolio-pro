@@ -3,7 +3,6 @@
 import { useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { IconRenderer } from "@/components/ui/icon-renderer";
 import { useTranslations } from "next-intl";
@@ -16,11 +15,11 @@ const skillsData = {
       iconName: "Code2",
       color: "#2563EB",
       skills: [
-        { name: "Next.js", level: 90, years: 3 },
-        { name: "React", level: 85, years: 4 },
-        { name: "TypeScript", level: 85, years: 3 },
-        { name: "Tailwind CSS", level: 90, years: 3 },
-        { name: "HTML/CSS", level: 95, years: 5 },
+        { name: "Next.js", level: 90 },
+        { name: "React", level: 85 },
+        { name: "TypeScript", level: 85 },
+        { name: "Tailwind CSS", level: 90 },
+        { name: "HTML/CSS", level: 95 },
       ],
     },
     {
@@ -28,10 +27,12 @@ const skillsData = {
       iconName: "Server",
       color: "#22C55E",
       skills: [
-        { name: "Node.js", level: 80, years: 3 },
-        { name: "Laravel", level: 75, years: 2 },
-        { name: "Python", level: 70, years: 2 },
-        { name: "PHP", level: 75, years: 3 },
+        { name: "Node.js", level: 80 },
+        { name: "Laravel", level: 75 },
+        { name: "Python", level: 60 },
+        { name: "PHP", level: 75 },
+        { name: ".NET", level: 70 },
+        { name: "Java", level: 65 },
       ],
     },
     {
@@ -39,10 +40,10 @@ const skillsData = {
       iconName: "Database",
       color: "#A855F7",
       skills: [
-        { name: "PostgreSQL", level: 80, years: 3 },
-        { name: "MySQL", level: 75, years: 3 },
-        { name: "MongoDB", level: 65, years: 1 },
-        { name: "Supabase", level: 80, years: 2 },
+        { name: "PostgreSQL", level: 80 },
+        { name: "MySQL", level: 75 },
+        { name: "MongoDB", level: 65 },
+        { name: "SQLite", level: 80 },
       ],
     },
     {
@@ -50,10 +51,9 @@ const skillsData = {
       iconName: "Cloud",
       color: "#F59E0B",
       skills: [
-        { name: "Git/GitHub", level: 90, years: 4 },
-        { name: "Docker", level: 70, years: 2 },
-        { name: "Vercel", level: 85, years: 3 },
-        { name: "CI/CD", level: 70, years: 2 },
+        { name: "Git/GitHub", level: 90 },
+        { name: "Docker", level: 70 },
+        { name: "CI/CD", level: 70 },
       ],
     },
   ],
@@ -63,14 +63,12 @@ const skillsData = {
 function SkillBar({
   name,
   level,
-  years,
   color,
   index,
   isInView,
 }: {
   name: string;
   level: number;
-  years: number;
   color: string;
   index: number;
   isInView: boolean;
@@ -92,9 +90,6 @@ function SkillBar({
           <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
             {name}
           </span>
-          <Badge variant="outline" className="text-[10px] px-1.5">
-            {years} {t("years")}
-          </Badge>
         </div>
         <span className="text-sm text-gray-500 dark:text-gray-400 font-mono">
           {width}%
@@ -167,7 +162,6 @@ function SkillCategory({
                 key={skill.name}
                 name={skill.name}
                 level={skill.level}
-                years={skill.years}
                 color={category.color}
                 index={idx}
                 isInView={categoryInView && isInView}

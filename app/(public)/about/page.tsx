@@ -8,14 +8,12 @@ import { Education } from "./components/Education";
 import { Languages } from "./components/Languages";
 import { Mindset } from "./components/Mindset";
 import { ProPhoto } from "./components/ProPhoto";
-import { Timeline } from "./components/Timeline";
 
 const SECTIONS = [
   { id: "pro-photo", labelFr: "Photo Pro", labelEn: "Pro Photo" },
   { id: "bio", labelFr: "Bio", labelEn: "Bio" },
   { id: "mindset", labelFr: "Mindset", labelEn: "Mindset" },
   { id: "skills", labelFr: "Compétences", labelEn: "Skills" },
-  { id: "timeline", labelFr: "Timeline", labelEn: "Timeline" },
   { id: "education", labelFr: "Education", labelEn: "Education" },
   { id: "languages", labelFr: "Languages", labelEn: "Languages" },
 ];
@@ -30,7 +28,6 @@ export default function About() {
       <Bio />
       <Mindset />
       <AboutSkills />
-      <Timeline />
       <Education />
       <Languages />
     </main>

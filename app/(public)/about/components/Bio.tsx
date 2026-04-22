@@ -12,12 +12,12 @@ import { useTranslations } from "use-intl";
 // Données temporaires
 const bioData = {
   description: {
-    fr: "Développeur Fullstack passionné depuis plus de 4 ans, je crée des applications web modernes et performantes. Mon parcours m'a permis de travailler sur des projets variés, allant du e-commerce aux dashboards analytics, en passant par des APIs RESTful.",
-    en: "Passionate Fullstack developer for over 4 years, I create modern and performant web applications. My journey has allowed me to work on various projects, from e-commerce to analytics dashboards, including RESTful APIs.",
+    fr: "Développeur Fullstack passionné depuis plus de 6 ans, je crée des applications web modernes et performantes. Mon parcours m'a permis de travailler sur des projets variés, allant du e-commerce aux dashboards analytics, en passant par des APIs RESTful.",
+    en: "Passionate Fullstack developer for over 6 years, I create modern and performant web applications. My journey has allowed me to work on various projects, from e-commerce to analytics dashboards, including RESTful APIs.",
   },
   personalInfo: {
     name: "Mahefa",
-    birthDate: "1998",
+    birthDate: "2002",
     location: "Antananarivo, Madagascar",
     email: "mahefanant@gmail.com",
     languages: [
@@ -30,8 +30,8 @@ const bioData = {
       {
         name_fr: "Anglais",
         name_en: "English",
-        level_fr: "Professionnel",
-        level_en: "Professional",
+        level_fr: "Conversationnel",
+        level_en: "Conversational",
       },
       {
         name_fr: "Malgache",
@@ -46,40 +46,72 @@ const bioData = {
 const journeyData = {
   experiences: [
     {
-      titleFr: "Développeur Fullstack Freelance",
-      titleEn: "Fullstack Developer Freelance",
+      titleFr: "Développeur Fullstack",
+      titleEn: "Fullstack Developer",
+      company: "Nir'Info",
+      location: "Antananarivo, Madagascar",
+      period: "2025 - Présent",
+      descriptionFr:
+        "En tant que Développeur Fullstack chez Nir'Info, je suis responsable du développement et de la maintenance d'applications web modernes et performantes. Je travaille sur des projets variés, allant du e-commerce aux dashboards analytics, en passant par des APIs RESTful.",
+      descriptionEn:
+        "As a Fullstack Developer at Nir'Info, I am responsible for the development and maintenance of modern and performant web applications. I work on various projects, from e-commerce to analytics dashboards, including RESTful APIs.",
+      technologies: [
+        "Laravel",
+        "Node.js",
+        "React.js",
+        "TypeScript",
+        "PlanetHoster",
+        "Docker",
+        "PostgreSQL",
+        "Mysql",
+        "CI/CD",
+        "Git",
+      ],
+    },
+    {
+      titleFr: "Freelance",
+      titleEn: "Freelance",
       company: "Indépendant",
-      location: "Remote",
-      period: "2022 - Présent",
+      location: "Antananarivo",
+      period: "2024 - 2025",
       descriptionFr:
-        "Développement d'applications web pour divers clients. Stack : Next.js, React, Node.js, Laravel, PostgreSQL.",
+        "En tant que Freelance, j'ai développé quelques applications web et mobiles pour différents clients. J'ai travaillé sur quelques projets, allant du e-commerce aux dashboards analytics, en passant par des APIs RESTful.",
       descriptionEn:
-        "Development of web applications for various clients. Stack : Next.js, React, Node.js, Laravel, PostgreSQL.",
-      technologies: ["Next.js", "React", "Node.js", "Laravel", "Tailwind"],
+        "As a Freelance, I developed several web and mobile applications for different clients. I worked on some projects, from e-commerce to analytics dashboards, including RESTful APIs.",
+      technologies: [
+        "NestJs",
+        "TypeScript",
+        "NextJs",
+        "PostgreSQL",
+        "React Native",
+        "MongoDB",
+        "React",
+        "PHP",
+        "Symfony",
+        "Docker",
+        "Linux",
+        "Git",
+      ],
     },
     {
-      titleFr: "Développeur Frontend",
-      titleEn: "Frontend Developer",
-      company: "TechCorp Madagascar",
+      titleFr: "Stagiaire",
+      titleEn: "Internship",
+      company: "Misaina Incorporation",
       location: "Antananarivo",
-      period: "2021 - 2022",
+      period: "2023-2024",
       descriptionFr:
-        "Création d'interfaces utilisateur modernes et responsives. Collaboration avec l'équipe design et backend.",
+        "Au sein de Misaina Incorporation, j'ai participé au développement d'une application e-commerce. J'ai travaillé sur différents aspects du projet, allant de l'interface utilisateur à la gestion de la base de données.",
       descriptionEn:
-        "Creation of modern and responsive user interfaces. Collaboration with the design and backend team.",
-      technologies: ["React", "TypeScript", "Tailwind", "Redux"],
-    },
-    {
-      titleFr: "Stagiaire Développeur Web",
-      titleEn: "Web Developer Intern",
-      company: "Digital Solutions",
-      location: "Antananarivo",
-      period: "2020 - 2021",
-      descriptionFr:
-        "Développement de sites vitrines et maintenance d'applications existantes.",
-      descriptionEn:
-        "Development of showcase sites and maintenance of existing applications.",
-      technologies: ["PHP", "JavaScript", "MySQL", "Bootstrap"],
+        "As a member of Misaina Incorporation, I participated in the development of an e-commerce application. I worked on different aspects of the project, from the user interface to the database management.",
+      technologies: [
+        "Asp.Net",
+        "C#",
+        "PostgreSQL",
+        "React",
+        "Git",
+        "Tranonkala",
+        "Linux",
+      ],
     },
   ],
 };
@@ -283,7 +315,7 @@ export function Bio() {
                             {locale === "fr" ? lang.name_fr : lang.name_en}
                           </span>
                           <span className="text-xs text-gray-500 dark:text-gray-400">
-                            {locale === "fr" ? lang.level_fr : lang.name_en}
+                            {locale === "fr" ? lang.level_fr : lang.level_en}
                           </span>
                         </div>
                       ))}
