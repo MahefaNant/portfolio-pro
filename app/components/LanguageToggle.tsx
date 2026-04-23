@@ -21,7 +21,7 @@ export function LanguageToggle() {
   }
 
   return (
-    <DropdownMenuContent align="end" className="w-36">
+    <DropdownMenuContent align="end" className="w-36" style={{ zIndex: 100 }}>
       <DropdownMenuItem
         onClick={() => onChange("en")}
         className="flex items-center justify-between cursor-pointer"

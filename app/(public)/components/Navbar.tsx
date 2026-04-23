@@ -48,18 +48,6 @@ export function Navbar() {
     setIsOpen(false);
   }, [pathname]);
 
-  // Empêcher le scroll horizontal
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
-
   const isActive = (href: string) => {
     if (href === "/") return pathname === href;
     return pathname.startsWith(href);
@@ -125,19 +113,21 @@ export function Navbar() {
               {mounted && <ModeToggle />}
 
               {/* Language Selector */}
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="rounded-full w-9 h-9 lg:w-10 lg:h-10 hover:bg-gray-100 dark:hover:bg-[#121826]"
-                  >
-                    <Languages className="h-4 w-4 lg:h-5 lg:w-5" />
-                    <span className="sr-only">Changer la langue</span>
-                  </Button>
-                </DropdownMenuTrigger>
-                <LanguageToggle />
-              </DropdownMenu>
+              <div className="relative">
+                <DropdownMenu modal={false}>
+                  <DropdownMenuTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="rounded-full w-9 h-9 lg:w-10 lg:h-10 hover:bg-gray-100 dark:hover:bg-[#121826]"
+                    >
+                      <Languages className="h-4 w-4 lg:h-5 lg:w-5" />
+                      <span className="sr-only">Changer la langue</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <LanguageToggle />
+                </DropdownMenu>
+              </div>
 
               {/* Mobile Menu Button */}
               <Button
@@ -159,9 +149,10 @@ export function Navbar() {
 
         {/* Mobile Navigation */}
         <div
-          className={`md:hidden fixed inset-x-0 top-16 bg-white dark:bg-[#0B0F1A] border-b border-gray-200 dark:border-[#1F2937] transition-all duration-300 overflow-hidden ${
+          className={`md:hidden fixed top-16 left-0 right-0 bg-white dark:bg-[#0B0F1A] border-b border-gray-200 dark:border-[#1F2937] transition-all duration-300 overflow-hidden ${
             isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
           }`}
+          style={{ zIndex: 40 }}
         >
           <div className="container mx-auto px-4 py-4 flex flex-col gap-2">
             {navLinks.map((link) => (

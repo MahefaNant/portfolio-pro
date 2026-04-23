@@ -76,7 +76,7 @@ export function Footer() {
   }, []);
 
   return (
-    <footer className="relative mt-auto bg-gradient-to-b from-gray-50 to-white dark:from-[#0B0F1A] dark:to-[#0B0F1A] border-t border-gray-200 dark:border-[#1F2937]">
+    <footer className="relative mt-auto bg-gradient-to-b from-gray-50 to-white dark:from-[#0B0F1A] dark:to-[#0B0F1A] border-t border-gray-200 dark:border-[#1F2937] overflow-hidden">
       {/* Background décoratif */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-[#2563EB]/5 rounded-full blur-3xl" />
@@ -89,7 +89,7 @@ export function Footer() {
             {/* Column 1 - Brand */}
             <div className="space-y-4">
               <div className="flex items-center gap-2">
-                <div className="relative w-8 h-8 rounded-lg bg-gradient-to-br transparent">
+                <div className="relative w-8 h-8">
                   <Image
                     src={
                       mounted && resolvedTheme === "dark" ? logoDark : logoLight
@@ -98,7 +98,7 @@ export function Footer() {
                     fill
                     className="object-contain transition-transform group-hover:scale-105"
                     priority
-                    sizes="(max-width: 1024px) 32px, 40px"
+                    sizes="32px"
                   />
                 </div>
                 <span className="font-bold text-lg bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
@@ -109,11 +109,11 @@ export function Footer() {
                 {locale === "fr" ? footerData.role_fr : footerData.role_en}
               </p>
               <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                <MapPin className="h-4 w-4" />
+                <MapPin className="h-4 w-4 flex-shrink-0" />
                 <span>{footerData.location}</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-                <Clock className="h-4 w-4" />
+                <Clock className="h-4 w-4 flex-shrink-0" />
                 <span>
                   {t("responseTime")} {footerData.responseTime}
                 </span>
@@ -122,7 +122,7 @@ export function Footer() {
                 href={`mailto:${footerData.email}`}
                 className="inline-flex items-center gap-2 text-sm text-[#2563EB] dark:text-[#3B82F6] hover:underline"
               >
-                <Mail className="h-4 w-4" />
+                <Mail className="h-4 w-4 flex-shrink-0" />
                 {footerData.email}
               </a>
             </div>
