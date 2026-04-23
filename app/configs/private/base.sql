@@ -165,7 +165,7 @@ CREATE TABLE technologies (
   name        TEXT      NOT NULL UNIQUE,
   icon        TEXT,                          -- emoji ou nom d'icône (ex : "react")
   type        TEXT,                          -- 'frontend' | 'backend' | 'devops' | 'database',
-  level       INT,                           -- niveau de maîtrise (0-100)
+  isStrength  BOOLEAN     NOT NULL DEFAULT FALSE,
   created_at  TIMESTAMP NOT NULL DEFAULT NOW()
 );
 

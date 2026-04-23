@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
-import { Globe, Menu, X } from "lucide-react";
+import { Languages, Menu, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import Image from "next/image";
@@ -47,6 +47,18 @@ export function Navbar() {
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
+
+  // Empêcher le scroll horizontal
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === href;
@@ -120,7 +132,7 @@ export function Navbar() {
                     size="icon"
                     className="rounded-full w-9 h-9 lg:w-10 lg:h-10 hover:bg-gray-100 dark:hover:bg-[#121826]"
                   >
-                    <Globe className="h-4 w-4 lg:h-5 lg:w-5" />
+                    <Languages className="h-4 w-4 lg:h-5 lg:w-5" />
                     <span className="sr-only">Changer la langue</span>
                   </Button>
                 </DropdownMenuTrigger>

@@ -1,149 +1,201 @@
 "use client";
 
 import { useInView } from "framer-motion";
-import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import { Award, ChevronLeft, ChevronRight, Sparkles, Star } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+import { TechIconRenderer } from "@/components/TechIconRenderer";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { IconRenderer } from "@/components/ui/icon-renderer";
 import { useLocale, useTranslations } from "next-intl";
 
-// Données temporaires (à remplacer par API)
+// Données
 const skillsData = {
   categories: [
     {
       id: "backend",
       nameFr: "Backend",
       nameEn: "Backend",
-      icon: "Server",
+      icon: "FaServer",
       skills: [
-        { name: "Nest.js", icon: "NestJS", level: 80, color: "#339933" },
-        { name: "Express.js", icon: "ExpressJS", level: 80, color: "#339933" },
-        { name: "Laravel", icon: "Laravel", level: 90, color: "#FF2D20" },
-        { name: "Python", icon: "Python", level: 50, color: "#3776AB" },
-        { name: "PostgreSQL", icon: "PostgreSQL", level: 80, color: "#4169E1" },
-        { name: "MySQL", icon: "MySQL", level: 80, color: "#4169E1" },
+        {
+          name: "Nest.js",
+          icon: "SiNestjs",
+          color: "#E0234E",
+          isStrength: true,
+        },
+        {
+          name: "Express.js",
+          icon: "SiExpress",
+          color: "#000000",
+          isStrength: false,
+        },
+        {
+          name: "Laravel",
+          icon: "SiLaravel",
+          color: "#FF2D20",
+          isStrength: true,
+        },
+        {
+          name: "Python",
+          icon: "SiPython",
+          color: "#3776AB",
+          isStrength: false,
+        },
+        {
+          name: "PostgreSQL",
+          icon: "SiPostgresql",
+          color: "#4169E1",
+          isStrength: true,
+        },
+        { name: "MySQL", icon: "SiMysql", color: "#4479A1", isStrength: false },
       ],
     },
     {
       id: "frontend",
       nameFr: "Frontend",
       nameEn: "Frontend",
-      icon: "Code2",
+      icon: "FaCode",
       skills: [
-        { name: "Next.js", icon: "NextJS", level: 90, color: "#000000" },
-        { name: "React", icon: "React", level: 85, color: "#61DAFB" },
-        { name: "TypeScript", icon: "TypeScript", level: 85, color: "#3178C6" },
-        { name: "Shopify", icon: "Shopify", level: 60, color: "#3178C6" },
+        {
+          name: "Next.js",
+          icon: "SiNextdotjs",
+          color: "#000000",
+          isStrength: true,
+        },
+        { name: "React", icon: "SiReact", color: "#61DAFB", isStrength: true },
+        {
+          name: "TypeScript",
+          icon: "SiTypescript",
+          color: "#3178C6",
+          isStrength: true,
+        },
+        {
+          name: "Shopify",
+          icon: "SiShopify",
+          color: "#96BF48",
+          isStrength: false,
+        },
         {
           name: "Tailwind CSS",
-          icon: "TailwindCSS",
-          level: 90,
+          icon: "SiTailwindcss",
           color: "#06B6D4",
+          isStrength: false,
         },
       ],
     },
-
     {
       id: "devops",
-      nameFr: "DevOps (CI/CD)",
-      nameEn: "DevOps (CI/CD)",
-      icon: "Cloud",
+      nameFr: "DevOps",
+      nameEn: "DevOps",
+      icon: "FaCloud",
       skills: [
-        { name: "Git/GitHub", icon: "Github", level: 90, color: "#F05032" },
-        { name: "Gitlab", icon: "Gitlab", level: 90, color: "#F05032" },
-        { name: "Docker", icon: "Docker", level: 75, color: "#2496ED" },
+        {
+          name: "Git/GitHub",
+          icon: "SiGithub",
+          color: "#F05032",
+          isStrength: true,
+        },
+        {
+          name: "Gitlab",
+          icon: "SiGitlab",
+          color: "#FC6D26",
+          isStrength: false,
+        },
+        {
+          name: "Docker",
+          icon: "SiDocker",
+          color: "#2496ED",
+          isStrength: false,
+        },
       ],
     },
   ],
 };
 
-// Composant pour une barre de progression animée
-function SkillBar({
-  name,
-  level,
-  color,
+// Carte skill - Design équilibré
+function SkillItem({
+  skill,
   isInView,
-  icon,
+  index,
 }: {
-  name: string;
-  level: number;
-  color: string;
-  icon: string;
+  skill: (typeof skillsData.categories)[0]["skills"][0];
   isInView: boolean;
+  index: number;
 }) {
-  const locale = useLocale();
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    if (isInView) {
-      const timer = setTimeout(() => setWidth(level), 200);
-      return () => clearTimeout(timer);
-    }
-  }, [isInView, level]);
-
   return (
-    <div className="space-y-2">
-      <div className="flex justify-between items-center">
-        <div className="flex flex-wrap items-center gap-2">
-          <IconRenderer name={icon} className="h-4 w-4 sm:h-5 sm:w-5" />
-          <span className="font-medium text-gray-700 dark:text-gray-300 text-sm sm:text-base">
-            {name}
-          </span>
-        </div>
-        <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-mono">
-          {width}%
-        </span>
-      </div>
-      <div className="h-2 bg-gray-100 dark:bg-[#121826] rounded-full overflow-hidden">
+    <div
+      className={`
+        group relative flex items-center gap-3 p-3.5 rounded-xl transition-all duration-300
+        hover:bg-gray-50 dark:hover:bg-[#1a2230] hover:shadow-md
+        ${
+          skill.isStrength
+            ? "bg-amber-50/50 dark:bg-amber-500/5 border border-amber-200/50 dark:border-amber-500/10"
+            : "border border-transparent hover:border-gray-200 dark:hover:border-gray-700"
+        }
+        transform transition-all duration-500
+        ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+      `}
+      style={{ transitionDelay: `${index * 100}ms` }}
+    >
+      {/* Icône avec badge point fort */}
+      <div className="relative flex-shrink-0">
         <div
-          className="h-full rounded-full transition-all duration-1000 ease-out"
-          style={{
-            width: `${width}%`,
-            backgroundColor: color,
-            boxShadow: isInView ? `0 0 8px ${color}80` : "none",
-          }}
-        />
+          className={`
+          w-11 h-11 rounded-xl flex items-center justify-center
+          transition-all duration-300 group-hover:scale-110
+          ${
+            skill.isStrength
+              ? "bg-white dark:bg-amber-500/10 shadow-md"
+              : "bg-white dark:bg-[#121826] shadow-sm"
+          }
+        `}
+        >
+          <TechIconRenderer
+            name={skill.icon}
+            className="h-6 w-6"
+            style={{ color: skill.color }}
+          />
+        </div>
+
+        {/* Badge étoile point fort */}
+        {skill.isStrength && (
+          <div className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-gradient-to-br from-amber-400 to-yellow-400 rounded-full flex items-center justify-center shadow-lg shadow-amber-400/30">
+            <Star className="h-3 w-3 text-white fill-white" />
+          </div>
+        )}
+      </div>
+
+      {/* Nom et infos */}
+      <div className="flex-1 min-w-0">
+        <h4 className="text-sm sm:text-base font-semibold text-gray-800 dark:text-white truncate mb-0.5">
+          {skill.name}
+        </h4>
+
+        {/* Indicateur de maîtrise */}
+        <div className="flex items-center gap-2">
+          <div className="flex gap-0.5">
+            {[...Array(5)].map((_, i) => (
+              <Star
+                key={i}
+                className={`h-3 w-3 ${
+                  skill.isStrength
+                    ? "text-amber-400 fill-amber-400"
+                    : i < 3
+                      ? "text-gray-300 dark:text-gray-600 fill-gray-300 dark:fill-gray-600"
+                      : "text-gray-200 dark:text-gray-700 fill-gray-200 dark:fill-gray-700"
+                }`}
+              />
+            ))}
+          </div>
+          {skill.isStrength && (
+            <span className="text-[11px] font-semibold text-amber-500">
+              Point fort
+            </span>
+          )}
+        </div>
       </div>
     </div>
-  );
-}
-
-// Composant bouton de tab (mobile-friendly)
-function TabButton({
-  category,
-  isActive,
-  onClick,
-}: {
-  category: (typeof skillsData.categories)[0];
-  isActive: boolean;
-  onClick: () => void;
-}) {
-  const locale = useLocale();
-  return (
-    <button
-      onClick={onClick}
-      className={`
-        flex items-center justify-center gap-2 px-3 sm:px-5 py-2.5 sm:py-3 rounded-xl
-        transition-all duration-300 cursor-pointer touch-manipulation
-        ${
-          isActive
-            ? "bg-[#2563EB] text-white shadow-lg shadow-[#2563EB]/30 scale-[1.02]"
-            : "bg-gray-100 dark:bg-[#121826] text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-[#1a2230] hover:scale-[1.01]"
-        }
-      `}
-      aria-pressed={isActive}
-      aria-label={`Tab ${locale === "fr" ? category.nameFr : category.nameEn}`}
-    >
-      <IconRenderer
-        name={category.icon}
-        className={`h-4 w-4 sm:h-5 sm:w-5 ${isActive ? "text-white" : ""}`}
-      />
-      <span className="text-sm sm:text-base font-medium">
-        {locale === "fr" ? category.nameFr : category.nameEn}
-      </span>
-    </button>
   );
 }
 
@@ -153,14 +205,11 @@ export function Skills() {
   const [activeTab, setActiveTab] = useState("backend");
   const [currentIndex, setCurrentIndex] = useState(0);
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
   const [isMobile, setIsMobile] = useState(false);
 
-  // Détecter mobile pour le carrousel
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
@@ -168,9 +217,10 @@ export function Skills() {
 
   const categories = skillsData.categories;
   const activeCategory = categories.find((c) => c.id === activeTab)!;
-  const skillsList = activeCategory.skills;
+  const strengthsCount = activeCategory.skills.filter(
+    (s) => s.isStrength,
+  ).length;
 
-  // Navigation carrousel mobile
   const nextTab = () => {
     const newIndex = (currentIndex + 1) % categories.length;
     setCurrentIndex(newIndex);
@@ -187,90 +237,96 @@ export function Skills() {
     <section
       id="skills"
       ref={ref}
-      className="py-16 sm:py-20 lg:py-32 relative overflow-hidden"
+      className="py-16 sm:py-20 lg:py-28 relative overflow-hidden"
     >
       {/* Background décoratif */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-[#2563EB]/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] bg-[#22C55E]/5 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[600px] h-[400px] sm:h-[600px] bg-[#2563EB]/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] bg-amber-400/5 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12 lg:mb-16">
+        <div className="text-center max-w-xl mx-auto mb-8 sm:mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#2563EB]/10 dark:bg-[#2563EB]/15 border border-[#2563EB]/20 mb-4">
-            <Sparkles className="h-3 w-3 sm:h-4 sm:w-4 text-[#2563EB]" />
-            <span className="text-[10px] sm:text-xs font-medium text-[#2563EB] dark:text-[#3B82F6] uppercase tracking-wider">
-              Expertise
-            </span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4">
-            <span className="bg-linear-to-br from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+            <Sparkles className="h-3.5 w-3.5 text-[#2563EB]" />
+            <span className="text-xs font-medium text-[#2563EB] dark:text-[#3B82F6] uppercase tracking-wider">
               {t("title")}
             </span>
-          </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-gray-600 dark:text-gray-400 px-4">
-            {t("subtitle")}
-          </p>
-        </div>
-
-        {/* Version Desktop : Tabs horizontales */}
-        <div className="hidden md:block max-w-3xl mx-auto mb-8">
-          <div className="flex justify-center gap-2">
-            {categories.map((category) => (
-              <TabButton
-                key={category.id}
-                category={category}
-                isActive={activeTab === category.id}
-                onClick={() => setActiveTab(category.id)}
-              />
-            ))}
           </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-3">
+            <span className="bg-gradient-to-br from-gray-900 to-gray-700 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+              {t("subtitle")}
+            </span>
+          </h2>
         </div>
 
-        {/* Version Mobile : Carrousel avec navigation */}
-        <div className="md:hidden mb-6">
-          <div className="flex items-center justify-between gap-3">
+        {/* Tabs Desktop */}
+        <div className="hidden md:flex justify-center gap-2 mb-8">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => {
+                setActiveTab(cat.id);
+                setCurrentIndex(categories.indexOf(cat));
+              }}
+              className={`
+                flex items-center gap-2.5 px-5 py-3 rounded-xl font-medium text-sm transition-all duration-300
+                ${
+                  activeTab === cat.id
+                    ? "bg-[#2563EB] text-white shadow-lg shadow-[#2563EB]/20 scale-[1.02]"
+                    : "bg-gray-100 dark:bg-[#121826] text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-[#1a2230] hover:scale-[1.01]"
+                }
+              `}
+            >
+              <TechIconRenderer
+                name={cat.icon}
+                className={`h-4 w-4 ${activeTab === cat.id ? "text-white" : ""}`}
+              />
+              <span>{locale === "fr" ? cat.nameFr : cat.nameEn}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Tabs Mobile */}
+        {isMobile && (
+          <div className="flex items-center gap-2 mb-4">
             <button
               onClick={prevTab}
-              className="p-2 rounded-full bg-gray-100 dark:bg-[#121826] active:bg-gray-200 dark:active:bg-[#1a2230] transition-colors cursor-pointer touch-manipulation"
-              aria-label="Onglet précédent"
+              className="p-2.5 rounded-full bg-gray-100 dark:bg-[#121826] active:bg-gray-200 dark:active:bg-[#1a2230] transition-colors touch-manipulation"
             >
               <ChevronLeft className="h-5 w-5 text-gray-600 dark:text-gray-400" />
             </button>
 
-            <div className="flex-1">
-              <div className="bg-gray-100 dark:bg-[#121826] rounded-xl p-1">
-                <div className="flex justify-between items-center px-4 py-2">
-                  <div className="flex items-center gap-2">
-                    <IconRenderer
-                      name={activeCategory.icon}
-                      className="h-5 w-5 text-[#2563EB]"
-                    />
-                    <span className="font-semibold text-base text-gray-800 dark:text-white">
-                      {locale === "fr"
-                        ? activeCategory.nameFr
-                        : activeCategory.nameEn}
-                    </span>
-                  </div>
-                  <Badge variant="secondary" className="text-xs">
-                    {currentIndex + 1} / {categories.length}
-                  </Badge>
-                </div>
+            <div className="flex-1 bg-gray-100 dark:bg-[#121826] rounded-xl px-4 py-3 flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <TechIconRenderer
+                  name={activeCategory.icon}
+                  className="h-5 w-5 text-[#2563EB]"
+                />
+                <span className="font-semibold text-sm">
+                  {locale === "fr"
+                    ? activeCategory.nameFr
+                    : activeCategory.nameEn}
+                </span>
               </div>
+              <Badge variant="secondary" className="text-[10px]">
+                {currentIndex + 1}/{categories.length}
+              </Badge>
             </div>
 
             <button
               onClick={nextTab}
-              className="p-2 rounded-full bg-gray-100 dark:bg-[#121826] active:bg-gray-200 dark:active:bg-[#1a2230] transition-colors cursor-pointer touch-manipulation"
-              aria-label="Next tab"
+              className="p-2.5 rounded-full bg-gray-100 dark:bg-[#121826] active:bg-gray-200 dark:active:bg-[#1a2230] transition-colors touch-manipulation"
             >
               <ChevronRight className="h-5 w-5 text-gray-600 dark:text-gray-400" />
             </button>
           </div>
+        )}
 
-          {/* Indicateurs de page */}
-          <div className="flex justify-center gap-1.5 mt-4">
+        {/* Indicateurs mobile */}
+        {isMobile && (
+          <div className="flex justify-center gap-1.5 mb-4">
             {categories.map((_, idx) => (
               <button
                 key={idx}
@@ -278,83 +334,94 @@ export function Skills() {
                   setCurrentIndex(idx);
                   setActiveTab(categories[idx].id);
                 }}
-                className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer touch-manipulation ${
+                className={`h-1.5 rounded-full transition-all duration-300 ${
                   currentIndex === idx
                     ? "w-6 bg-[#2563EB]"
                     : "w-1.5 bg-gray-300 dark:bg-gray-600"
                 }`}
-                aria-label={`Go to tab ${idx + 1}`}
               />
             ))}
           </div>
-        </div>
+        )}
 
-        {/* Contenu des skills */}
-        <div className="max-w-4xl mx-auto mt-6 sm:mt-8">
-          <Card className="bg-white/50 dark:bg-[#121826]/50 backdrop-blur-sm border border-gray-200 dark:border-[#1F2937] shadow-xl">
-            <CardContent className="p-4 sm:p-6 lg:p-8">
-              {/* Grille responsive : 1 colonne mobile, 2 colonnes desktop */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-                {/* Première colonne (moitié des skills) */}
-                <div className="space-y-5 sm:space-y-6">
-                  {skillsList
-                    .slice(0, Math.ceil(skillsList.length / 2))
-                    .map((skill, idx) => (
-                      <SkillBar
-                        key={skill.name}
-                        name={skill.name}
-                        level={skill.level}
-                        color={skill.color}
-                        isInView={isInView}
-                        icon={skill.icon}
-                      />
-                    ))}
+        {/* Skills Grid */}
+        <div className="max-w-3xl mx-auto">
+          <Card className="bg-white/60 dark:bg-[#121826]/60 backdrop-blur-sm border border-gray-200 dark:border-[#1F2937] shadow-xl overflow-hidden">
+            {/* Header card */}
+            <div className="px-5 sm:px-6 py-3.5 bg-gradient-to-r from-gray-50 to-amber-50/50 dark:from-[#0B0F1A] dark:to-amber-500/3 border-b border-gray-100 dark:border-gray-800">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2.5">
+                  <TechIconRenderer
+                    name={activeCategory.icon}
+                    className="h-4.5 w-4.5 text-[#2563EB]"
+                  />
+                  <span className="font-semibold text-sm text-gray-700 dark:text-gray-300">
+                    {activeCategory.skills.length} technologies
+                  </span>
                 </div>
-                {/* Deuxième colonne */}
-                <div className="space-y-5 sm:space-y-6">
-                  {skillsList
-                    .slice(Math.ceil(skillsList.length / 2))
-                    .map((skill, idx) => (
-                      <SkillBar
-                        key={skill.name}
-                        name={skill.name}
-                        level={skill.level}
-                        color={skill.color}
-                        isInView={isInView}
-                        icon={skill.icon}
-                      />
-                    ))}
-                </div>
+                {strengthsCount > 0 && (
+                  <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-amber-50 dark:bg-amber-500/5 border border-amber-200/50 dark:border-amber-500/10">
+                    <Award className="h-3.5 w-3.5 text-amber-500" />
+                    <span className="text-xs font-semibold text-amber-700 dark:text-amber-400">
+                      {strengthsCount} point{strengthsCount > 1 ? "s" : ""} fort
+                      {strengthsCount > 1 ? "s" : ""}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <CardContent className="p-4 sm:p-5">
+              {/* Liste complète des skills */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                {activeCategory.skills.map((skill, index) => (
+                  <SkillItem
+                    key={skill.name}
+                    skill={skill}
+                    isInView={isInView}
+                    index={index}
+                  />
+                ))}
               </div>
 
-              {/* Badges : wrap sur mobile */}
-              <div className="mt-8 sm:mt-10 pt-6 sm:pt-8 border-t border-gray-200 dark:border-[#1F2937]">
-                <div className="flex flex-wrap gap-2 sm:gap-3 justify-center">
-                  {skillsList.map((skill) => (
-                    <Badge
-                      key={skill.name}
-                      variant="secondary"
-                      className="px-2.5 sm:px-3 py-1 text-xs sm:text-sm text-black dark:text-white bg-gray-100 dark:bg-[#0B0F1A] hover:scale-105 transition-transform cursor-pointer touch-manipulation"
-                      style={{
-                        borderLeft: `3px solid ${skill.color}`,
-                      }}
-                    >
-                      {skill.name}
-                    </Badge>
-                  ))}
+              {/* Badges rapides */}
+              <div className="flex flex-wrap gap-1.5 mt-5 pt-4 border-t border-gray-100 dark:border-gray-800 justify-center">
+                {activeCategory.skills.map((skill) => (
+                  <Badge
+                    key={skill.name}
+                    className={`text-[11px] px-3 py-1.5 transition-all hover:scale-105 cursor-default
+                      ${
+                        skill.isStrength
+                          ? "bg-gradient-to-r from-amber-50 to-yellow-50 dark:from-amber-500/10 dark:to-yellow-500/10 text-amber-700 dark:text-amber-400 border border-amber-200/50 dark:border-amber-500/20 font-medium"
+                          : "bg-gray-50 dark:bg-[#0B0F1A] text-gray-600 dark:text-gray-400 border border-gray-100 dark:border-gray-800"
+                      }`}
+                  >
+                    <span className="flex items-center gap-1.5">
+                      <TechIconRenderer name={skill.icon} className="h-3 w-3" />
+                      <span className="font-medium">{skill.name}</span>
+                      {skill.isStrength && (
+                        <Star className="h-2.5 w-2.5 fill-amber-400 text-amber-400" />
+                      )}
+                    </span>
+                  </Badge>
+                ))}
+              </div>
+
+              {/* Légende */}
+              <div className="flex items-center justify-center gap-6 mt-4 pt-3 border-t border-gray-100 dark:border-gray-800">
+                <div className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
+                  <div className="w-4 h-4 bg-gradient-to-br from-amber-400 to-yellow-400 rounded-full flex items-center justify-center">
+                    <Star className="h-2.5 w-2.5 text-white fill-white" />
+                  </div>
+                  <span>Point fort</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
+                  <div className="w-4 h-4 rounded-full bg-gray-200 dark:bg-gray-700" />
+                  <span>En progression</span>
                 </div>
               </div>
             </CardContent>
           </Card>
-        </div>
-
-        {/* Footer */}
-        <div className="text-center mt-8 sm:mt-10 lg:mt-12">
-          <div className="animate-pulse ">
-            <p className="text-lg font-bold sm:text-lg text-green-500 dark:text-green-400">
-              {t("footer")}
-            </p>
-          </div>
         </div>
       </div>
     </section>
