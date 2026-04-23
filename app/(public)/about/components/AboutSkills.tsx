@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useInView } from "framer-motion";
@@ -8,7 +9,7 @@ import * as SiIcons from "react-icons/si";
 
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 // IconRenderer pour les logos tech
 export function TechIconRenderer({
@@ -205,6 +206,7 @@ function SkillItem({
   isInView: boolean;
   index: number;
 }) {
+  const locale = useLocale();
   return (
     <div
       className={`
@@ -272,7 +274,7 @@ function SkillItem({
           </div>
           {skill.isStrength && (
             <span className="text-[10px] font-semibold text-amber-500">
-              Point fort
+              {locale === "fr" ? "Point fort" : "Strength"}
             </span>
           )}
         </div>
@@ -384,6 +386,7 @@ export function AboutSkills() {
   const t = useTranslations("About.AboutSkills");
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const locale = useLocale();
 
   return (
     <section
@@ -441,11 +444,11 @@ export function AboutSkills() {
             <div className="w-3.5 h-3.5 bg-gradient-to-br from-amber-400 to-yellow-400 rounded-full flex items-center justify-center">
               <Star className="h-2 w-2 text-white fill-white" />
             </div>
-            <span>Point fort</span>
+            <span>{locale === "fr" ? "Point fort" : "Strength"}</span>
           </div>
           <div className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
             <div className="w-3.5 h-3.5 rounded-full bg-gray-200 dark:bg-gray-700" />
-            <span>En progression</span>
+            <span>{locale === "fr" ? "En progression" : "In progress"}</span>
           </div>
         </div>
 

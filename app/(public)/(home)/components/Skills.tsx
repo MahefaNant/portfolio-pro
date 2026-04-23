@@ -123,6 +123,7 @@ function SkillItem({
   isInView: boolean;
   index: number;
 }) {
+  const locale = useLocale();
   return (
     <div
       className={`
@@ -190,7 +191,7 @@ function SkillItem({
           </div>
           {skill.isStrength && (
             <span className="text-[11px] font-semibold text-amber-500">
-              Point fort
+              {locale === "fr" ? "Point fort" : "Strength"}
             </span>
           )}
         </div>
@@ -413,11 +414,13 @@ export function Skills() {
                   <div className="w-4 h-4 bg-gradient-to-br from-amber-400 to-yellow-400 rounded-full flex items-center justify-center">
                     <Star className="h-2.5 w-2.5 text-white fill-white" />
                   </div>
-                  <span>Point fort</span>
+                  <span>{locale === "fr" ? "Point fort" : "Strength"}</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-400">
                   <div className="w-4 h-4 rounded-full bg-gray-200 dark:bg-gray-700" />
-                  <span>En progression</span>
+                  <span>
+                    {locale === "fr" ? "En progression" : "In progress"}
+                  </span>
                 </div>
               </div>
             </CardContent>
