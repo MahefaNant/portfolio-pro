@@ -26,6 +26,7 @@ export const projectsData: {
         "Laravel",
         "PHP",
         "React.js",
+        "React Native",
         "TypeScript",
         "PlanetHoster",
         "Docker",
@@ -79,7 +80,8 @@ export const projectsData: {
         "Une application en ligne permettant d’écouter des radios en direct, ainsi que des podcasts à la demande, le tout accessible depuis n’importe quel appareil connecté.",
       descriptionEn:
         "An online application for listening to live radios and on-demand podcasts, accessible from any connected device.",
-      imageUrl: "",
+      imageUrl:
+        "https://res.cloudinary.com/dsggicjk3/image/upload/v1776929462/hopefy-play_rsprbz.png",
       technologies: [
         "React Native",
         "TypeScript",
@@ -103,7 +105,8 @@ export const projectsData: {
         "Une plateforme de gestion et d'échange immobilier, permettant aux particuliers et professionnels de louer, acheter ou vendre des biens immobiliers tels que des appartements, villas, maisons ou terrains.",
       descriptionEn:
         "A real estate management and exchange platform, allowing individuals and professionals to rent, buy or sell properties such as apartments, villas, houses or land.",
-      imageUrl: "",
+      imageUrl:
+        "https://res.cloudinary.com/dsggicjk3/image/upload/v1776931390/oasis_yqximv.jpg",
       technologies: ["NextJs", "TypeScript", "Docker", "MongoDB", "Github"],
       githubUrl: null,
       liveUrl: null,
@@ -119,7 +122,8 @@ export const projectsData: {
         "Plateforme e-commerce avec achat de vêtements, gestion des commandes, livraisons et dashboard admin complet.",
       descriptionEn:
         "E-commerce platform with clothing purchase, order management, deliveries and complete admin dashboard.",
-      imageUrl: "",
+      imageUrl:
+        "https://res.cloudinary.com/dsggicjk3/image/upload/v1776932514/original-store_ytiji9.jpg",
       technologies: ["Asp.net", "React", "C#", "Api", "Postgresql"],
       githubUrl: null,
       liveUrl: null,
@@ -149,11 +153,12 @@ export const projectsData: {
         "Une plateforme de recherches intuitive, c'est un annuaire en ligne destiné à faciliter la recherche de toutes vos adresses de loisirs en France.",
       descriptionEn:
         "An intuitive search platform, it's an online directory designed to facilitate the search for all your leisure addresses in France.",
-      imageUrl: "",
+      imageUrl:
+        "https://res.cloudinary.com/dsggicjk3/image/upload/v1776933623/igoguide_hynqjg.jpg",
       technologies: ["Codeigniter", "Javascript", "Mysql", "Ajax"],
       githubUrl: null,
       liveUrl: "https://igoguide-gironde.com/",
-      category: "frontend",
+      category: "backend",
       featured: false,
       date: "2025",
     },
@@ -163,11 +168,12 @@ export const projectsData: {
       titleEn: "Tuto Info",
       descriptionFr: "Une plateforme de formation en ligne à Madagascar.",
       descriptionEn: "An online training platform in Madagascar.",
-      imageUrl: "",
+      imageUrl:
+        "https://res.cloudinary.com/dsggicjk3/image/upload/v1776934459/tuto-info_jgtgfu.jpg",
       technologies: ["Laravel", "React", "Mysql", "Jquery"],
       githubUrl: null,
       liveUrl: "https://tuto-info.com/",
-      category: "fullstack",
+      category: "frontend",
       featured: false,
       date: "2025",
     },
