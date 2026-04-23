@@ -15,8 +15,8 @@ const heroData = {
   name: "Mahefa",
   title: { fr: "Développeur Fullstack", en: "Fullstack Developer" },
   description: {
-    fr: "Développeur Full-Stack spécialisé dans la création d’applications web et mobiles performantes et scalables. Expérience dans le développement de solutions e-commerce, systèmes de gestion et plateformes métier, avec une approche axée sur la qualité du code, la performance et l’expérience utilisateur.",
-    en: "Full-Stack Developer specialized in building high-performance and scalable web and mobile applications. Experience in developing e-commerce solutions, management systems, and business platforms, with an approach focused on code quality, performance, and user experience.",
+    fr: "J’aide les entreprises à concevoir et développer des applications web et mobiles performantes, adaptées à leurs besoins métiers et prêtes à évoluer.",
+    en: "I help companies design and develop high-performance web and mobile applications tailored to their business needs and ready to scale.",
   },
   stats: [
     {

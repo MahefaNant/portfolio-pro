@@ -12,8 +12,8 @@ import { useTranslations } from "use-intl";
 // Données temporaires
 const bioData = {
   description: {
-    fr: "Développeur Fullstack passionné depuis plus de 6 ans, je crée des applications web modernes et performantes. Mon parcours m'a permis de travailler sur des projets variés, allant du e-commerce aux dashboards analytics, en passant par des APIs RESTful.",
-    en: "Passionate Fullstack developer for over 6 years, I create modern and performant web applications. My journey has allowed me to work on various projects, from e-commerce to analytics dashboards, including RESTful APIs.",
+    fr: "Développeur full-stack avec plusieurs années d’expérience, je conçois et développe des applications web et mobiles robustes, en mettant l’accent sur la performance, la maintenabilité et l’expérience utilisateur. J’ai travaillé sur des projets variés tels que des plateformes e-commerce, des applications de gestion et des solutions métier, en utilisant des technologies modernes comme Next.js, ASP.NET Core et React Native.",
+    en: "As a full-stack developer with several years of experience, I design and develop robust web and mobile applications, with a strong focus on performance, maintainability, and user experience. I have worked on various projects, including e-commerce platforms, management applications, and business solutions, using modern technologies such as Next.js, ASP.NET Core, and React Native.",
   },
   personalInfo: {
     name: "Mahefa",

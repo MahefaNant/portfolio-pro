@@ -16,24 +16,43 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  applicationName: "Mahefa Portfolio",
+  category: "technology",
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://mahefa.vercel.app/",
   ),
   title: {
-    default: "Mahefa-Portfolio – Fullstack Developer",
-    template: "%s | Mahefa-Portfolio",
+    default: "Mahefa Nantenaina – Fullstack Developer",
+    template: "%s | Mahefa Nantenaina",
   },
   description:
-    "Portfolio of Mahefa, a passionate fullstack developer specializing in modern web and mobile technologies.",
+    "Full-stack developer building scalable web and mobile applications using Next.js, ASP.NET Core, and React Native.",
   keywords: [
     "Mahefa",
     "Fullstack Developer",
+    "Developer",
     "Portfolio",
     "Next.js",
     "React",
     "TypeScript",
     "Mobile",
+    ".Net",
+    "C#",
+    "Laravel",
+    "Nodejs",
+    "Django",
   ],
+  icons: {
+    icon: [
+      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
+      {
+        url: "/static/images/web-app-manifest-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+      },
+    ],
+    apple: "/apple-icon.png",
+  },
   authors: [{ name: "Mahefa" }],
   creator: "Mahefa",
   openGraph: {
@@ -52,6 +71,9 @@ export const metadata: Metadata = {
         alt: "Mahefa Portfolio",
       },
     ],
+  },
+  alternates: {
+    canonical: "https://mahefa.vercel.app/",
   },
   twitter: {
     card: "summary_large_image",
@@ -96,6 +118,23 @@ export default async function RootLayout({
         <meta
           name="apple-mobile-web-app-title"
           content="Mahefa-Portfolio-Developer"
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Mahefa Nantenaina",
+              url: "https://mahefa.vercel.app",
+              logo: "https://mahefa.vercel.app/icon.png",
+              sameAs: [
+                "https://github.com/MahefaNant",
+                "https://www.linkedin.com/in/mahefa-nantenaina-419a98271/",
+              ],
+            }),
+          }}
         />
       </head>
 

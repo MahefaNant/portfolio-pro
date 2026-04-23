@@ -16,8 +16,8 @@ const proPhotoData = {
     en: "Fullstack Developer",
   },
   bio: {
-    fr: "Passionné par le développement web depuis plus de 6 ans, je crée des applications modernes, performantes et élégantes. Mon objectif est de transformer vos idées en solutions digitales innovantes.",
-    en: "Passionate about web development for over 6 years, I create modern, performant and elegant applications. My goal is to transform your ideas into innovative digital solutions.",
+    fr: "Je suis Développeur full-stack avec plusieurs années d’expérience, et je conçois et développe des applications web et mobiles robustes, en mettant l’accent sur la performance, la maintenabilité et l’expérience utilisateur. J’ai travaillé sur des projets variés tels que des plateformes e-commerce, des applications de gestion et des solutions métier, en utilisant des technologies modernes comme Next.js, ASP.NET Core et React Native.",
+    en: "I am a full-stack developer with several years of experience, and I design and develop robust web and mobile applications, with a strong focus on performance, maintainability, and user experience. I have worked on various projects, including e-commerce platforms, management applications, and business solutions, using modern technologies such as Next.js, ASP.NET Core, and React Native.",
   },
   stats: [
     {
