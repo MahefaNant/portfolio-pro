@@ -46,7 +46,7 @@ export const metadata: Metadata = {
       "Portfolio of Mahefa, a passionate fullstack developer specializing in modern web technologies.",
     images: [
       {
-        url: "/icon1.png", // Using icon1.png as a placeholder for OG image if no specific one exists
+        url: "/static/images/portfolio-screen.png",
         width: 1200,
         height: 630,
         alt: "Mahefa Portfolio",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     title: "Mahefa-Portfolio – Fullstack Developer",
     description:
       "Portfolio of Mahefa, a passionate fullstack developer specializing in modern web technologies.",
-    images: ["/icon1.png"],
+    images: ["/static/images/portfolio-screen.png"],
     creator: "@mahefa", // Adjust if you have a twitter handle
   },
   robots: {
