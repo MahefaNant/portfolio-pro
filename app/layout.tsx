@@ -16,13 +16,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://mahefa.vercel.app/"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://mahefa.vercel.app/",
+  ),
   title: {
     default: "Mahefa-Portfolio – Fullstack Developer",
-    template: "%s | Mahefa-Portfolio"
+    template: "%s | Mahefa-Portfolio",
   },
-  description: "Portfolio of Mahefa, a passionate fullstack developer specializing in modern web technologies.",
-  keywords: ["Mahefa", "Fullstack Developer", "Portfolio", "Next.js", "React", "TypeScript"],
+  description:
+    "Portfolio of Mahefa, a passionate fullstack developer specializing in modern web and mobile technologies.",
+  keywords: [
+    "Mahefa",
+    "Fullstack Developer",
+    "Portfolio",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Mobile",
+  ],
   authors: [{ name: "Mahefa" }],
   creator: "Mahefa",
   openGraph: {
@@ -31,7 +42,8 @@ export const metadata: Metadata = {
     url: "https://mahefa.vercel.app/",
     siteName: "Mahefa-Portfolio",
     title: "Mahefa-Portfolio – Fullstack Developer",
-    description: "Portfolio of Mahefa, a passionate fullstack developer specializing in modern web technologies.",
+    description:
+      "Portfolio of Mahefa, a passionate fullstack developer specializing in modern web technologies.",
     images: [
       {
         url: "/icon1.png", // Using icon1.png as a placeholder for OG image if no specific one exists
@@ -44,7 +56,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Mahefa-Portfolio – Fullstack Developer",
-    description: "Portfolio of Mahefa, a passionate fullstack developer specializing in modern web technologies.",
+    description:
+      "Portfolio of Mahefa, a passionate fullstack developer specializing in modern web technologies.",
     images: ["/icon1.png"],
     creator: "@mahefa", // Adjust if you have a twitter handle
   },
@@ -54,9 +67,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   verification: {

@@ -133,7 +133,9 @@ export function ContactForm() {
                           className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400"
                         />
                         <Input
-                          placeholder="Jean Dupont"
+                          placeholder={
+                            locale === "fr" ? "Votre Nom" : "Your Name"
+                          }
                           className="pl-9 bg-white dark:bg-[#0B0F1A] border-gray-200 dark:border-[#1F2937] focus:border-[#2563EB] dark:focus:border-[#3B82F6]"
                           {...field}
                         />
@@ -159,7 +161,9 @@ export function ContactForm() {
                           className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400"
                         />
                         <Input
-                          placeholder="jean@exemple.com"
+                          placeholder={
+                            locale === "fr" ? "Votre Email" : "Your Email"
+                          }
                           type="email"
                           className="pl-9 bg-white dark:bg-[#0B0F1A] border-gray-200 dark:border-[#1F2937] focus:border-[#2563EB] dark:focus:border-[#3B82F6]"
                           {...field}
@@ -186,7 +190,11 @@ export function ContactForm() {
                           className="absolute left-3 top-3 h-4 w-4 text-gray-400"
                         />
                         <Textarea
-                          placeholder="Décrivez votre projet ou votre demande..."
+                          placeholder={
+                            locale === "fr"
+                              ? "Décrivez votre projet ou votre demande..."
+                              : "Describe your project or request..."
+                          }
                           rows={5}
                           className="pl-9 bg-white dark:bg-[#0B0F1A] border-gray-200 dark:border-[#1F2937] focus:border-[#2563EB] dark:focus:border-[#3B82F6] resize-none"
                           {...field}
@@ -205,16 +213,16 @@ export function ContactForm() {
                 </div>
               )}
 
-              {/* <ReCAPTCHA
+              <ReCAPTCHA
                 ref={recaptchaRef}
                 sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
                 size="invisible"
-              /> */}
+              />
 
               <Button
                 type="submit"
                 size="lg"
-                className="w-full bg-gradient-to-r from-[#2563EB] to-[#1E3A8A] hover:from-[#3B82F6] hover:to-[#2563EB] text-white transition-all duration-300 group cursor-pointer"
+                className="w-full bg-linear-to-r from-[#2563EB] to-[#1E3A8A] hover:from-[#3B82F6] hover:to-[#2563EB] text-white transition-all duration-300 group cursor-pointer"
                 disabled={isSubmitting || !isValid || !isDirty}
               >
                 {isSubmitting ? (
