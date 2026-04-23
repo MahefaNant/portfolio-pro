@@ -102,6 +102,12 @@ const skillsData = {
           isStrength: false,
         },
         {
+          name: "Shopify",
+          icon: "SiShopify",
+          color: "#96BF48",
+          isStrength: false,
+        },
+        {
           name: "HTML/CSS",
           icon: "SiHtml5",
           color: "#E34F26",
@@ -180,16 +186,16 @@ const skillsData = {
           isStrength: true,
         },
         {
+          name: "Gitlab",
+          icon: "SiGitlab",
+          color: "#FC6D26",
+          isStrength: false,
+        },
+        {
           name: "Docker",
           icon: "SiDocker",
           color: "#2496ED",
           isStrength: false,
-        },
-        {
-          name: "CI/CD",
-          icon: "SiGithubactions",
-          color: "#2088FF",
-          isStrength: true,
         },
       ],
     },
